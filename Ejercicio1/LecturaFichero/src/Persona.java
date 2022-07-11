@@ -6,13 +6,8 @@ public class Persona {
     protected String poblacion;
     protected String edad;
 
-    public Persona(String nombre, String poblacion, String edad) {
-        this.nombre = nombre;
-        this.poblacion = poblacion;
-        this.edad = edad;
+    public Persona() {
     }
-
-    public Persona(){}
 
     public Optional<String> getNombre() {
         return Optional.ofNullable(nombre);
@@ -30,16 +25,10 @@ public class Persona {
         this.poblacion = poblacion;
     }
 
-    public Optional<String> getEdad() {
-        return Optional.ofNullable(edad);
-    }
+    public Optional<String> getEdad() {return Optional.ofNullable(edad);}
 
     public void setEdad(String edad) {
         this.edad = edad;
-    }
-
-    public String rellenarPersona() {
-        return "Nombre: " + this.getNombre() + ". Población: " + this.getPoblacion() + ". Edad: " + this.getEdad();
     }
 
 }
