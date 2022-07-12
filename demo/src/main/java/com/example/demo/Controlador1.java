@@ -9,7 +9,7 @@ public class Controlador1 {
         return "Hola: " + nombre;
     }
 
-    @PostMapping(value = "/useradd")
+    @PostMapping("/useradd")
     public String getInfoPerson(@RequestBody Persona p) {
         p.setEdad(p.getEdad() + 1);
         return "name:" + p.getName() + " edad:" + p.getEdad() + " ciudad:" + p.getCiudad();
