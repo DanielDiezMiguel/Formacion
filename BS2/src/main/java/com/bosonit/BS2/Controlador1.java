@@ -1,16 +1,19 @@
 package com.bosonit.BS2;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class Controlador1 {
 
     @Autowired
     PersonaService personaService;
+    @Autowired
+    CiudadService ciudadService;
+
     @GetMapping("/controlador1/addPersona")
     public PersonaService getPersonaServiceInfo(
             @RequestHeader("nombre") String nombre,
@@ -23,6 +26,11 @@ public class Controlador1 {
         personaService.setEdad(edad);
 
         return personaService;
+    }
+    @PostMapping("/controlador1/addCiudad")
+    public CiudadService addCiudad(@RequestBody Ciudad c){
+        ciudadService.addCiudad(c);
+        return ciudadService;
     }
 
 }
