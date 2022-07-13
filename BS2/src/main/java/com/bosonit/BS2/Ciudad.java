@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class Ciudad {
-    String nombre;
-    int numeroHabitantes;
+    protected String nombre;
+    protected int numeroHabitantes;
 }
