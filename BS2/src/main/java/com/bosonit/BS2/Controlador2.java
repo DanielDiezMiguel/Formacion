@@ -19,8 +19,8 @@ public class Controlador2 {
         return personaService;
     }
 
-    @GetMapping("/controlador1/getCiudad")
-    public CiudadService getCiudad(@RequestBody Ciudad c){
+    @GetMapping("/controlador2/getCiudad")
+    public CiudadService getCiudad(){
         ciudadService.getCiudades();
         return ciudadService;
     }
