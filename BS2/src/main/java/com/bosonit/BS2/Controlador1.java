@@ -12,7 +12,7 @@ public class Controlador1 {
     @Autowired
     PersonaService personaService;
     @GetMapping("/controlador1/addPersona")
-    public PersonaService getPersonaInfo(
+    public PersonaService getPersonaServiceInfo(
             @RequestHeader("nombre") String nombre,
             @RequestHeader("poblacion") String poblacion,
             @RequestHeader("edad") Integer edad
