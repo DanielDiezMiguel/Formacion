@@ -17,12 +17,13 @@ public class Controlador1 {
 //    }
 
     @PostMapping("/greeting")
-    public Greeting getInfoGreeting(@RequestBody Greeting g){
+    public Greeting getInfoGreeting(@RequestBody Greeting g, @RequestParam(value = "name") String name){
+        g.setContent(name);
         return g;
     }
 
     @GetMapping("/user/{id}")
-    public Greeting getInfoGreetingID(@RequestBody Greeting g, @PathVariable long id){
+    public Greeting getInfoGreetingID(@RequestBody Greeting g, @PathVariable(value = "id") int id){
         g.setId(id);
         return g;
     }
