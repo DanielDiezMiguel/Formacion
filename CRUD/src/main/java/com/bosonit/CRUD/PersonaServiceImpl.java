@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class PersonaServiceImpl implements PersonaService{
+public class PersonaServiceImpl implements PersonaService {
     List<Persona> personaList = new ArrayList<>();
 
     @Override
@@ -19,4 +19,15 @@ public class PersonaServiceImpl implements PersonaService{
         return personaList;
     }
 
+    @Override
+    public Persona getPersonaListByID(int id) {
+        return personaList.get(id);
+    }
+
+    @Override
+    public Persona getPersonaListByName(String nombre) {
+        Persona persona = personaList.stream().filter(p -> nombre.equals(p.getNombre())).findAny().orElse(null);
+
+        return persona;
+    }
 }

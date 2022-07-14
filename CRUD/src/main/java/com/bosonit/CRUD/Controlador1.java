@@ -2,9 +2,7 @@ package com.bosonit.CRUD;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -16,7 +14,7 @@ public class Controlador1 {
     @Qualifier("beanQualifier1")
     PersonaService personaService;
 
-    @PostMapping("/persona")
+    @RequestMapping(value = "/persona", method = RequestMethod.POST)
     public PersonaService addPersona(@RequestBody Persona p) {
         p.setId(atomicInteger.incrementAndGet());
         personaService.addPersona(p);
