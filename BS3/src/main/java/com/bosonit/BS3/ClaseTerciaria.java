@@ -10,7 +10,7 @@ public class ClaseTerciaria {
     @Bean
     CommandLineRunner ejecutame(Persona p) {
         return args -> {
-            System.out.println("Hola en la tercera clase, soy: " + p.getNombre() + " y tengo: " + p.getEdad() + " años");
+            System.out.println("Hola en la tercera clase, soy: " + p.getNombre() + " y tengo: " + p.getEdad() + " años.");
         };
 
     }
