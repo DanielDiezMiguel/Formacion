@@ -13,7 +13,12 @@ public class Controlador1 {
 
     @RequestMapping(value = "/valores", method = RequestMethod.GET)
     public String getVaules() {
-
         return "valor de var1 es:" + configurationProperties.getVar1() + " valor de var2 es: " + configurationProperties.getVar2();
+    }
+
+    @RequestMapping(value = "/var3", method = RequestMethod.GET)
+    public String getValueVar3(String var3) {
+        var3 = "var3 no tiene valor";
+        return "valor de var3 es: " + var3;
     }
 }
