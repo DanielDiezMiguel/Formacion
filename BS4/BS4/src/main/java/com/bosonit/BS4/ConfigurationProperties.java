@@ -7,4 +7,5 @@ import lombok.Data;
 public class ConfigurationProperties {
    private String var1;
    private int var2;
+   private String var3;
 }

@@ -17,8 +17,8 @@ public class Controlador1 {
     }
 
     @RequestMapping(value = "/var3", method = RequestMethod.GET)
-    public String getValueVar3(String var3) {
-        var3 = "var3 no tiene valor";
-        return "valor de var3 es: " + var3;
+    public String getValueVar3(ConfigurationProperties cP) {
+        cP.setVar3("var3 no tiene valor");
+        return "valor de var3 es: " + cP.getVar3();
     }
 }
