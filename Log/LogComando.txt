@@ -1,0 +1,1 @@
+java -jar -Dlogging.level.root=ERROR -Dlogging.file.name=C:\Users\daniel.diez\Documents\GitHub\Formacion\Log\src\main\java\com\bosonit\Log\spring-logging.log Log-0.0.1-SNAPSHOT.jar

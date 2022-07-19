@@ -1,0 +1,9 @@
+2022-07-19 12:28:14.985  INFO 16296 --- [main] com.bosonit.Log.LogApplication           : Starting LogApplication using Java 17.0.3 on L2112007 with PID 16296 (C:\Users\daniel.diez\Documents\GitHub\Formacion\Log\target\classes started by daniel.diez in C:\Users\daniel.diez\Documents\GitHub\Formacion\Log)
+2022-07-19 12:28:14.985  INFO 16296 --- [main] com.bosonit.Log.LogApplication           : No active profile set, falling back to 1 default profile: "default"
+2022-07-19 12:28:15.870  INFO 16296 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-07-19 12:28:15.884  INFO 16296 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-07-19 12:28:15.884  INFO 16296 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-07-19 12:28:15.947  INFO 16296 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-07-19 12:28:15.947  INFO 16296 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 903 ms
+2022-07-19 12:28:16.285  INFO 16296 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-07-19 12:28:16.300  INFO 16296 --- [main] com.bosonit.Log.LogApplication           : Started LogApplication in 1.715 seconds (JVM running for 2.038)
