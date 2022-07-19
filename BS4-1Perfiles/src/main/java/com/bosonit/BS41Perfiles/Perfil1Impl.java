@@ -7,8 +7,8 @@ import org.springframework.stereotype.Component;
 @Profile("perfil1")
 public class Perfil1Impl implements PerfilesInterface{
     @Override
-    public void miFuncion(String perfil) {
-        System.out.println("El valor del perfil 1 es: " + perfil);
+    public void miFuncion() {
+        System.out.println("El valor del perfil 1 es: perfil1");
     }
 
 }
