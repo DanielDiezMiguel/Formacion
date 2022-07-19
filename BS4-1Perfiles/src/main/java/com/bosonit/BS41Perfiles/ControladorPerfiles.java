@@ -9,22 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class ControladorPerfiles {
 
     @Autowired
-//    @Qualifier("perfilBean1")
     PerfilesInterface perfilesInterface1;
-
-//    @Autowired
-//    @Qualifier("perfilBean2")
-//    PerfilesInterface perfilesInterface2;
-
 
     @GetMapping("/perfil")
     public void getValorPerfil1(){
        perfilesInterface1.miFuncion();
     }
-
-
-//    @GetMapping("/perfil")
-//    public void getValorPerfil2(){
-//        perfilesInterface2.miFuncion("Perfil 2");
-//    }
 }
