@@ -34,20 +34,20 @@ public class Bs41PerfilesApplication {
     }
 
     @Bean
-    @Qualifier("perfilBean1")
     @Profile("perfil1")
+    @Qualifier("perfilBean1")
     public PerfilesInterface perfilesInterfaceBean1() {
-        PerfilesInterface perfilesInterface1 = new Perfil1Impl();
 
+        PerfilesInterface perfilesInterface1 = new Perfil1Impl();
         return perfilesInterface1;
     }
 
     @Bean
-    @Qualifier("perfilBean2")
     @Profile("perfil2")
+    @Qualifier("perfilBean2")
     public PerfilesInterface perfilesInterfaceBean2() {
-        PerfilesInterface perfilesInterface2 = new Perfil1Impl();
 
+        PerfilesInterface perfilesInterface2 = new Perfil2Impl();
         return perfilesInterface2;
     }
 

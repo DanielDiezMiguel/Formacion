@@ -4,10 +4,10 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Perfil2Impl implements PerfilesInterface{
+@Profile("perfil2")
+public class Perfil2Impl implements PerfilesInterface {
     @Override
-    public String miFuncion() {
-
-        return "Texto del Perfil 1";
+    public void miFuncion(String perfil) {
+        System.out.println("EL valor del perfil 2 es: " + perfil);
     }
 }
