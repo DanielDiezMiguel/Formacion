@@ -17,18 +17,6 @@ public class LogApplication {
 		SpringApplication.run(LogApplication.class, args);
 	}
 
-//	@Bean
-//	void CommandLineRunner() throws IOException {
-//		FileWriter fw;
-//		PrintWriter pw;
-//		String texto = "Prueba";
-//		String path = "C:\\Users\\daniel.diez\\Documents\\GitHub\\Formacion\\Log\\src\\main\\java\\com\\bosonit\\Log\\spring-logging.log";
-//		fw = new FileWriter(path, true);
-//		pw = new PrintWriter(fw);
-//		pw.print(log.error);
-//		fw.close();
-//	}
-
 	@Bean
 	void CommandLineRunner(){
 		log.info("Esto es un INFO");
