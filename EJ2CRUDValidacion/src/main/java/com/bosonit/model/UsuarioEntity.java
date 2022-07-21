@@ -18,40 +18,30 @@ public class UsuarioEntity {
     @Column(name = "ID_Persona")
     private Integer id_persona;
 
-    @NonNull
-    @Column(name = "Usuario")
+    @Column(name = "Usuario", nullable = false)
     private String usuario;
 
-    @NonNull
-    @Column(name = "Password")
+    @Column(name = "Password", nullable = false)
     private String password;
 
-    @NonNull
-    @Column(name = "Nombre")
+    @Column(name = "Nombre", nullable = false)
     private String name;
 
-    @NonNull
-    @Column(name = "Surname")
+    @Column(name = "Surname", nullable = false)
     private String surname;
-
-    @NonNull
-    @Column(name = "Company_email")
+    @Column(name = "Company_email", nullable = false)
     private String company_email;
 
-    @NonNull
-    @Column(name = "Personal_email")
+    @Column(name = "Personal_email", nullable = false)
     private String personal_email;
 
-    @NonNull
-    @Column(name = "Ciudad")
+    @Column(name = "Ciudad", nullable = false)
     private String city;
 
-    @NonNull
-    @Column(name = "Activo")
+    @Column(name = "Activo", nullable = false)
     private Boolean active;
 
-    @NonNull
-    @Column(name = "Created_Date")
+    @Column(name = "Created_Date", nullable = false)
     private Date created_date;
 
     @Column(name = "Imagen_URL")
