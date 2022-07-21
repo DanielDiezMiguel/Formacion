@@ -1,16 +1,18 @@
 package com.bosonit.model;
 
-import com.bosonit.dto.UsuarioDTO;
+import com.bosonit.dto.UsuarioInputDTO;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Data
+@NoArgsConstructor
 @Entity
 @Table(name = "Persona")
-public class Usuario {
+public class UsuarioEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_Persona")
@@ -38,7 +40,7 @@ public class Usuario {
 
     @NonNull
     @Column(name = "Personal_email")
-    private String persona_email;
+    private String personal_email;
 
     @NonNull
     @Column(name = "Ciudad")
@@ -58,17 +60,20 @@ public class Usuario {
     @Column(name = "Date")
     private Date termination_date;
 
-    public Usuario (UsuarioDTO usuarioDTO) {
-        if (id_persona == null) return;
-        id_persona = usuarioDTO.getId_persona();
-        usuario = usuarioDTO.getUsuario();
-        surname = usuarioDTO.getSurname();
-        company_email = usuarioDTO.getCompany_email();
-        persona_email = usuarioDTO.getPersona_email();
-        city = usuarioDTO.getCity();
-        active = usuarioDTO.getActive();
-        created_date = usuarioDTO.getCreated_date();
-        imagen_url = usuarioDTO.getImagen_url();
-        termination_date = usuarioDTO.getTermination_date();
+
+    public UsuarioEntity(UsuarioInputDTO usuarioInputDTO) {
+        if (usuarioInputDTO == null) return;
+        id_persona = usuarioInputDTO.getId_persona();
+        usuario = usuarioInputDTO.getUsuario();
+        password = usuarioInputDTO.getPassword();
+        name = usuarioInputDTO.getName();
+        surname = usuarioInputDTO.getSurname();
+        company_email = usuarioInputDTO.getCompany_email();
+        personal_email = usuarioInputDTO.getPersonal_email();
+        city = usuarioInputDTO.getCity();
+        active = usuarioInputDTO.getActive();
+        created_date = usuarioInputDTO.getCreated_date();
+        imagen_url = usuarioInputDTO.getImagen_url();
+        termination_date = usuarioInputDTO.getTermination_date();
     }
 }
