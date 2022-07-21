@@ -47,7 +47,7 @@ public class ControladorPersona {
     @PutMapping("/usuario/update/{id}")
     public void updateUsuarioByID(@PathVariable(value = "id") Integer id) {
         UsuarioEntity usuarioEntity1 = usuarioRepositorio.getReferenceById(id);
-        if (usuarioEntity1 != null) usuarioEntity1.setUsuario("PedroRM");
+        usuarioEntity1.setUsuario("PedroRL");
         usuarioRepositorio.save(usuarioEntity1);
     }
 
