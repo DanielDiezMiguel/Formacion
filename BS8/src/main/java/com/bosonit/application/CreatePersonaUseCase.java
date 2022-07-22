@@ -26,7 +26,7 @@ public class CreatePersonaUseCase implements CreatePersonaPort {
             return usuarioOutputDTO;
 
         } catch (Exception e) {
-            throw new UnprocesableException("Los campos no cumplen las condiciones establecidas");
+            throw new UnprocesableException("No cumple los requisitos establecidos");
         }
 
     }
