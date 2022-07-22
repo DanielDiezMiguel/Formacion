@@ -36,4 +36,6 @@ public class UsuarioOutputDTO implements Serializable {
         imagen_url = usuarioEntity.getImagen_url();
         termination_date = usuarioEntity.getTermination_date();
     }
+
+
 }
