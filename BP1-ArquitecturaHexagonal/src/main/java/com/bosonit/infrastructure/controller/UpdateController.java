@@ -15,7 +15,6 @@ public class UpdateController {
     @Autowired
     UpdatePersonaPort updatePersonaPort;
 
-    // UPDATE
     @PutMapping("/usuario/update/{id}")
     public UsuarioOutputDTO updateUsuarioByID(@PathVariable(value = "id") Integer id, @RequestBody UsuarioInputDTO usuarioInputDTO) {
         return updatePersonaPort.updateUsuarioByID(id, usuarioInputDTO);

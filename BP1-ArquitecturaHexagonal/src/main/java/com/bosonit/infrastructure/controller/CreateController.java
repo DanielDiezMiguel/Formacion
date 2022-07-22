@@ -14,32 +14,10 @@ public class CreateController {
     @Autowired
     CreatePersonaPort createPersonaPort;
 
-    // CREATE
     @PostMapping("/usuario/crearUsuario")
     public UsuarioOutputDTO crearUsuario(@RequestBody UsuarioInputDTO usuarioInputDTO) throws Exception {
         return createPersonaPort.crearUsuario(usuarioInputDTO);
     }
-
-
-
-
-
-
-//    @GetMapping("/id/{id}")
-//    public Optional<UsuarioEntity> getUsuarioByID(@PathVariable(value = "id") Integer id) {
-//        return usuarioRepositorio.findById(id);
-//    }
-//
-//
-//    @GetMapping("/usuario/{usuario}")
-//    public List<UsuarioEntity> getUsuarioByUser(@PathVariable(value = "usuario") String usuario) {
-//        return usuarioRepositorio.findByUsuario(usuario);
-//    }
-//
-//    @GetMapping("/usuario/all")
-//    public List<UsuarioEntity> getAllUsuarios() {
-//        return usuarioRepositorio.findAll();
-//    }
 }
 
 

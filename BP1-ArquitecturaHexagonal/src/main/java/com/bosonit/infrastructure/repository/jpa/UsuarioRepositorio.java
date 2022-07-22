@@ -10,5 +10,5 @@ import java.util.Optional;
 
 @Repository
 public interface UsuarioRepositorio extends JpaRepository<UsuarioEntity, Integer> {
-    List<UsuarioOutputDTO> findByName(String name);
+    List<UsuarioEntity> findByName(String nombre);
 }
