@@ -8,6 +8,8 @@ import com.bosonit.infrastructure.controller.dto.output.UsuarioOutputDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 public class CreateController {
 

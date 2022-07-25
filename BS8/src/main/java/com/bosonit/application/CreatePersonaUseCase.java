@@ -18,7 +18,7 @@ public class CreatePersonaUseCase implements CreatePersonaPort {
     UsuarioRepositorio usuarioRepositorio;
 
     @Override
-    public UsuarioOutputDTO crearUsuario(@Valid UsuarioInputDTO usuarioInputDTO) {
+    public UsuarioOutputDTO crearUsuario(UsuarioInputDTO usuarioInputDTO) {
         try {
             UsuarioEntity usuarioEntity = new UsuarioEntity(usuarioInputDTO);
             usuarioRepositorio.save(usuarioEntity);
