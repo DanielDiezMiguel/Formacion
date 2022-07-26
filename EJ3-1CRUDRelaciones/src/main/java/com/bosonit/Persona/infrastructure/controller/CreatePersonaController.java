@@ -7,12 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class CreateController {
+@RequestMapping("persona")
+public class CreatePersonaController {
 
     @Autowired
     CreatePersonaPort createPersonaPort;
 
-    @PostMapping("/persona/crearPersona")
+    @PostMapping
     public PersonaOutputDTO crearUsuario(@RequestBody PersonaInputDTO personaInputDTO) throws Exception {
         return createPersonaPort.crearUsuario(personaInputDTO);
     }

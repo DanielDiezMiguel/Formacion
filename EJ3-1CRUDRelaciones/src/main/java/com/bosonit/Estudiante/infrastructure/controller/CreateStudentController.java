@@ -6,15 +6,17 @@ import com.bosonit.Estudiante.infrastructure.controller.dto.output.StudentOutput
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@RequestMapping("student")
 @RestController
 public class CreateStudentController {
 
     @Autowired
     CreateStudentPort createStudentPort;
 
-    @PostMapping("/student/crearStudent")
+    @PostMapping
     public StudentOutputDTO crearStudent(@RequestBody StudentInputDTO studentInputDTO) throws Exception {
         return createStudentPort.crearStudent(studentInputDTO);
     }

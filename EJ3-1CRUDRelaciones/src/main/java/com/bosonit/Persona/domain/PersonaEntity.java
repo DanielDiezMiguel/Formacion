@@ -29,6 +29,9 @@ public class PersonaEntity {
                     @Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%08d")
             })
     private String id_persona;
+
+    @OneToOne(mappedBy = "personaID", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private StudentEntity studentID;
     @Size(min = 6, max = 10)
     @Column(name = "usuario", nullable = false)
     private String usuario;

@@ -26,7 +26,7 @@ public class StudentEntity {
             name = "student_seq", strategy = "com.bosonit.shared.sequences.StringPrefixedSequenceIdGenerator", parameters = {@Parameter(name = StringPrefixedSequenceIdGenerator.INCREMENT_PARAM, value = "1"), @Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "AUS"), @Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%08d")})
     private String id_student;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_persona")
     private PersonaEntity personaID;
 
