@@ -19,11 +19,11 @@ public class ReadStudentController {
 
     @GetMapping("{id}")
     public StudentOutputDTO getStudentByID(@PathVariable(name = "id") String id, @RequestParam(defaultValue = "simple", required = false) String ouputType) throws Exception {
-        return  readStudentPort.getStudentByID(id,ouputType);
+        return readStudentPort.getStudentByID(id,ouputType);
 
     }
 
-    @GetMapping
+    @GetMapping("all/all")
     public List<StudentOutputDTO> getAllStudents() {
         return readStudentPort.getAllStudents();
     }

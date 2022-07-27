@@ -2,6 +2,7 @@ package com.bosonit.Persona.domain;
 
 import com.bosonit.Estudiante.domain.StudentEntity;
 import com.bosonit.Persona.infrastructure.controller.dto.input.PersonaInputDTO;
+import com.bosonit.Profesor.domain.ProfesorEntity;
 import com.bosonit.shared.sequences.StringPrefixedSequenceIdGenerator;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -32,6 +33,10 @@ public class PersonaEntity {
 
     @OneToOne(mappedBy = "personaEntity", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private StudentEntity studentID;
+
+    @OneToOne(mappedBy = "personaEntity", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private ProfesorEntity profesorEntity;
+
     @Size(min = 6, max = 10)
     @Column(name = "usuario", nullable = false)
     private String usuario;

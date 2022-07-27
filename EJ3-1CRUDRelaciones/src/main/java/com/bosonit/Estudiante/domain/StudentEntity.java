@@ -47,18 +47,16 @@ public class StudentEntity {
         id_student = studentInputDTO.getId_student();
         num_hours_week = studentInputDTO.getNum_hours_week();
         comentarios = studentInputDTO.getComentarios();
-        profesorEntity = studentInputDTO.getProfesorEntity();
         branch = studentInputDTO.getBranch();
-        estudios = studentInputDTO.getEstudios();
+        //estudios = studentInputDTO.getEstudios();
     }
 
     public void update(StudentInputDTO studentInputDTO) {
         if (studentInputDTO == null) return;
         num_hours_week = studentInputDTO.getNum_hours_week();
         comentarios = studentInputDTO.getComentarios();
-        profesorEntity = studentInputDTO.getProfesorEntity();
         branch = studentInputDTO.getBranch();
-        estudios = studentInputDTO.getEstudios();
+        //estudios = studentInputDTO.getEstudios();
     }
 
 }

@@ -11,22 +11,24 @@ import java.util.List;
 @Data
 public class StudentOutputDTO implements Serializable{
     private String id_student;
-    private String personaID;
+    private String id_persona;
     private int num_hours_week;
     private String comentarios;
-    private ProfesorEntity id_profesor;
+    private String id_profesor;
     private String branch;
-    private List<EstudianteAsignaturaEntity> estudios;
+    //private List<EstudianteAsignaturaEntity> estudios;
 
     public StudentOutputDTO(StudentEntity studentEntity) {
         if (studentEntity == null) return;
         id_student = studentEntity.getId_student();
-        personaID = studentEntity.getPersonaEntity().getId_persona();
+        id_persona = studentEntity.getPersonaEntity().getId_persona();
         num_hours_week = studentEntity.getNum_hours_week();
         comentarios = studentEntity.getComentarios();
-        id_profesor = studentEntity.getProfesorEntity();
+        if (id_profesor != null) {
+            id_profesor = studentEntity.getProfesorEntity().getId_profesor();
+        }
         branch = studentEntity.getBranch();
-        estudios = studentEntity.getEstudios();
+        //estudios = studentEntity.getEstudios();
 
     }
 
