@@ -30,7 +30,7 @@ public class PersonaEntity {
             })
     private String id_persona;
 
-    @OneToOne(mappedBy = "personaID", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "personaEntity", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private StudentEntity studentID;
     @Size(min = 6, max = 10)
     @Column(name = "usuario", nullable = false)

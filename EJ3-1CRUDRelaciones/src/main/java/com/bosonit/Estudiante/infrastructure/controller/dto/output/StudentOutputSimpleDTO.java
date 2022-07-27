@@ -8,9 +8,10 @@ import lombok.Data;
 import java.io.Serializable;
 import java.util.List;
 @Data
-public class StudentOutputSimpleDTO extends StudentOutputDTO {
+public class StudentOutputSimpleDTO extends StudentOutputDTO implements Serializable {
     public StudentOutputSimpleDTO(StudentEntity studentEntity) {
         super(studentEntity);
+        if (studentEntity == null) return;
     }
 
 }

@@ -28,7 +28,7 @@ public class StudentEntity {
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_persona")
-    private PersonaEntity personaID;
+    private PersonaEntity personaEntity;
 
     private int num_hours_week;
     private String comentarios;
