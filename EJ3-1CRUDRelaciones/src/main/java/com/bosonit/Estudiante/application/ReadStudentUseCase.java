@@ -2,8 +2,10 @@ package com.bosonit.Estudiante.application;
 
 import com.bosonit.Estudiante.application.port.ReadStudentPort;
 import com.bosonit.Estudiante.domain.StudentEntity;
+import com.bosonit.Estudiante.infrastructure.controller.dto.input.StudentInputDTO;
 import com.bosonit.Estudiante.infrastructure.controller.dto.output.StudentOutputDTO;
 //import com.bosonit.Estudiante.infrastructure.controller.dto.output.StudentOutputFullDTO;
+import com.bosonit.Estudiante.infrastructure.controller.dto.output.StudentOutputFullDTO;
 import com.bosonit.Estudiante.infrastructure.controller.dto.output.StudentOutputSimpleDTO;
 import com.bosonit.Estudiante.infrastructure.repository.jpa.StudentRepository;
 import com.bosonit.Persona.domain.PersonaEntity;
@@ -25,15 +27,18 @@ public class ReadStudentUseCase implements ReadStudentPort {
     PersonaRepository personaRepository;
 
     @Override
-    public StudentOutputSimpleDTO getStudentSimpleByID(String id) throws Exception {
+    public StudentOutputDTO getStudentSimpleByID(String id, String outType) throws Exception {
         StudentEntity studentEntity = studentRepository.findById(id).orElseThrow(() -> new Exception("No se ha encontrado el ID de Estudiante"));
-        return new StudentOutputSimpleDTO(studentEntity);
+        if (outType.equalsIgnoreCase("simple"))
+            return new StudentOutputSimpleDTO(studentEntity);
+        else
+            return new StudentOutputFullDTO(studentEntity);
     }
-//    @Override
-//    public StudentOutputFullDTO getStudentFullByID(String id) throws Exception {
-//        PersonaEntity personaEntity = personaRepository.findById(id).orElseThrow(() -> new Exception("No se ha encontrado el ID de Persona"));
-//        return new StudentOutputFullDTO(personaEntity);
-//    }
+    @Override
+    public StudentOutputFullDTO getStudentFullByID(String id, StudentInputDTO studentInputDTO) throws Exception {
+        return null;
+    }
+
 
 
     @Override

@@ -34,16 +34,16 @@ public class StudentOutputDTO implements Serializable{
     }
 
 
-//    public StudentOutputDTO() {
-//        StudentEntity studentEntity = new StudentEntity();
-//        id_student = studentEntity.getId_student();
-//        personaID = studentEntity.getId_student();
-//        num_hours_week = studentEntity.getNum_hours_week();
-//        comentarios = studentEntity.getComentarios();
-//        id_profesor = studentEntity.getProfesorEntity();
-//        branch = studentEntity.getBranch();
-//        estudios = studentEntity.getEstudios();
-//    }
+    public StudentOutputDTO() {
+        StudentEntity studentEntity = new StudentEntity();
+        id_student = studentEntity.getId_student();
+        personaID = studentEntity.getId_student();
+        num_hours_week = studentEntity.getNum_hours_week();
+        comentarios = studentEntity.getComentarios();
+        id_profesor = studentEntity.getProfesorEntity();
+        branch = studentEntity.getBranch();
+        estudios = studentEntity.getEstudios();
+    }
 
 //    public StudentOutputDTO(StudentOutputSimpleDTO studentOutputSimpleDTO) {
 //        if (studentOutputSimpleDTO == null) return;
