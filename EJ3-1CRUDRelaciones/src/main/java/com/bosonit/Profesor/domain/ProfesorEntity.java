@@ -41,4 +41,9 @@ public class ProfesorEntity {
         comentarios = profesorInputDTO.getComentarios();
         branch = profesorInputDTO.getBranch();
     }
+
+    public void update(ProfesorInputDTO profesorInputDTO) {
+        comentarios = profesorInputDTO.getComentarios();
+        branch = profesorInputDTO.getBranch();
+    }
 }
