@@ -32,7 +32,7 @@ public class PersonaEntity {
     private String id_persona;
 
     @OneToOne(mappedBy = "personaEntity", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private StudentEntity studentID;
+    private StudentEntity studentEntity;
 
     @OneToOne(mappedBy = "personaEntity", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private ProfesorEntity profesorEntity;
