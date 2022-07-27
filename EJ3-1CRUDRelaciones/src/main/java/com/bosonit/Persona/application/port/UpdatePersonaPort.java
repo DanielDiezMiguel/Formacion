@@ -6,5 +6,5 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 public interface UpdatePersonaPort {
 
-    public PersonaOutputDTO updateUsuarioByID(@PathVariable(value = "id") Integer id, PersonaInputDTO personaInputDTO);
+    public PersonaOutputDTO updateUsuarioByID(@PathVariable(value = "id") String id, PersonaInputDTO personaInputDTO);
 }
