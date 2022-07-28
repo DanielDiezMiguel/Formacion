@@ -14,8 +14,8 @@ import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Data
-@NoArgsConstructor
 @Entity
+@NoArgsConstructor
 @Table(name = "Persona")
 public class PersonaEntity {
     @Id

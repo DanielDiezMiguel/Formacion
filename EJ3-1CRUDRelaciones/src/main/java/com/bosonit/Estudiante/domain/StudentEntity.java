@@ -11,7 +11,9 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
@@ -37,9 +39,10 @@ public class StudentEntity {
     @JoinColumn(name = "profesorEntity")
     private ProfesorEntity profesorEntity;
 
-//    @OneToMany(mappedBy = "studentEntity", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    private EstudianteAsignaturaEntity estudianteAsignaturaEntity;
+    @OneToMany(mappedBy = "studentEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<EstudianteAsignaturaEntity> estudianteAsignaturaEntities = new HashSet<>();
 
+    @Column(name = "rama")
     private String branch;
 
     @OneToMany

@@ -12,7 +12,7 @@ import java.util.List;
 public class StudentInputDTO implements Serializable {
 
     private String id_student;
-    private String personaID;
+    private String id_persona;
     private int num_hours_week;
     private String comentarios;
     private String id_profesor;

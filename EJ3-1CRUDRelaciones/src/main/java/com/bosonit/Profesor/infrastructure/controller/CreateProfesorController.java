@@ -14,7 +14,7 @@ public class CreateProfesorController {
     @Autowired
     CreateProfesorPort createProfesorPort;
 
-    @PostMapping("{id}")
+    @PostMapping
     public ProfesorOutputDTO crearProfesor(@RequestBody ProfesorInputDTO profesorInputDTO) throws Exception {
         return createProfesorPort.crearProfesor(profesorInputDTO);
     }

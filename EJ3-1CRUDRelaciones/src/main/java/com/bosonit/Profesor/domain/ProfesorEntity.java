@@ -10,6 +10,8 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Entity
@@ -34,10 +36,12 @@ public class ProfesorEntity {
     @JoinColumn(name = "id_persona")
     private PersonaEntity personaEntity;
 
-//    @OneToMany(mappedBy = "profesorEntity", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    private EstudianteAsignaturaEntity estudianteAsignaturaEntity;
+    @OneToMany(mappedBy = "profesorEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<EstudianteAsignaturaEntity> estudianteAsignaturaEntities = new HashSet<>();
 
+    @Column(name = "comentarios")
     private String comentarios;
+    @Column(name = "rama")
     private String branch;
 
     public ProfesorEntity(ProfesorInputDTO profesorInputDTO) {

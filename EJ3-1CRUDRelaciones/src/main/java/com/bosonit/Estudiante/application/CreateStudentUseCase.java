@@ -20,7 +20,7 @@ public class CreateStudentUseCase implements CreateStudentPort {
 
     @Override
     public StudentOutputDTO crearStudent(StudentInputDTO studentInputDTO) throws Exception {
-        PersonaEntity personaEntity = personaRepository.findById(studentInputDTO.getPersonaID()).orElseThrow(() -> new Exception("No se ha encontrado el ID de Persona"));
+        PersonaEntity personaEntity = personaRepository.findById(studentInputDTO.getId_persona()).orElseThrow(() -> new Exception("No se ha encontrado el ID de Persona"));
         StudentEntity studentEntity = new StudentEntity(studentInputDTO);
         studentEntity.setPersonaEntity(personaEntity);
         studentRepository.save(studentEntity);
