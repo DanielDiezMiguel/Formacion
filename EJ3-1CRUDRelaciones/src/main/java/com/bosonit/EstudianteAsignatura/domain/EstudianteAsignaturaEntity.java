@@ -4,6 +4,7 @@ import com.bosonit.Estudiante.domain.StudentEntity;
 import com.bosonit.Profesor.domain.ProfesorEntity;
 import com.bosonit.shared.sequences.StringPrefixedSequenceIdGenerator;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
@@ -11,6 +12,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Data
+@NoArgsConstructor
 @Entity
 @Table(name = "Estudiante_Asignatura")
 public class EstudianteAsignaturaEntity {
@@ -29,12 +31,12 @@ public class EstudianteAsignaturaEntity {
     private String id_asignatura;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "profesor_id")
-    private ProfesorEntity id_profesor;
+    @JoinColumn(name = "id_profesor")
+    private ProfesorEntity profesorEntity;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_student")
-    private StudentEntity id_student;
+    private StudentEntity studentEntity;
 
     private String asignatura;
     private String comment;

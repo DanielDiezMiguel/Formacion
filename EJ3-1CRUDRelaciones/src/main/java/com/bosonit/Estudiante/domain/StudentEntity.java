@@ -34,8 +34,11 @@ public class StudentEntity {
     private String comentarios;
 
     @ManyToOne
-    @JoinColumn(name = "id_profesor")
+    @JoinColumn(name = "profesorEntity")
     private ProfesorEntity profesorEntity;
+
+//    @OneToMany(mappedBy = "studentEntity", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private EstudianteAsignaturaEntity estudianteAsignaturaEntity;
 
     private String branch;
 

@@ -1,5 +1,7 @@
 package com.bosonit.Profesor.application;
 
+import com.bosonit.Estudiante.infrastructure.controller.dto.output.StudentOutputDTO;
+import com.bosonit.Estudiante.infrastructure.repository.jpa.StudentRepository;
 import com.bosonit.Persona.domain.PersonaEntity;
 import com.bosonit.Persona.infrastructure.repository.jpa.PersonaRepository;
 import com.bosonit.Profesor.application.port.CreateProfesorPort;
@@ -18,6 +20,9 @@ public class CreateProfesorUseCase implements CreateProfesorPort {
 
     @Autowired
     PersonaRepository personaRepository;
+
+    @Autowired
+    StudentRepository studentRepository;
 
     @Override
     public ProfesorOutputDTO crearProfesor(ProfesorInputDTO profesorInputDTO) throws Exception {

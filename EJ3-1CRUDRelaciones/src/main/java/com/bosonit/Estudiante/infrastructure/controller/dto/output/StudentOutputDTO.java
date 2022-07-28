@@ -14,7 +14,6 @@ public class StudentOutputDTO implements Serializable{
     private String id_persona;
     private int num_hours_week;
     private String comentarios;
-    private String id_profesor;
     private String branch;
     //private List<EstudianteAsignaturaEntity> estudios;
 
@@ -24,9 +23,6 @@ public class StudentOutputDTO implements Serializable{
         id_persona = studentEntity.getPersonaEntity().getId_persona();
         num_hours_week = studentEntity.getNum_hours_week();
         comentarios = studentEntity.getComentarios();
-        if (id_profesor != null) {
-            id_profesor = studentEntity.getProfesorEntity().getId_profesor();
-        }
         branch = studentEntity.getBranch();
         //estudios = studentEntity.getEstudios();
 

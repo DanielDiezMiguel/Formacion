@@ -1,5 +1,6 @@
 package com.bosonit.Profesor.domain;
 
+import com.bosonit.EstudianteAsignatura.domain.EstudianteAsignaturaEntity;
 import com.bosonit.Persona.domain.PersonaEntity;
 import com.bosonit.Profesor.infrastructure.controller.dto.input.ProfesorInputDTO;
 import com.bosonit.shared.sequences.StringPrefixedSequenceIdGenerator;
@@ -32,6 +33,9 @@ public class ProfesorEntity {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_persona")
     private PersonaEntity personaEntity;
+
+//    @OneToMany(mappedBy = "profesorEntity", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private EstudianteAsignaturaEntity estudianteAsignaturaEntity;
 
     private String comentarios;
     private String branch;

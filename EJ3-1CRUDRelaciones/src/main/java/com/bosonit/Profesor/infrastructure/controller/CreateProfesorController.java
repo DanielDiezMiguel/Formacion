@@ -1,5 +1,6 @@
 package com.bosonit.Profesor.infrastructure.controller;
 
+import com.bosonit.Estudiante.infrastructure.controller.dto.output.StudentOutputDTO;
 import com.bosonit.Profesor.application.port.CreateProfesorPort;
 import com.bosonit.Profesor.infrastructure.controller.dto.input.ProfesorInputDTO;
 import com.bosonit.Profesor.infrastructure.controller.dto.output.ProfesorOutputDTO;

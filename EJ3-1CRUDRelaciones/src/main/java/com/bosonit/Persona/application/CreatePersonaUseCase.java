@@ -1,11 +1,13 @@
 package com.bosonit.Persona.application;
 
+import com.bosonit.Estudiante.infrastructure.repository.jpa.StudentRepository;
 import com.bosonit.Persona.application.port.CreatePersonaPort;
 import com.bosonit.Persona.domain.PersonaEntity;
 import com.bosonit.Persona.exception.UnprocesableException;
 import com.bosonit.Persona.infrastructure.controller.dto.input.PersonaInputDTO;
 import com.bosonit.Persona.infrastructure.controller.dto.output.PersonaOutputDTO;
 import com.bosonit.Persona.infrastructure.repository.jpa.PersonaRepository;
+import com.bosonit.Profesor.infrastructure.repository.jpa.ProfesorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
