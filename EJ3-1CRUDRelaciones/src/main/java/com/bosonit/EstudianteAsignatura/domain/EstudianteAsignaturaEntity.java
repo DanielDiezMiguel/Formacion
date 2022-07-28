@@ -1,7 +1,6 @@
 package com.bosonit.EstudianteAsignatura.domain;
 
 import com.bosonit.Estudiante.domain.StudentEntity;
-import com.bosonit.Estudiante.infrastructure.controller.dto.input.StudentInputDTO;
 import com.bosonit.EstudianteAsignatura.infrastructure.controller.dto.input.EstudianteAsignaturaInputDTO;
 import com.bosonit.Profesor.domain.ProfesorEntity;
 import com.bosonit.shared.sequences.StringPrefixedSequenceIdGenerator;
@@ -12,8 +11,6 @@ import org.hibernate.annotations.Parameter;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -35,6 +32,9 @@ public class EstudianteAsignaturaEntity {
     @ManyToOne
     @JoinColumn(name = "id_student")
     private StudentEntity studentEntity;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private StudentEntity studentEntityAsignaturas;
 
     @Column(name = "asignatura")
     private String asignatura;

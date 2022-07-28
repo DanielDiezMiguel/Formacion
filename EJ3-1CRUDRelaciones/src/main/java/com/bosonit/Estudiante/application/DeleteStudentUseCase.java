@@ -16,6 +16,5 @@ public class DeleteStudentUseCase implements DeleteStudentPort {
     public void deleteByID(String id) throws Exception {
         StudentEntity studentEntity = studentRepository.findById(id).orElseThrow(() -> new Exception("No se ha podido borrar el Estudiante con ID: " + id));
         studentRepository.deleteById(id);
-        studentRepository.save(studentEntity);
     }
 }

@@ -45,8 +45,9 @@ public class StudentEntity {
     @Column(name = "rama")
     private String branch;
 
-    @OneToMany
-    private List<EstudianteAsignaturaEntity> estudios;
+//    @OneToMany(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "estudios")
+//    private List<EstudianteAsignaturaEntity> estudios;
 
     public StudentEntity(StudentInputDTO studentInputDTO) {
         if (studentInputDTO == null) return;

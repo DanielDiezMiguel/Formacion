@@ -16,6 +16,5 @@ public class DeleteProfesorUseCase implements DeleteProfesorPort {
     public void deleteProfesorByID(String id) throws Exception{
         ProfesorEntity profesorEntity = profesorRepository.findById(id).orElseThrow(() -> new Exception("No se ha encontrado el Profesor con el ID: " + id));
         profesorRepository.deleteById(id);
-        profesorRepository.save(profesorEntity);
     }
 }
