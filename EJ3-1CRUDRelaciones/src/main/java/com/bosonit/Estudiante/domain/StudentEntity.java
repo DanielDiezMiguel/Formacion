@@ -6,15 +6,20 @@ import com.bosonit.Persona.domain.PersonaEntity;
 import com.bosonit.Profesor.domain.ProfesorEntity;
 import com.bosonit.shared.sequences.StringPrefixedSequenceIdGenerator;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
 @Entity
 @NoArgsConstructor
 @Table(name = "Student")
@@ -36,15 +41,12 @@ public class StudentEntity {
     @JoinColumn(name = "profesorEntity")
     private ProfesorEntity profesorEntity;
 
-    @OneToMany(mappedBy = "studentEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<EstudianteAsignaturaEntity> estudianteAsignaturaEntities = new HashSet<>();
-
     @Column(name = "rama")
     private String branch;
 
-//    @OneToMany(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "estudios")
-//    private List<EstudianteAsignaturaEntity> estudios;
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "estudios")
+    private List<EstudianteAsignaturaEntity> estudios = new ArrayList<>();
 
     public StudentEntity(StudentInputDTO studentInputDTO) {
         if (studentInputDTO == null) return;
@@ -52,7 +54,6 @@ public class StudentEntity {
         num_hours_week = studentInputDTO.getNum_hours_week();
         comentarios = studentInputDTO.getComentarios();
         branch = studentInputDTO.getBranch();
-        //estudios = studentInputDTO.getEstudios();
     }
 
     public void update(StudentInputDTO studentInputDTO) {

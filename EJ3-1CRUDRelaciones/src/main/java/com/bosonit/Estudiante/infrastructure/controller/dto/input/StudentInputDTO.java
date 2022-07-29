@@ -16,6 +16,6 @@ public class StudentInputDTO implements Serializable {
     private int num_hours_week;
     private String comentarios;
     private String branch;
-    private List<EstudianteAsignaturaEntity> estudios;
+    private List<String> estudios;
 
 }

@@ -6,6 +6,7 @@ import com.bosonit.Profesor.domain.ProfesorEntity;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -15,7 +16,7 @@ public class StudentOutputDTO implements Serializable{
     private int num_hours_week;
     private String comentarios;
     private String branch;
-//    private List<EstudianteAsignaturaEntity> estudios;
+    private List<String> estudios = new ArrayList<>();
 
     public StudentOutputDTO(StudentEntity studentEntity) {
         if (studentEntity == null) return;
@@ -24,7 +25,11 @@ public class StudentOutputDTO implements Serializable{
         num_hours_week = studentEntity.getNum_hours_week();
         comentarios = studentEntity.getComentarios();
         branch = studentEntity.getBranch();
-//        estudios = studentEntity.getEstudios();
+        if (studentEntity.getEstudios() != null) {
+            studentEntity.getEstudios().forEach(estudianteAsignaturaEntity -> {
+                estudios.add(estudianteAsignaturaEntity.getId_asignatura());
+            });
+        }
 
     }
 
