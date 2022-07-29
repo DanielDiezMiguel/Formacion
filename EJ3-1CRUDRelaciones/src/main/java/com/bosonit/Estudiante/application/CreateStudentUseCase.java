@@ -32,8 +32,8 @@ public class CreateStudentUseCase implements CreateStudentPort {
         studentEntity.setPersonaEntity(personaEntity);
 
         studentInputDTO.getEstudios().forEach(estudios -> {
-            EstudianteAsignaturaEntity estudianteAsignaturaEntity1 = estudianteAsignaturaRespository.findById(estudios).orElseThrow();
-            estudianteAsignaturaEntitiesList.add(estudianteAsignaturaEntity1);
+            EstudianteAsignaturaEntity estudianteAsignatura = estudianteAsignaturaRespository.findById(estudios).orElseThrow();
+            estudianteAsignaturaEntitiesList.add(estudianteAsignatura);
         });
 
         studentEntity.setEstudios(estudianteAsignaturaEntitiesList);
