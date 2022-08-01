@@ -5,7 +5,9 @@ import com.bosonit.Persona.infrastructure.controller.dto.input.PersonaInputDTO;
 import com.bosonit.Profesor.domain.ProfesorEntity;
 import com.bosonit.shared.sequences.StringPrefixedSequenceIdGenerator;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
@@ -13,7 +15,8 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
-@Data
+@Getter
+@Setter
 @Entity
 @NoArgsConstructor
 @Table(name = "Persona")

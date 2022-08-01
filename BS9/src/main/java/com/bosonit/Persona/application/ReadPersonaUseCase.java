@@ -6,8 +6,13 @@ import com.bosonit.Persona.infrastructure.controller.dto.output.PersonaOutputDTO
 import com.bosonit.Persona.infrastructure.controller.dto.output.PersonaProfesorOutputDTO;
 import com.bosonit.Persona.infrastructure.controller.dto.output.PersonaStudentOutputDTO;
 import com.bosonit.Persona.infrastructure.repository.jpa.PersonaRepository;
+import com.bosonit.Profesor.domain.ProfesorEntity;
+import com.bosonit.Profesor.infrastructure.controller.dto.output.ProfesorOutputDTO;
+import com.bosonit.Profesor.infrastructure.repository.jpa.ProfesorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +22,9 @@ public class ReadPersonaUseCase implements ReadPersonaPort {
 
     @Autowired
     PersonaRepository personaRepository;
+
+    @Autowired
+    ProfesorRepository profesorRepository;
 
     @Override
     public PersonaOutputDTO getPersonaByID(String id, String outputType) throws Exception {
@@ -81,6 +89,13 @@ public class ReadPersonaUseCase implements ReadPersonaPort {
         }
 
         return new ArrayList<>();
+    }
+
+    @Override
+    public ProfesorOutputDTO getProfesor(String id) throws Exception {
+        ProfesorEntity profesorEntity = profesorRepository.findById(id).orElseThrow(() -> new Exception("No se ha encontrado al Profesor con ID: " + id));
+        //ResponseEntity<ProfesorOutputDTO> profesorOutputDTOResponseEntity = new RestTemplate().getForEntity("http://localhost:8081/profesor/" + id, ProfesorOutputDTO.class);
+        return new ProfesorOutputDTO(profesorEntity);
     }
 
 }

@@ -5,7 +5,9 @@ import com.bosonit.Persona.domain.PersonaEntity;
 import com.bosonit.Profesor.infrastructure.controller.dto.input.ProfesorInputDTO;
 import com.bosonit.shared.sequences.StringPrefixedSequenceIdGenerator;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
@@ -13,7 +15,8 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
 @Entity
 @NoArgsConstructor
 @Table(name = "Profesor")

@@ -19,6 +19,7 @@ public class ReadProfesorController {
 
     @GetMapping("/id/{id}")
     public ProfesorOutputDTO getProfesorByID(@PathVariable(name = "id") String id) throws Exception {
+        System.out.println("llamado a getProfesorByID ");
         return readProfesorPort.getProfesorByID(id);
     }
 
