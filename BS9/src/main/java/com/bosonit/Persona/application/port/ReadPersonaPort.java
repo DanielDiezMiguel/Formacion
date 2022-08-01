@@ -13,5 +13,4 @@ public interface ReadPersonaPort {
 
     List getPersonaByName(String name, String outputType);
 
-    ProfesorOutputDTO getProfesor(String id) throws Exception;
 }

@@ -1,10 +1,11 @@
 package com.bosonit.Persona.infrastructure.controller;
 
+import com.bosonit.Persona.application.port.FeignPersonaPort;
 import com.bosonit.Persona.application.port.ReadPersonaPort;
 import com.bosonit.Persona.infrastructure.controller.dto.output.PersonaOutputDTO;
-import com.bosonit.Profesor.domain.ProfesorEntity;
 import com.bosonit.Profesor.infrastructure.controller.dto.output.ProfesorOutputDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,9 @@ public class ReadPersonaController {
 
     @Autowired
     ReadPersonaPort readPersonaPort;
+
+    @Autowired
+    FeignPersonaPort feignPersonaPort;
 
     @GetMapping("/id/{id}")
     public PersonaOutputDTO getUsuarioByID(@PathVariable(value = "id") String id, @RequestParam(defaultValue = "persona", required = false) String outputType) throws Exception {
@@ -35,7 +39,7 @@ public class ReadPersonaController {
     }
 
     @GetMapping("/profesor/profesor/{id}")
-    public ProfesorOutputDTO getProfesorRestTemplate(@PathVariable String id) {
+    public ProfesorOutputDTO getProfesorByRestTemplate(@PathVariable String id) {
         System.out.println("Llamando a getProfesorRestTemplate");
         String url = "http://localhost:8080/profesor/id/" + id;
         ResponseEntity<ProfesorOutputDTO> responseEntity = new RestTemplate().getForEntity(url, ProfesorOutputDTO.class);
@@ -45,5 +49,11 @@ public class ReadPersonaController {
         else
             throw new RuntimeException("El server no respondió OK");
 
+    }
+
+    @GetMapping("/profesor/feign/{code}")
+    public ResponseEntity<ProfesorOutputDTO> callServerByFeign(@PathVariable(name = "code") String code) {
+        ResponseEntity<ProfesorOutputDTO> personaOutputDTOResponseEntity = feignPersonaPort.callServer(code);
+        return personaOutputDTOResponseEntity;
     }
 }
