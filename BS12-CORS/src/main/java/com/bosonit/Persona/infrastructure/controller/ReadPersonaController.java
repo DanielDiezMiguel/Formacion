@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("persona")
+@CrossOrigin(origins = "*", methods = RequestMethod.GET)
+//@RequestMapping("persona")
 public class ReadPersonaController {
 
     @Autowired
@@ -19,7 +20,7 @@ public class ReadPersonaController {
         return readPersonaPort.getPersonaByID(id, outputType);
     }
 
-    @GetMapping("/all/all")
+    @GetMapping("getall")
     public List<PersonaOutputDTO> getAllUsuarios(@RequestParam(defaultValue = "persona", required = false) String outputType) {
         return readPersonaPort.getAllUsuarios(outputType);
     }

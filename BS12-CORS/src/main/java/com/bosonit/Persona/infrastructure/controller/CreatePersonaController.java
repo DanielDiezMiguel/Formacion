@@ -7,7 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("persona")
+@CrossOrigin(origins = "*", methods = RequestMethod.POST)
+@RequestMapping("addperson")
 public class CreatePersonaController {
 
     @Autowired
