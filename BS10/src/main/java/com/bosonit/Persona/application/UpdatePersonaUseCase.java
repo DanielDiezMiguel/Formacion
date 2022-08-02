@@ -20,7 +20,7 @@ public class UpdatePersonaUseCase implements UpdatePersonaPort {
     @Override
     public PersonaOutputDTO updateUsuarioByID(String id, @Valid PersonaInputDTO personaInputDTO) {
         try {
-            PersonaEntity personaEntity = personaRepository.findById(String.valueOf(id)).orElseThrow();
+            PersonaEntity personaEntity = personaRepository.findById(id).orElseThrow();
             personaEntity.update(personaInputDTO);
             personaRepository.save(personaEntity);
             return new PersonaOutputDTO(personaEntity);
