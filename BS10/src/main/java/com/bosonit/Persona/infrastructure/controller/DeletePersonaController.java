@@ -1,6 +1,7 @@
 package com.bosonit.Persona.infrastructure.controller;
 
 import com.bosonit.Persona.application.port.DeletePersonaPort;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +16,7 @@ public class DeletePersonaController {
     DeletePersonaPort deletePersonaPort;
 
     @DeleteMapping("{id}")
+    @Operation(summary = "Borrar Persona por ID")
     public void deleteByID(@PathVariable(value = "id") String id) {
         deletePersonaPort.deleteByID(id);
     }

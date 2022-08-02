@@ -3,6 +3,7 @@ package com.bosonit.Estudiante.infrastructure.controller;
 import com.bosonit.Estudiante.application.port.CreateStudentPort;
 import com.bosonit.Estudiante.infrastructure.controller.dto.input.StudentInputDTO;
 import com.bosonit.Estudiante.infrastructure.controller.dto.output.StudentOutputDTO;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,6 +18,7 @@ public class CreateStudentController {
     CreateStudentPort createStudentPort;
 
     @PostMapping
+    @Operation(summary = "Crear Estudiante")
     public StudentOutputDTO crearStudent(@RequestBody StudentInputDTO studentInputDTO) throws Exception {
         return createStudentPort.crearStudent(studentInputDTO);
     }
