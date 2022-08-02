@@ -1,4 +1,4 @@
-package com.bosonit.BS12CORS;
+package com.bosonit;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
