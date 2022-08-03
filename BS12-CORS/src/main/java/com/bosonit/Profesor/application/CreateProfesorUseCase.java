@@ -1,9 +1,8 @@
 package com.bosonit.Profesor.application;
 
-import com.bosonit.Estudiante.infrastructure.controller.dto.output.StudentOutputDTO;
-import com.bosonit.Estudiante.infrastructure.repository.jpa.StudentRepository;
-import com.bosonit.Persona.domain.PersonaEntity;
-import com.bosonit.Persona.infrastructure.repository.jpa.PersonaRepository;
+import com.bosonit.estudiante.infrastructure.repository.jpa.StudentRepository;
+import com.bosonit.persona.domain.PersonaEntity;
+import com.bosonit.persona.infrastructure.repository.jpa.PersonaRepository;
 import com.bosonit.Profesor.application.port.CreateProfesorPort;
 import com.bosonit.Profesor.domain.ProfesorEntity;
 import com.bosonit.Profesor.infrastructure.controller.dto.input.ProfesorInputDTO;

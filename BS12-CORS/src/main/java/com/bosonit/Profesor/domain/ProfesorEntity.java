@@ -1,7 +1,7 @@
 package com.bosonit.Profesor.domain;
 
-import com.bosonit.EstudianteAsignatura.domain.EstudianteAsignaturaEntity;
-import com.bosonit.Persona.domain.PersonaEntity;
+import com.bosonit.estudianteAsignatura.domain.EstudianteAsignaturaEntity;
+import com.bosonit.persona.domain.PersonaEntity;
 import com.bosonit.Profesor.infrastructure.controller.dto.input.ProfesorInputDTO;
 import com.bosonit.shared.sequences.StringPrefixedSequenceIdGenerator;
 import lombok.Data;
