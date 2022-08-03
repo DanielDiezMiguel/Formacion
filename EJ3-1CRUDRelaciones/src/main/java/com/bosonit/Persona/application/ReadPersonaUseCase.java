@@ -42,20 +42,19 @@ public class ReadPersonaUseCase implements ReadPersonaPort {
         List<PersonaProfesorOutputDTO> personaProfesorOutputDTOSList = new ArrayList<>();
         List<PersonaStudentOutputDTO> personaStudentOutputDTOList = new ArrayList<>();
 
-        if (personaRepository.findAll() != null) {
-            if (outputType.equalsIgnoreCase("persona")) {
-                personaRepository.findAll().forEach(personaEntity -> personaOutputDTOList.add(new PersonaOutputDTO(personaEntity)));
-                return personaOutputDTOList;
+        if (outputType.equalsIgnoreCase("persona")) {
+            personaRepository.findAll().forEach(personaEntity -> personaOutputDTOList.add(new PersonaOutputDTO(personaEntity)));
+            return personaOutputDTOList;
 
-            } else if (outputType.equalsIgnoreCase("profesor")) {
-                personaRepository.findAll().forEach((personaEntity -> personaProfesorOutputDTOSList.add(new PersonaProfesorOutputDTO(personaEntity))));
-                return personaProfesorOutputDTOSList;
+        } else if (outputType.equalsIgnoreCase("profesor")) {
+            personaRepository.findAll().forEach((personaEntity -> personaProfesorOutputDTOSList.add(new PersonaProfesorOutputDTO(personaEntity))));
+            return personaProfesorOutputDTOSList;
 
-            } else if (outputType.equalsIgnoreCase("student")) {
-                personaRepository.findAll().forEach(personaEntity -> personaStudentOutputDTOList.add(new PersonaStudentOutputDTO(personaEntity)));
-                return personaStudentOutputDTOList;
-            }
+        } else if (outputType.equalsIgnoreCase("student")) {
+            personaRepository.findAll().forEach(personaEntity -> personaStudentOutputDTOList.add(new PersonaStudentOutputDTO(personaEntity)));
+            return personaStudentOutputDTOList;
         }
+
         return new ArrayList<>();
     }
 
@@ -65,19 +64,17 @@ public class ReadPersonaUseCase implements ReadPersonaPort {
         List<PersonaProfesorOutputDTO> personaProfesorOutputDTOS = new ArrayList<>();
         List<PersonaStudentOutputDTO> personaStudentOutputDTOList = new ArrayList<>();
 
-        if (personaRepository.findByName(name) != null) {
-            if (outputType.equalsIgnoreCase("persona")) {
-                personaRepository.findByName(name).forEach(personaEntity -> personaOutputDTOList.add(new PersonaOutputDTO(personaEntity)));
-                return personaOutputDTOList;
+        if (outputType.equalsIgnoreCase("persona")) {
+            personaRepository.findByName(name).forEach(personaEntity -> personaOutputDTOList.add(new PersonaOutputDTO(personaEntity)));
+            return personaOutputDTOList;
 
-            } else if (outputType.equalsIgnoreCase("profesor")) {
-                personaRepository.findByName("profesor").forEach(personaEntity -> personaOutputDTOList.add(new PersonaProfesorOutputDTO(personaEntity)));
-                return personaProfesorOutputDTOS;
+        } else if (outputType.equalsIgnoreCase("profesor")) {
+            personaRepository.findByName("profesor").forEach(personaEntity -> personaOutputDTOList.add(new PersonaProfesorOutputDTO(personaEntity)));
+            return personaProfesorOutputDTOS;
 
-            } else if (outputType.equalsIgnoreCase("student")) {
-                personaRepository.findByName("student").forEach(personaEntity -> personaStudentOutputDTOList.add(new PersonaStudentOutputDTO(personaEntity)));
-                return personaStudentOutputDTOList;
-            }
+        } else if (outputType.equalsIgnoreCase("student")) {
+            personaRepository.findByName("student").forEach(personaEntity -> personaStudentOutputDTOList.add(new PersonaStudentOutputDTO(personaEntity)));
+            return personaStudentOutputDTOList;
         }
 
         return new ArrayList<>();

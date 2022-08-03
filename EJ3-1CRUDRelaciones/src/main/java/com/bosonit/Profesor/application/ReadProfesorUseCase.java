@@ -25,32 +25,20 @@ public class ReadProfesorUseCase implements ReadProfesorPort {
     @Override
     public List<ProfesorOutputDTO> getAllProfesores() {
         List<ProfesorOutputDTO> profesorOutputDTOList = new ArrayList<>();
-        if (profesorRepository.findAll() != null) {
-            profesorRepository.findAll().forEach(profesorEntity -> {
-                ProfesorOutputDTO profesorOutputDTO = new ProfesorOutputDTO(profesorEntity);
-                profesorOutputDTOList.add(profesorOutputDTO);
-            });
-            return profesorOutputDTOList;
+        profesorRepository.findAll().forEach(profesorEntity -> {
+            profesorOutputDTOList.add(new ProfesorOutputDTO(profesorEntity));
+        });
+        return profesorOutputDTOList;
 
-        } else {
-            List<ProfesorOutputDTO> profesorOutputDTOListVacia = new ArrayList<>();
-            return profesorOutputDTOListVacia;
-        }
     }
 
     @Override
     public List<ProfesorOutputDTO> getProfesorByBranch(String branch) {
         List<ProfesorOutputDTO> profesorOutputDTOList = new ArrayList<>();
-        if (profesorRepository.findByBranch(branch) != null) {
-            profesorRepository.findByBranch(branch).forEach(profesorEntity -> {
-                ProfesorOutputDTO profesorOutputDTO = new ProfesorOutputDTO(profesorEntity);
-                profesorOutputDTOList.add(profesorOutputDTO);
-            });
-            return profesorOutputDTOList;
+        profesorRepository.findByBranch(branch).forEach(profesorEntity -> {
+            profesorOutputDTOList.add(new ProfesorOutputDTO(profesorEntity));
+        });
+        return profesorOutputDTOList;
 
-        } else {
-            List<ProfesorOutputDTO> profesorOutputDTOListVacia = new ArrayList<>();
-            return profesorOutputDTOListVacia;
-        }
     }
 }
