@@ -34,7 +34,7 @@ public class ReadProfesorUseCase implements ReadProfesorPort {
 
         } else {
             List<ProfesorOutputDTO> profesorOutputDTOListVacia = new ArrayList<>();
-            return profesorOutputDTOListVacia;
+            return profesorOutputDTOList;
         }
     }
 

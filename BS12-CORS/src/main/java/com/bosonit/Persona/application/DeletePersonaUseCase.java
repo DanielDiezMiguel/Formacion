@@ -13,7 +13,7 @@ public class DeletePersonaUseCase implements DeletePersonaPort {
     PersonaRepository personaRepository;
 
     public void deleteByID(String id) {
-        PersonaEntity personaEntity = personaRepository.findById(id).orElseThrow(() -> new NotFoundException("No se ha encontrado el ID"));
+        PersonaEntity personaEntity = personaRepository.findById(String.valueOf(id)).orElseThrow(() -> new NotFoundException("No se ha encontrado el ID"));
         personaRepository.delete(personaEntity);
     }
 }
