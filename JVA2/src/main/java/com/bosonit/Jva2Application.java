@@ -42,6 +42,6 @@ public class Jva2Application {
                 .filter(persona -> persona != null
                         && !persona.edad().equals("Desconocida")
                         && Integer.parseInt(persona.edad()) < 25)
-                .forEach(persona -> System.out.println(persona));
+                .forEach(persona -> System.out.println(persona.toString()));
     }
 }
