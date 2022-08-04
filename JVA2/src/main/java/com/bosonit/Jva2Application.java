@@ -25,10 +25,9 @@ public class Jva2Application {
                 if (infoSplit.length <= 3) nombre = infoSplit[0];
                 else nombre = "Desconocida";
 
-                if (infoSplit.length >= 2) {
+                if (infoSplit.length >= 2)
                     if (infoSplit[1].isEmpty()) poblacion = "Desconocida";
                     else poblacion = infoSplit[1];
-                }
 
                 if (infoSplit.length > 2) edad = infoSplit[2];
                 else edad = "Desconocida";
@@ -40,7 +39,9 @@ public class Jva2Application {
             System.out.println(e);
         }
         personaList.stream()
-                .filter(persona -> persona != null && !persona.edad().equals("Desconocida") && Integer.parseInt(persona.edad()) < 25)
-                .forEach(persona -> System.out.println(persona.toString()));
+                .filter(persona -> persona != null
+                        && !persona.edad().equals("Desconocida")
+                        && Integer.parseInt(persona.edad()) < 25)
+                .forEach(persona -> System.out.println(persona));
     }
 }
