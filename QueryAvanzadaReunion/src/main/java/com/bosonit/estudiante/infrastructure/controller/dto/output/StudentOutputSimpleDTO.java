@@ -1,0 +1,15 @@
+package com.bosonit.estudiante.infrastructure.controller.dto.output;
+
+import com.bosonit.estudiante.domain.StudentEntity;
+import lombok.Data;
+
+import java.io.Serializable;
+
+@Data
+public class StudentOutputSimpleDTO extends StudentOutputDTO implements Serializable {
+    public StudentOutputSimpleDTO(StudentEntity studentEntity) {
+        super(studentEntity);
+        if (studentEntity == null) return;
+    }
+
+}

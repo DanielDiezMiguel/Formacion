@@ -1,0 +1,23 @@
+package com.bosonit.estudiante.infrastructure.controller;
+
+import com.bosonit.estudiante.application.port.CreateStudentPort;
+import com.bosonit.estudiante.infrastructure.controller.dto.input.StudentInputDTO;
+import com.bosonit.estudiante.infrastructure.controller.dto.output.StudentOutputDTO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RequestMapping("student")
+@RestController
+public class CreateStudentController {
+
+    @Autowired
+    CreateStudentPort createStudentPort;
+
+    @PostMapping
+    public StudentOutputDTO crearStudent(@RequestBody StudentInputDTO studentInputDTO) throws Exception {
+        return createStudentPort.crearStudent(studentInputDTO);
+    }
+}
