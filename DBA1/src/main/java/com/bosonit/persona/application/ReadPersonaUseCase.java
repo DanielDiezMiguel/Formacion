@@ -81,4 +81,10 @@ public class ReadPersonaUseCase implements ReadPersonaPort {
         return new ArrayList<>();
     }
 
+    public List<PersonaOutputDTO> getPersonaByUser(String user) {
+        List<PersonaOutputDTO> personaOutputDTOList = new ArrayList<>();
+        personaRepository.findByUser(user).forEach(personaEntity -> personaOutputDTOList.add(new PersonaOutputDTO(personaEntity)));
+        return personaOutputDTOList;
+    }
+
 }
