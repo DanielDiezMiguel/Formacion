@@ -9,11 +9,24 @@ import com.bosonit.persona.infrastructure.repository.jpa.PersonaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+
+import static com.bosonit.persona.infrastructure.controller.ReadPersonaController.*;
 
 @Service
 public class ReadPersonaUseCase implements ReadPersonaPort {
+
+    @PersistenceContext
+    EntityManager entityManager;
 
     @Autowired
     PersonaRepository personaRepository;
@@ -81,9 +94,48 @@ public class ReadPersonaUseCase implements ReadPersonaPort {
         return new ArrayList<>();
     }
 
-    public List<PersonaOutputDTO> getPersonaByUser(String user) {
+    @Override
+    public List<PersonaOutputDTO> getData(HashMap<String, Object> conditions) {
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<PersonaEntity> criteriaQuery = criteriaBuilder.createQuery(PersonaEntity.class);
+        Root<PersonaEntity> personaEntityRoot = criteriaQuery.from(PersonaEntity.class);
+
         List<PersonaOutputDTO> personaOutputDTOList = new ArrayList<>();
-        personaRepository.findByUser(user).forEach(personaEntity -> personaOutputDTOList.add(new PersonaOutputDTO(personaEntity)));
+        List<Predicate> predicates = new ArrayList<>();
+        conditions.forEach((field, value) -> {
+
+            switch (field) {
+                case "usuario":
+                    predicates.add(criteriaBuilder.like(personaEntityRoot.get(field), "%" + value + "%"));
+                    break;
+
+                case "name":
+                    predicates.add(criteriaBuilder.like(personaEntityRoot.get(field), "%" + value + "%"));
+
+
+                case "surname":
+                    predicates.add(criteriaBuilder.like(personaEntityRoot.get(field), "%" + value + "%"));
+                    break;
+
+                case "created_date":
+                    String dateCondition = String.valueOf(conditions.get("dateCondition"));
+
+                    switch (dateCondition) {
+                        case GREATER_THAN:
+                            predicates.add(criteriaBuilder.greaterThan(personaEntityRoot.<Date>get(field), (Date) value));
+                            break;
+                        case LESS_THAN:
+                            predicates.add(criteriaBuilder.lessThan(personaEntityRoot.<Date>get(field), (Date) value));
+                            break;
+                        case EQUAL:
+                            predicates.add(criteriaBuilder.equal(personaEntityRoot.<Date>get(field), (Date) value));
+                            break;
+                    }
+                    break;
+            }
+        });
+        criteriaQuery.select(personaEntityRoot).where(predicates.toArray(new Predicate[predicates.size()]));
+        entityManager.createQuery(criteriaQuery).getResultList().forEach(personaEntityQuery -> personaOutputDTOList.add(new PersonaOutputDTO(personaEntityQuery)));
         return personaOutputDTOList;
     }
 
