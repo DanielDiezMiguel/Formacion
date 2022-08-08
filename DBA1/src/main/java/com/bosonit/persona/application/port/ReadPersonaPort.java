@@ -1,6 +1,5 @@
 package com.bosonit.persona.application.port;
 
-import com.bosonit.persona.domain.PersonaEntity;
 import com.bosonit.persona.infrastructure.controller.dto.output.PersonaOutputDTO;
 
 import java.util.HashMap;
@@ -13,5 +12,5 @@ public interface ReadPersonaPort {
 
     List getPersonaByName(String name, String outputType);
 
-    List<PersonaOutputDTO> getData(HashMap<String, Object> conditions);
+    List<PersonaOutputDTO> getDataOrderByField(HashMap<String, Object> conditions, String outputType);
 }
