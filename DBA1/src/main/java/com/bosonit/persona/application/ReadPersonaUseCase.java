@@ -114,6 +114,7 @@ public class ReadPersonaUseCase implements ReadPersonaPort {
 
                 case "name":
                     predicateList.add(criteriaBuilder.like(personaEntityRoot.get(field), "%" + value + "%"));
+                    break;
 
                 case "surname":
                     predicateList.add(criteriaBuilder.like(personaEntityRoot.get(field), "%" + value + "%"));
