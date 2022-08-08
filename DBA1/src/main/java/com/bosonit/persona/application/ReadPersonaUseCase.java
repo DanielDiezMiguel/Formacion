@@ -115,7 +115,6 @@ public class ReadPersonaUseCase implements ReadPersonaPort {
                 case "name":
                     predicateList.add(criteriaBuilder.like(personaEntityRoot.get(field), "%" + value + "%"));
 
-
                 case "surname":
                     predicateList.add(criteriaBuilder.like(personaEntityRoot.get(field), "%" + value + "%"));
                     break;
@@ -126,13 +125,17 @@ public class ReadPersonaUseCase implements ReadPersonaPort {
                     switch (dateCondition) {
                         case GREATER_THAN ->
                                 predicateList.add(criteriaBuilder.greaterThan(personaEntityRoot.get(field), (Date) value));
+
                         case LESS_THAN ->
                                 predicateList.add(criteriaBuilder.lessThan(personaEntityRoot.get(field), (Date) value));
+
                         case EQUAL ->
                                 predicateList.add(criteriaBuilder.equal(personaEntityRoot.<Date>get(field), value));
                     }
+
                     break;
             }
+
         });
 
         TypedQuery<PersonaEntity> personaEntityTypedQuery = null;
