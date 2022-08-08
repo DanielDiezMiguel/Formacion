@@ -3,6 +3,7 @@ package com.bosonit.persona.application;
 import com.bosonit.persona.application.port.ReadPersonaPort;
 import com.bosonit.persona.domain.PersonaEntity;
 import com.bosonit.persona.domain.PersonaEntity_;
+import com.bosonit.persona.exception.NotFoundException;
 import com.bosonit.persona.infrastructure.controller.dto.output.PersonaOutputDTO;
 import com.bosonit.persona.infrastructure.controller.dto.output.PersonaProfesorOutputDTO;
 import com.bosonit.persona.infrastructure.controller.dto.output.PersonaStudentOutputDTO;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -96,7 +98,7 @@ public class ReadPersonaUseCase implements ReadPersonaPort {
     }
 
     @Override
-    public List<PersonaOutputDTO> getDataOrderByField(HashMap<String, Object> conditions, String outputType) {
+    public List<PersonaOutputDTO> getDataOrderByField(HashMap<String, Object> conditions, String outputType, Integer page, Integer maxResult) throws Exception {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<PersonaEntity> criteriaQuery = criteriaBuilder.createQuery(PersonaEntity.class);
         Root<PersonaEntity> personaEntityRoot = criteriaQuery.from(PersonaEntity.class);
@@ -133,19 +135,26 @@ public class ReadPersonaUseCase implements ReadPersonaPort {
             }
         });
 
-        switch (outputType) {
-            case "usuario":
-                criteriaQuery.orderBy(criteriaBuilder.desc(personaEntityRoot.get(PersonaEntity_.USUARIO)));
-                criteriaQuery.select(personaEntityRoot).where(predicateList.toArray(new Predicate[predicateList.size()]));
-                break;
+        TypedQuery<PersonaEntity> personaEntityTypedQuery = null;
 
-            case "name":
-                outputType.equals(criteriaQuery.orderBy(criteriaBuilder.desc(personaEntityRoot.get(PersonaEntity_.NAME))));
-                criteriaQuery.select(personaEntityRoot).where(predicateList.toArray(new Predicate[predicateList.size()]));
-                break;
+        if (outputType != null) {
+            switch (outputType) {
+                case "usuario":
+                    criteriaQuery.orderBy(criteriaBuilder.desc(personaEntityRoot.get(PersonaEntity_.USUARIO)));
+                    personaEntityTypedQuery = entityManager.createQuery(criteriaQuery);
+                    break;
+
+                case "name":
+                    outputType.equals(criteriaQuery.orderBy(criteriaBuilder.desc(personaEntityRoot.get(PersonaEntity_.NAME))));
+                    personaEntityTypedQuery = entityManager.createQuery(criteriaQuery);
+                    break;
+            }
+
         }
 
-        entityManager.createQuery(criteriaQuery).getResultList().forEach(personaEntityQuery -> personaOutputDTOList.add(new PersonaOutputDTO(personaEntityQuery)));
+        if (page <= 0) throw new NotFoundException("Introduce una pagina superior a 0");
+        personaEntityTypedQuery = entityManager.createQuery(criteriaQuery);
+        personaEntityTypedQuery.setFirstResult(page - 1).setMaxResults(maxResult).getResultList().forEach(personaEntity -> personaOutputDTOList.add(new PersonaOutputDTO(personaEntity)));
         return personaOutputDTOList;
     }
 

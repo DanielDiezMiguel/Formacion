@@ -12,5 +12,5 @@ public interface ReadPersonaPort {
 
     List getPersonaByName(String name, String outputType);
 
-    List<PersonaOutputDTO> getDataOrderByField(HashMap<String, Object> conditions, String outputType);
+    List<PersonaOutputDTO> getDataOrderByField(HashMap<String, Object> conditions, String outputType, Integer page, Integer maxResult) throws Exception;
 }

@@ -37,7 +37,7 @@ public class ReadPersonaController {
     }
 
     @GetMapping("/getQuery")
-    public List<PersonaOutputDTO> getQueryOrderByField(@RequestParam(name = "outputType") String outputType, @RequestParam(name = "usuario", required = false) String usuario, @RequestParam(name = "name", required = false) String name, @RequestParam(name = "surname", required = false) String surname, @RequestParam(name = "created_date", required = false) @DateTimeFormat(pattern = "dd-MM-yyyy") Date created_date, @RequestParam(name = "dateCondition", required = false) String dateCondition) {
+    public List<PersonaOutputDTO> getQueryOrderByField(@RequestParam(name = "page") Integer page, @RequestParam(name = "maxResult") Integer maxResult, @RequestParam(name = "outputType", required = false) String outputType, @RequestParam(name = "usuario", required = false) String usuario, @RequestParam(name = "name", required = false) String name, @RequestParam(name = "surname", required = false) String surname, @RequestParam(name = "created_date", required = false) @DateTimeFormat(pattern = "dd-MM-yyyy") Date created_date, @RequestParam(name = "dateCondition", required = false) String dateCondition) throws Exception {
         HashMap<String, Object> data = new HashMap<>();
 
         if (usuario != null) data.put("usuario", usuario);
@@ -50,6 +50,6 @@ public class ReadPersonaController {
         else if (dateCondition.equals(LESS_THAN)) dateCondition = LESS_THAN;
         else if (dateCondition.equals(EQUAL)) dateCondition = EQUAL;
 
-        return readPersonaPort.getDataOrderByField(data, outputType);
+        return readPersonaPort.getDataOrderByField(data, outputType, page, maxResult);
     }
 }
