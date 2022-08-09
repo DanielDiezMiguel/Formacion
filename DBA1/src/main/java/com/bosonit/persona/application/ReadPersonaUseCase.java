@@ -149,7 +149,7 @@ public class ReadPersonaUseCase implements ReadPersonaPort {
                     break;
 
                 case "name":
-                    outputType.equals(criteriaQuery.orderBy(criteriaBuilder.desc(personaEntityRoot.get(PersonaEntity_.NAME))));
+                    criteriaQuery.orderBy(criteriaBuilder.desc((personaEntityRoot.get(PersonaEntity_.NAME))));
                     personaEntityTypedQuery = entityManager.createQuery(criteriaQuery);
                     break;
             }
