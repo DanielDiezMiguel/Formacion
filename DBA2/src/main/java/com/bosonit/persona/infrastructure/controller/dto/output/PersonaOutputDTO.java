@@ -1,8 +1,7 @@
 package com.bosonit.persona.infrastructure.controller.dto.output;
 
-import com.bosonit.persona.domain.Persona;
+import com.bosonit.persona.domain.PersonaEntity;
 import lombok.Data;
-import org.bson.types.ObjectId;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -22,20 +21,20 @@ public class PersonaOutputDTO implements Serializable {
     private String imagen_url;
     private Date termination_date;
 
-    public PersonaOutputDTO(Persona persona) {
-        if (persona == null) return;
-        id_persona = persona.getId_persona();
-        usuario = persona.getUsuario();
-        password = persona.getPassword();
-        name = persona.getName();
-        surname = persona.getSurname();
-        company_email = persona.getCompany_email();
-        personal_email = persona.getPersonal_email();
-        city = persona.getCity();
-        active = persona.getActive();
-        created_date = persona.getCreated_date();
-        imagen_url = persona.getImagen_url();
-        termination_date = persona.getTermination_date();
+    public PersonaOutputDTO(PersonaEntity personaEntity) {
+        if (personaEntity == null) return;
+        id_persona = personaEntity.getId_persona();
+        usuario = personaEntity.getUsuario();
+        password = personaEntity.getPassword();
+        name = personaEntity.getName();
+        surname = personaEntity.getSurname();
+        company_email = personaEntity.getCompany_email();
+        personal_email = personaEntity.getPersonal_email();
+        city = personaEntity.getCity();
+        active = personaEntity.getActive();
+        created_date = personaEntity.getCreated_date();
+        imagen_url = personaEntity.getImagen_url();
+        termination_date = personaEntity.getTermination_date();
     }
 
 

@@ -1,8 +1,7 @@
 package com.bosonit.persona.application;
 
 import com.bosonit.persona.application.port.ReadPersonaPort;
-import com.bosonit.persona.domain.Persona;
-import com.bosonit.persona.exception.NotFoundException;
+import com.bosonit.persona.domain.PersonaEntity;
 import com.bosonit.persona.infrastructure.controller.dto.output.PersonaOutputDTO;
 import com.bosonit.persona.infrastructure.repository.mongo.PersonaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,13 +27,14 @@ public class ReadPersonaUseCase implements ReadPersonaPort {
         List<PersonaOutputDTO> personaOutputDTOList = new ArrayList<>();
         Query query = new Query();
         query.addCriteria(Criteria.where("id_persona").is(id));
-        mongoTemplate.find(query, Persona.class).forEach(persona -> personaOutputDTOList.add(new PersonaOutputDTO(persona)));
+        mongoTemplate.find(query, PersonaEntity.class).forEach(persona -> personaOutputDTOList.add(new PersonaOutputDTO(persona)));
         return personaOutputDTOList;
     }
+
     @Override
     public List<PersonaOutputDTO> getAllPersonas() {
         List<PersonaOutputDTO> personaOutputDTOList = new ArrayList<>();
-        personaRepository.findAll().forEach(persona -> personaOutputDTOList.add(new PersonaOutputDTO(persona)));
+        mongoTemplate.findAll(PersonaEntity.class).forEach(persona -> personaOutputDTOList.add(new PersonaOutputDTO(persona)));
         return personaOutputDTOList;
     }
     @Override
@@ -42,7 +42,7 @@ public class ReadPersonaUseCase implements ReadPersonaPort {
         List<PersonaOutputDTO> personaOutputDTOList = new ArrayList<>();
         Query query = new Query();
         query.addCriteria(Criteria.where("name").is(name));
-        mongoTemplate.find(query, Persona.class).forEach(persona -> personaOutputDTOList.add(new PersonaOutputDTO(persona)));
+        mongoTemplate.find(query, PersonaEntity.class).forEach(persona -> personaOutputDTOList.add(new PersonaOutputDTO(persona)));
         return personaOutputDTOList;
     }
 

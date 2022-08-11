@@ -1,7 +1,7 @@
 package com.bosonit.persona.application;
 
 import com.bosonit.persona.application.port.UpdatePersonaPort;
-import com.bosonit.persona.domain.Persona;
+import com.bosonit.persona.domain.PersonaEntity;
 import com.bosonit.persona.exception.NotFoundException;
 import com.bosonit.persona.infrastructure.controller.dto.input.PersonaInputDTO;
 import com.bosonit.persona.infrastructure.controller.dto.output.PersonaOutputDTO;
@@ -17,10 +17,10 @@ public class UpdatePersonaUseCase implements UpdatePersonaPort {
 
     @Override
     public PersonaOutputDTO updateUsuarioByID(int id, PersonaInputDTO personaInputDTO) {
-        Persona persona = personaRepository.findById(String.valueOf(id)).orElseThrow(() -> new NotFoundException("No se ha encontrado a la Persona con ID: " + id));
-        persona.update(personaInputDTO);
-        personaRepository.save(persona);
-        return new PersonaOutputDTO(persona);
+        PersonaEntity personaEntity = personaRepository.findById(String.valueOf(id)).orElseThrow(() -> new NotFoundException("No se ha encontrado a la PersonaEntity con ID: " + id));
+        personaEntity.update(personaInputDTO);
+        personaRepository.save(personaEntity);
+        return new PersonaOutputDTO(personaEntity);
 
     }
 }

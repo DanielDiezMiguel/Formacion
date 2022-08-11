@@ -1,5 +1,6 @@
 package com.bosonit.persona.application.port;
 
+import com.bosonit.persona.domain.PersonaEntity;
 import com.bosonit.persona.infrastructure.controller.dto.output.PersonaOutputDTO;
 
 import java.util.List;

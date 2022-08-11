@@ -1,7 +1,7 @@
 package com.bosonit.persona.application;
 
 import com.bosonit.persona.application.port.CreatePersonaPort;
-import com.bosonit.persona.domain.Persona;
+import com.bosonit.persona.domain.PersonaEntity;
 import com.bosonit.persona.infrastructure.controller.dto.input.PersonaInputDTO;
 import com.bosonit.persona.infrastructure.controller.dto.output.PersonaOutputDTO;
 import com.bosonit.persona.infrastructure.repository.mongo.PersonaRepository;
@@ -16,9 +16,9 @@ public class CreatePersonaUseCase implements CreatePersonaPort {
 
     @Override
     public PersonaOutputDTO crearUsuario(PersonaInputDTO personaInputDTO) {
-        Persona persona = new Persona(personaInputDTO);
-        personaRepository.save(persona);
-        PersonaOutputDTO personaOutputDTO = new PersonaOutputDTO(persona);
+        PersonaEntity personaEntity = new PersonaEntity(personaInputDTO);
+        personaRepository.save(personaEntity);
+        PersonaOutputDTO personaOutputDTO = new PersonaOutputDTO(personaEntity);
         return personaOutputDTO;
 
     }

@@ -3,7 +3,6 @@ package com.bosonit.persona.domain;
 import com.bosonit.persona.infrastructure.controller.dto.input.PersonaInputDTO;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -12,7 +11,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @Document(collection = "personas")
-public class Persona {
+public class PersonaEntity {
     @Id
     private String id_persona;
     private String usuario;
@@ -27,7 +26,7 @@ public class Persona {
     private String imagen_url;
     private Date termination_date;
 
-    public Persona(PersonaInputDTO usuarioInputDTO) {
+    public PersonaEntity(PersonaInputDTO usuarioInputDTO) {
         if (usuarioInputDTO == null) return;
         id_persona = usuarioInputDTO.getId_persona();
         usuario = usuarioInputDTO.getUsuario();
