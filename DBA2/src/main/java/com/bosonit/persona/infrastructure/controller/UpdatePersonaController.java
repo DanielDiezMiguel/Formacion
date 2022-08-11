@@ -13,7 +13,7 @@ public class UpdatePersonaController {
     @Autowired
     UpdatePersonaPort updatePersonaPort;
 
-    @PutMapping("{id}")
+    @PutMapping("{_id}")
     public PersonaOutputDTO updateUsuarioByID(@PathVariable(value = "id") int id, @RequestBody PersonaInputDTO personaInputDTO) {
         return updatePersonaPort.updateUsuarioByID(id, personaInputDTO);
     }

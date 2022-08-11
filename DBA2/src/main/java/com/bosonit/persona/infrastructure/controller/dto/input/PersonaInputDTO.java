@@ -1,13 +1,14 @@
 package com.bosonit.persona.infrastructure.controller.dto.input;
 
 import lombok.Data;
+import org.bson.types.ObjectId;
 
 import java.io.Serializable;
 import java.util.Date;
 
 @Data
 public class PersonaInputDTO implements Serializable {
-    private int _id;
+    private String id_persona;
     private String usuario;
     private String password;
     private String name;

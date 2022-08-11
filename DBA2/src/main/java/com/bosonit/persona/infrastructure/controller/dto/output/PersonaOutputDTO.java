@@ -2,13 +2,14 @@ package com.bosonit.persona.infrastructure.controller.dto.output;
 
 import com.bosonit.persona.domain.Persona;
 import lombok.Data;
+import org.bson.types.ObjectId;
 
 import java.io.Serializable;
 import java.util.Date;
 
 @Data
 public class PersonaOutputDTO implements Serializable {
-    private int _id;
+    private String id_persona;
     private String usuario;
     private String password;
     private String name;
@@ -23,7 +24,7 @@ public class PersonaOutputDTO implements Serializable {
 
     public PersonaOutputDTO(Persona persona) {
         if (persona == null) return;
-        _id = persona.get_id();
+        id_persona = persona.getId_persona();
         usuario = persona.getUsuario();
         password = persona.getPassword();
         name = persona.getName();

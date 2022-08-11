@@ -14,7 +14,7 @@ public class DeletePersonaController {
     @Autowired
     DeletePersonaPort deletePersonaPort;
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("{_id}")
     public void deleteByID(@PathVariable(value = "id") int id) {
         deletePersonaPort.deleteByID(id);
     }
