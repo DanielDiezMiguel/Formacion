@@ -8,7 +8,7 @@ import java.util.Date;
 
 @Data
 public class PersonaOutputDTO implements Serializable {
-    private Integer id_persona;
+    private int _id;
     private String usuario;
     private String password;
     private String name;
@@ -23,7 +23,7 @@ public class PersonaOutputDTO implements Serializable {
 
     public PersonaOutputDTO(Persona persona) {
         if (persona == null) return;
-        id_persona = persona.getId_persona();
+        _id = persona.get_id();
         usuario = persona.getUsuario();
         password = persona.getPassword();
         name = persona.getName();

@@ -12,7 +12,7 @@ public class DeletePersonaUseCase implements DeletePersonaPort {
     @Autowired
     PersonaRepository personaRepository;
 
-    public void deleteByID(Integer id) {
+    public void deleteByID(int id) {
         Persona persona = personaRepository.findById(String.valueOf(id)).orElseThrow(() -> new NotFoundException("No se ha encontrado el ID"));
         personaRepository.delete(persona);
     }

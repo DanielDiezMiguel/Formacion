@@ -6,6 +6,9 @@ import com.bosonit.persona.exception.NotFoundException;
 import com.bosonit.persona.infrastructure.controller.dto.output.PersonaOutputDTO;
 import com.bosonit.persona.infrastructure.repository.mongo.PersonaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -17,10 +20,17 @@ public class ReadPersonaUseCase implements ReadPersonaPort {
     @Autowired
     PersonaRepository personaRepository;
 
+    @Autowired
+    MongoTemplate mongoTemplate;
+
     @Override
-    public PersonaOutputDTO getPersonaByID(Integer id) {
-        Persona persona = personaRepository.findById(String.valueOf(id)).orElseThrow(() -> new NotFoundException("No se ha encontrado la Persona con ID: " + id));
-        return new PersonaOutputDTO(persona);
+    public List<PersonaOutputDTO> getPersonaByID(String id) {
+//        Persona persona = personaRepository.findById(id).orElseThrow(() -> new NotFoundException("No se ha encontrado la Persona con ID: " + id));
+        List<PersonaOutputDTO> personaOutputDTOList = new ArrayList<>();
+        Query query = new Query();
+        query.addCriteria(Criteria.where("_id").is(id));
+        mongoTemplate.find(query, Persona.class).forEach(persona -> personaOutputDTOList.add(new PersonaOutputDTO(persona)));
+        return personaOutputDTOList;
     }
     @Override
     public List<PersonaOutputDTO> getAllPersonas() {
@@ -31,7 +41,9 @@ public class ReadPersonaUseCase implements ReadPersonaPort {
     @Override
     public List<PersonaOutputDTO> getPersonaByName(String name) {
         List<PersonaOutputDTO> personaOutputDTOList = new ArrayList<>();
-        personaRepository.findByName(name).forEach(persona -> personaOutputDTOList.add(new PersonaOutputDTO(persona)));
+        Query query = new Query();
+        query.addCriteria(Criteria.where("name").is(name));
+        mongoTemplate.find(query, Persona.class).forEach(persona -> personaOutputDTOList.add(new PersonaOutputDTO(persona)));
         return personaOutputDTOList;
     }
 

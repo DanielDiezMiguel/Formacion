@@ -16,7 +16,7 @@ public class ReadPersonaController {
     ReadPersonaPort readPersonaPort;
 
     @GetMapping("/id/{id}")
-    public PersonaOutputDTO getPersonaByID(@PathVariable(name = "id") Integer id) {
+    public List<PersonaOutputDTO> getPersonaByID(@PathVariable(name = "id") String id) {
         return readPersonaPort.getPersonaByID(id);
     }
 
@@ -25,7 +25,7 @@ public class ReadPersonaController {
         return readPersonaPort.getAllPersonas();
     }
 
-    @GetMapping("name/{name}")
+    @GetMapping("/name/{name}")
     public List<PersonaOutputDTO> getPersonaByName(@PathVariable("name") String name) {
         return readPersonaPort.getPersonaByName(name);
     }

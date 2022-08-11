@@ -14,7 +14,7 @@ public class UpdatePersonaController {
     UpdatePersonaPort updatePersonaPort;
 
     @PutMapping("{id}")
-    public PersonaOutputDTO updateUsuarioByID(@PathVariable(value = "id") Integer id, @RequestBody PersonaInputDTO personaInputDTO) {
+    public PersonaOutputDTO updateUsuarioByID(@PathVariable(value = "id") int id, @RequestBody PersonaInputDTO personaInputDTO) {
         return updatePersonaPort.updateUsuarioByID(id, personaInputDTO);
     }
 }

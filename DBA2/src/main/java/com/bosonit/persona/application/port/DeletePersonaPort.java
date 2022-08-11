@@ -1,6 +1,6 @@
 package com.bosonit.persona.application.port;
 
 public interface DeletePersonaPort {
-    void deleteByID(Integer id);
+    void deleteByID(int id);
 
 }

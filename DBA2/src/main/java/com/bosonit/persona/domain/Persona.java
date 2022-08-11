@@ -11,10 +11,10 @@ import java.util.Date;
 
 @Data
 @NoArgsConstructor
-@Document(collection = "Personas")
+@Document(collection = "personas")
 public class Persona {
     @Id
-    private Integer id_persona;
+    private int _id;
     private String usuario;
     private String password;
     private String name;
@@ -29,7 +29,7 @@ public class Persona {
 
     public Persona(PersonaInputDTO usuarioInputDTO) {
         if (usuarioInputDTO == null) return;
-        id_persona = usuarioInputDTO.getId_persona();
+        _id = usuarioInputDTO.get_id();
         usuario = usuarioInputDTO.getUsuario();
         password = usuarioInputDTO.getPassword();
         name = usuarioInputDTO.getName();
@@ -45,7 +45,7 @@ public class Persona {
 
     public void update(PersonaInputDTO usuarioInputDTO) {
         if (usuarioInputDTO == null) return;
-        id_persona = usuarioInputDTO.getId_persona();
+        _id = usuarioInputDTO.get_id();
         usuario = usuarioInputDTO.getUsuario();
         password = usuarioInputDTO.getPassword();
         name = usuarioInputDTO.getName();
