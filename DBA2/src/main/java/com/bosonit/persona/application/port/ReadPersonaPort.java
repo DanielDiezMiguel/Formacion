@@ -5,9 +5,9 @@ import com.bosonit.persona.infrastructure.controller.dto.output.PersonaOutputDTO
 import java.util.List;
 
 public interface ReadPersonaPort {
-    PersonaOutputDTO getPersonaByID(String id, String outputType) throws Exception;
+    PersonaOutputDTO getPersonaByID(Integer id);
 
-    List getAllUsuarios(String outputType);
+    List<PersonaOutputDTO> getAllPersonas();
 
-    List getPersonaByName(String name, String outputType);
+    List<PersonaOutputDTO> getPersonaByName(String name);
 }

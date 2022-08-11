@@ -9,24 +9,25 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*", methods = RequestMethod.GET)
-//@RequestMapping("persona")
+@RequestMapping("persona")
 public class ReadPersonaController {
 
     @Autowired
     ReadPersonaPort readPersonaPort;
 
     @GetMapping("/id/{id}")
-    public PersonaOutputDTO getUsuarioByID(@PathVariable(value = "id") String id, @RequestParam(defaultValue = "persona", required = false) String outputType) throws Exception {
-        return readPersonaPort.getPersonaByID(id, outputType);
+    public PersonaOutputDTO getPersonaByID(@PathVariable(name = "id") Integer id) {
+        return readPersonaPort.getPersonaByID(id);
     }
 
-    @GetMapping("getall")
-    public List<PersonaOutputDTO> getAllUsuarios(@RequestParam(defaultValue = "persona", required = false) String outputType) {
-        return readPersonaPort.getAllUsuarios(outputType);
+    @GetMapping("/all/all")
+    public List<PersonaOutputDTO> getAllPersonas() {
+        return readPersonaPort.getAllPersonas();
     }
 
-    @GetMapping("/nombre/{nombre}")
-    public List<PersonaOutputDTO> getUsuarioByName(@PathVariable(value = "nombre") String nombre, @RequestParam(defaultValue = "persona", required = false) String outputType) {
-        return readPersonaPort.getPersonaByName(nombre, outputType);
+    @GetMapping("name/{name}")
+    public List<PersonaOutputDTO> getPersonaByName(@PathVariable("name") String name) {
+        return readPersonaPort.getPersonaByName(name);
     }
+
 }

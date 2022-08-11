@@ -15,7 +15,7 @@ public class DeletePersonaController {
     DeletePersonaPort deletePersonaPort;
 
     @DeleteMapping("{id}")
-    public void deleteByID(@PathVariable(value = "id") String id) {
+    public void deleteByID(@PathVariable(value = "id") Integer id) {
         deletePersonaPort.deleteByID(id);
     }
 }
