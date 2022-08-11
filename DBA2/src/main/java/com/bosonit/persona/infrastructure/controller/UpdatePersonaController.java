@@ -13,8 +13,8 @@ public class UpdatePersonaController {
     @Autowired
     UpdatePersonaPort updatePersonaPort;
 
-    @PutMapping("{_id}")
-    public PersonaOutputDTO updateUsuarioByID(@PathVariable(value = "id") int id, @RequestBody PersonaInputDTO personaInputDTO) {
+    @PutMapping("{id}")
+    public PersonaOutputDTO updateUsuarioByID(@PathVariable(value = "id") String id, @RequestBody PersonaInputDTO personaInputDTO) {
         return updatePersonaPort.updateUsuarioByID(id, personaInputDTO);
     }
 }

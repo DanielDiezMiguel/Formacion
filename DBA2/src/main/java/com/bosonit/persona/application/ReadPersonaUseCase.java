@@ -15,10 +15,6 @@ import java.util.List;
 
 @Service
 public class ReadPersonaUseCase implements ReadPersonaPort {
-
-    @Autowired
-    PersonaRepository personaRepository;
-
     @Autowired
     MongoTemplate mongoTemplate;
 

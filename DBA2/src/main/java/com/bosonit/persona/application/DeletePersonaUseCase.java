@@ -13,9 +13,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class DeletePersonaUseCase implements DeletePersonaPort {
     @Autowired
-    PersonaRepository personaRepository;
-
-    @Autowired
     MongoTemplate mongoTemplate;
 
     @Override
