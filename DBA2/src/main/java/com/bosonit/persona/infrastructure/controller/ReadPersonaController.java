@@ -15,9 +15,9 @@ public class ReadPersonaController {
     @Autowired
     ReadPersonaPort readPersonaPort;
 
-    @GetMapping("/id/{id_persona}")
-    public List<PersonaOutputDTO> getPersonaByID(@PathVariable(name = "id_persona") String id_persona) {
-        return readPersonaPort.getPersonaByID(id_persona);
+    @GetMapping("/id/{id}")
+    public List<PersonaOutputDTO> getPersonaByID(@PathVariable(name = "id") String id) {
+        return readPersonaPort.getPersonaByID(id);
     }
 
     @GetMapping("/all/all")

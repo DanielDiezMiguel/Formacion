@@ -24,10 +24,10 @@ public class ReadPersonaUseCase implements ReadPersonaPort {
     MongoTemplate mongoTemplate;
 
     @Override
-    public List<PersonaOutputDTO> getPersonaByID(String id_persona) {
+    public List<PersonaOutputDTO> getPersonaByID(String id) {
         List<PersonaOutputDTO> personaOutputDTOList = new ArrayList<>();
         Query query = new Query();
-        query.addCriteria(Criteria.where("id_persona").is(id_persona));
+        query.addCriteria(Criteria.where("id_persona").is(id));
         mongoTemplate.find(query, Persona.class).forEach(persona -> personaOutputDTOList.add(new PersonaOutputDTO(persona)));
         return personaOutputDTOList;
     }
