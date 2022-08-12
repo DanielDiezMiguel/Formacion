@@ -3,6 +3,7 @@ package com.bosonit.persona.domain;
 import com.bosonit.persona.infrastructure.controller.dto.input.PersonaInputDTO;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -28,7 +29,6 @@ public class PersonaEntity {
 
     public PersonaEntity(PersonaInputDTO personaInputDTO) {
         if (personaInputDTO == null) return;
-        id_persona = personaInputDTO.getId_persona();
         usuario = personaInputDTO.getUsuario();
         password = personaInputDTO.getPassword();
         name = personaInputDTO.getName();

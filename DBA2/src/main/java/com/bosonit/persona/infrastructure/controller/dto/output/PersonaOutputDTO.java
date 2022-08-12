@@ -2,6 +2,7 @@ package com.bosonit.persona.infrastructure.controller.dto.output;
 
 import com.bosonit.persona.domain.PersonaEntity;
 import lombok.Data;
+import org.bson.types.ObjectId;
 
 import java.io.Serializable;
 import java.util.Date;
