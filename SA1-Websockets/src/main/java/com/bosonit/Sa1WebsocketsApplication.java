@@ -1,4 +1,4 @@
-package com.bosonit.SA1Websockets;
+package com.bosonit;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
