@@ -1,5 +1,6 @@
 package com.bosonit.domain;
 
+import com.bosonit.infrastructure.dto.DtoRequest;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -17,13 +18,13 @@ public class InvoiceHeaderEntity {
     @Column(name = "active")
     String active;
 
-    @Column(name = "fiscalyear")
-    int fiscalYear;
-
-    @Column(name = "numberinvoice")
-    int numberInvoice;
-
-    @Column(name = "customerid", insertable = false, updatable = false)
-    int customerid;
+//    @Column(name = "fiscalyear")
+//    int fiscalYear;
+//
+//    @Column(name = "numberinvoice")
+//    int numberInvoice;
+//
+//    @Column(name = "customerid", insertable = false, updatable = false)
+//    int customerid;
 
 }
