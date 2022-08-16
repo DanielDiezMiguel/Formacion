@@ -15,7 +15,6 @@ public class DeletePersonaUseCase implements DeletePersonaPort {
 
     @Override
     public void deleteByID(Integer id) throws Exception {
-        PersonaEntity personaEntity = personaRepository.findById(String.valueOf(id)).orElseThrow(() -> new Exception("No se ha encontrado el ID: " + id));
-        personaRepository.delete(personaEntity);
+        personaRepository.delete(personaRepository.findById(id).orElseThrow(() -> new Exception("No se ha encontrado el ID: " + id)));
     }
 }

@@ -16,7 +16,7 @@ public class UpdatePersonaUseCase implements UpdatePersonaPort {
 
     @Override
     public PersonaOutputDTO updateUsuarioByID(Integer id, PersonaInputDTO personaInputDTO) throws Exception {
-        PersonaEntity personaEntity = personaRepository.findById(String.valueOf(id)).orElseThrow(() -> new Exception("No se ha eonctrado el ID: " + id));
+        PersonaEntity personaEntity = personaRepository.findById(id).orElseThrow(() -> new Exception("No se ha eonctrado el ID: " + id));
         personaEntity.update(personaInputDTO);
         personaRepository.save(personaEntity);
         return new PersonaOutputDTO(personaEntity);

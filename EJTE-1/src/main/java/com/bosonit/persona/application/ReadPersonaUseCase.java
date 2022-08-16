@@ -1,7 +1,7 @@
 package com.bosonit.persona.application;
 
 import com.bosonit.persona.application.port.ReadPersonaPort;
-import com.bosonit.persona.domain.PersonaEntity;
+import com.bosonit.persona.exception.NotFoundException;
 import com.bosonit.persona.infrastructure.controller.dto.output.PersonaOutputDTO;
 import com.bosonit.persona.infrastructure.repository.jpa.PersonaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +16,8 @@ public class ReadPersonaUseCase implements ReadPersonaPort {
     PersonaRepository personaRepository;
 
     @Override
-    public PersonaOutputDTO getPersonaByID(Integer id) throws Exception {
-        PersonaEntity personaEntity = personaRepository.findById(String.valueOf(id)).orElseThrow(() -> new Exception("No se ha encontrado la Pesona con ID: " + id));
-        return new PersonaOutputDTO(personaEntity);
+    public PersonaOutputDTO getPersonaByID(Integer id) {
+        return new PersonaOutputDTO(personaRepository.findById(id).orElseThrow(() -> new NotFoundException("No se ha econtrado la Persona con ID: " + id)));
     }
 
     @Override

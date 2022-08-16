@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface PersonaRepository extends JpaRepository<PersonaEntity, String> {
+public interface PersonaRepository extends JpaRepository<PersonaEntity, Integer> {
     List<PersonaEntity> findByName(String nombre);
 }
