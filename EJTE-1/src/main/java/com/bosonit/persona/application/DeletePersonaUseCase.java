@@ -1,7 +1,6 @@
 package com.bosonit.persona.application;
 
 import com.bosonit.persona.application.port.DeletePersonaPort;
-import com.bosonit.persona.domain.PersonaEntity;
 import com.bosonit.persona.infrastructure.repository.jpa.PersonaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 

@@ -1,10 +1,10 @@
-package com.bosonit.SA7;
+package com.bosonit;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Sa7ApplicationTests {
+class EJTE1ApplicationTests {
 
 	@Test
 	void contextLoads() {
