@@ -23,6 +23,4 @@ public class ReadPersonaController {
     public List<PersonaOutputDTO> getAllPersonas() {
         return readPersonaPort.getAllPersonas();
     }
-
-
 }

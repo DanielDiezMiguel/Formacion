@@ -18,5 +18,3 @@ public class CreatePersonaController {
         return createPersonaPort.crearUsuario(personaInputDTO);
     }
 }
-
-
