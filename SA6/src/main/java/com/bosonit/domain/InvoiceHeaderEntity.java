@@ -18,13 +18,4 @@ public class InvoiceHeaderEntity {
     @Column(name = "active")
     String active;
 
-//    @Column(name = "fiscalyear")
-//    int fiscalYear;
-//
-//    @Column(name = "numberinvoice")
-//    int numberInvoice;
-//
-//    @Column(name = "customerid", insertable = false, updatable = false)
-//    int customerid;
-
 }

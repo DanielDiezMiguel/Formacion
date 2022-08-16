@@ -20,9 +20,6 @@ public class CacheDataUseCase implements CacheDataPort {
     @Autowired
     InvoiceHeaderRepository invoiceHeaderRepository;
 
-//    public DtoResponse crearEntity(DtoRequest dtoRequest) {
-//        DtoResponse dtoResponse = new DtoResponse();
-//    }
 
     @Override
     @Cacheable(cacheNames = "headers", condition = "#id > 1")
