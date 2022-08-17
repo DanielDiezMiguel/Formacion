@@ -40,7 +40,6 @@ public class EJTE1ApplicationTests {
     }
 
     @Test
-    @DisplayName("Controller using Mockito")
     public void getAllPersonas() {
         List<PersonaOutputDTO> personaEntitiesList = readPersonaController.getAllPersonas();
         Assertions.assertEquals(0, personaEntitiesList.size());
