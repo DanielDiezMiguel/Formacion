@@ -2,18 +2,15 @@ package com.bosonit;
 
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
-import org.assertj.core.api.Assertions.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-class CreateTests {
+class TestApplication {
 
     @Autowired
     PersonaJPA personaJPA;
@@ -56,4 +53,21 @@ class CreateTests {
         Assertions.assertEquals(Optional.empty(), personaEntityOptional);
     }
 
+    @Test
+    @Order(6)
+    void setGetPersona() {
+        PersonaEntity personaEntity = new PersonaEntity();
+        personaEntity.setId(1);
+        personaEntity.setName("Daniel");
+        String name = personaEntity.getName();
+        int id = personaEntity.getId();
+        Assertions.assertEquals(1, id);
+        Assertions.assertEquals("Daniel", name);
+    }
+
+    @Test
+    @Order(7)
+    public void main() {
+        Ejtesimple1Application.main(new String[] {});
+    }
 }
