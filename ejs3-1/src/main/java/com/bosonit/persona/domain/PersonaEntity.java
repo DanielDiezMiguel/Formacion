@@ -70,36 +70,41 @@ public class PersonaEntity {
     @Column(name = "date")
     private Date termination_date;
 
+    @Column(name = "admin", nullable = false)
+    private boolean admin;
 
-    public PersonaEntity(PersonaInputDTO usuarioInputDTO) {
-        if (usuarioInputDTO == null) return;
-        id_persona = usuarioInputDTO.getId_persona();
-        usuario = usuarioInputDTO.getUsuario();
-        password = usuarioInputDTO.getPassword();
-        name = usuarioInputDTO.getName();
-        surname = usuarioInputDTO.getSurname();
-        company_email = usuarioInputDTO.getCompany_email();
-        personal_email = usuarioInputDTO.getPersonal_email();
-        city = usuarioInputDTO.getCity();
-        active = usuarioInputDTO.getActive();
-        created_date = usuarioInputDTO.getCreated_date();
-        imagen_url = usuarioInputDTO.getImagen_url();
-        termination_date = usuarioInputDTO.getTermination_date();
+
+    public PersonaEntity(PersonaInputDTO personaInputDTO) {
+        if (personaInputDTO == null) return;
+        id_persona = personaInputDTO.getId_persona();
+        usuario = personaInputDTO.getUsuario();
+        password = personaInputDTO.getPassword();
+        name = personaInputDTO.getName();
+        surname = personaInputDTO.getSurname();
+        company_email = personaInputDTO.getCompany_email();
+        personal_email = personaInputDTO.getPersonal_email();
+        city = personaInputDTO.getCity();
+        active = personaInputDTO.getActive();
+        created_date = personaInputDTO.getCreated_date();
+        imagen_url = personaInputDTO.getImagen_url();
+        termination_date = personaInputDTO.getTermination_date();
+        admin = personaInputDTO.isAdmin();
     }
 
-    public void update(PersonaInputDTO usuarioInputDTO) {
-        if (usuarioInputDTO == null) return;
-        id_persona = usuarioInputDTO.getId_persona();
-        usuario = usuarioInputDTO.getUsuario();
-        password = usuarioInputDTO.getPassword();
-        name = usuarioInputDTO.getName();
-        surname = usuarioInputDTO.getSurname();
-        company_email = usuarioInputDTO.getCompany_email();
-        personal_email = usuarioInputDTO.getPersonal_email();
-        city = usuarioInputDTO.getCity();
-        active = usuarioInputDTO.getActive();
-        created_date = usuarioInputDTO.getCreated_date();
-        imagen_url = usuarioInputDTO.getImagen_url();
-        termination_date = usuarioInputDTO.getTermination_date();
+    public void update(PersonaInputDTO personaInputDTO) {
+        if (personaInputDTO == null) return;
+        id_persona = personaInputDTO.getId_persona();
+        usuario = personaInputDTO.getUsuario();
+        password = personaInputDTO.getPassword();
+        name = personaInputDTO.getName();
+        surname = personaInputDTO.getSurname();
+        company_email = personaInputDTO.getCompany_email();
+        personal_email = personaInputDTO.getPersonal_email();
+        city = personaInputDTO.getCity();
+        active = personaInputDTO.getActive();
+        created_date = personaInputDTO.getCreated_date();
+        imagen_url = personaInputDTO.getImagen_url();
+        termination_date = personaInputDTO.getTermination_date();
+        admin = personaInputDTO.isAdmin();
     }
 }

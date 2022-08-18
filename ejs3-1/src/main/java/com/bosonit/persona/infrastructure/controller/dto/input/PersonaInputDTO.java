@@ -2,11 +2,10 @@ package com.bosonit.persona.infrastructure.controller.dto.input;
 
 import lombok.Data;
 
-import java.io.Serializable;
 import java.util.Date;
 
 @Data
-public class PersonaInputDTO implements Serializable {
+public class PersonaInputDTO {
     private String id_persona;
     private String usuario;
     private String password;
@@ -19,4 +18,5 @@ public class PersonaInputDTO implements Serializable {
     private Date created_date;
     private String imagen_url;
     private Date termination_date;
+    private boolean admin;
 }

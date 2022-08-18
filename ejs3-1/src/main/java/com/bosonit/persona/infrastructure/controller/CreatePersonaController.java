@@ -1,6 +1,8 @@
 package com.bosonit.persona.infrastructure.controller;
 
+import com.auth0.jwt.algorithms.Algorithm;
 import com.bosonit.persona.application.port.CreatePersonaPort;
+import com.bosonit.persona.domain.PersonaEntity;
 import com.bosonit.persona.infrastructure.controller.dto.input.PersonaInputDTO;
 import com.bosonit.persona.infrastructure.controller.dto.output.PersonaOutputDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,8 @@ public class CreatePersonaController {
 
     @Autowired
     CreatePersonaPort createPersonaPort;
+
+
 
     @PostMapping
     public PersonaOutputDTO crearUsuario(@RequestBody PersonaInputDTO personaInputDTO) throws Exception {

@@ -9,24 +9,17 @@ import com.bosonit.persona.infrastructure.repository.jpa.PersonaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.validation.Valid;
-
 @Service
 public class CreatePersonaUseCase implements CreatePersonaPort {
     @Autowired
     PersonaRepository personaRepository;
 
     @Override
-    public PersonaOutputDTO crearUsuario(@Valid PersonaInputDTO personaInputDTO) {
+    public PersonaOutputDTO crearUsuario(PersonaInputDTO personaInputDTO) {
         try {
-            PersonaEntity personaEntity = new PersonaEntity(personaInputDTO);
-            personaRepository.save(personaEntity);
-            PersonaOutputDTO personaOutputDTO = new PersonaOutputDTO(personaEntity);
-            return personaOutputDTO;
-
+            return new PersonaOutputDTO(personaRepository.save(new PersonaEntity(personaInputDTO)));
         } catch (Exception e) {
             throw new UnprocesableException("No cumple los requisitos establecidos");
         }
-
     }
 }
