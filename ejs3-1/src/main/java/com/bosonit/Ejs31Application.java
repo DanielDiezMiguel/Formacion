@@ -1,4 +1,4 @@
-package com.bosonit.ejs31;
+package com.bosonit;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
