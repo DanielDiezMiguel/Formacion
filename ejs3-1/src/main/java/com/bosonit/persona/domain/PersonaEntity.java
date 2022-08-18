@@ -38,8 +38,8 @@ public class PersonaEntity {
     private ProfesorEntity profesorEntity;
 
     @Size(min = 6, max = 10)
-    @Column(name = "usuario", nullable = false)
-    private String usuario;
+    @Column(name = "username", nullable = false)
+    private String username;
 
     @Column(name = "password", nullable = false)
     private String password;
@@ -77,7 +77,7 @@ public class PersonaEntity {
     public PersonaEntity(PersonaInputDTO personaInputDTO) {
         if (personaInputDTO == null) return;
         id_persona = personaInputDTO.getId_persona();
-        usuario = personaInputDTO.getUsuario();
+        username = personaInputDTO.getUsername();
         password = personaInputDTO.getPassword();
         name = personaInputDTO.getName();
         surname = personaInputDTO.getSurname();
@@ -94,7 +94,7 @@ public class PersonaEntity {
     public void update(PersonaInputDTO personaInputDTO) {
         if (personaInputDTO == null) return;
         id_persona = personaInputDTO.getId_persona();
-        usuario = personaInputDTO.getUsuario();
+        username = personaInputDTO.getUsername();
         password = personaInputDTO.getPassword();
         name = personaInputDTO.getName();
         surname = personaInputDTO.getSurname();

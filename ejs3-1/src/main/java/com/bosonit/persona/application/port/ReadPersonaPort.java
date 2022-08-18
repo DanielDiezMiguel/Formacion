@@ -10,4 +10,6 @@ public interface ReadPersonaPort {
     List getAllUsuarios(String outputType);
 
     List getPersonaByName(String name, String outputType);
+
+    List<PersonaOutputDTO> getAllPrueba();
 }

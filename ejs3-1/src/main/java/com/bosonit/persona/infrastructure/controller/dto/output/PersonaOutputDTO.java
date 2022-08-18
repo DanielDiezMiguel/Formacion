@@ -8,7 +8,7 @@ import java.util.Date;
 @Data
 public class PersonaOutputDTO {
     private String id_persona;
-    private String usuario;
+    private String username;
     private String password;
     private String name;
     private String surname;
@@ -25,7 +25,7 @@ public class PersonaOutputDTO {
     public PersonaOutputDTO(PersonaEntity personaEntity) {
         if (personaEntity == null) return;
         id_persona = personaEntity.getId_persona();
-        usuario = personaEntity.getUsuario();
+        username = personaEntity.getUsername();
         password = personaEntity.getPassword();
         name = personaEntity.getName();
         surname = personaEntity.getSurname();
