@@ -23,26 +23,16 @@ import org.springframework.security.web.SecurityFilterChain;
 @AllArgsConstructor
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    private final UserDetailsService userDetailsService;
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
-
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
-    }
-
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable();
-        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.authorizeRequests().anyRequest().permitAll();
-        http.addFilter(new AuthenticationJWT(authenticationManagerBean()));
-    }
+//    private final UserDetailsService userDetailsService;
+//
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+//    }
 
     @Bean
-    @Override
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
     //        @Override
@@ -51,28 +41,28 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //    }
 
 
-//    @Bean
-//    @Override
-//    public UserDetailsService userDetailsService() {
-//        UserDetails user = User.builder()
-//                .username("user")
-//                .password(passwordEncoder().encode("secret"))
-//                .roles("USER").build();
-//        UserDetails admin = User.builder()
-//                .username("admin")
-//                .password(passwordEncoder().encode("secret"))
-//                .roles("ADMIN").build();
-//        return new InMemoryUserDetailsManager(user, admin);
-//    }
+    @Bean
+    @Override
+    public UserDetailsService userDetailsService() {
+        UserDetails user = User.builder()
+                .username("user")
+                .password(passwordEncoder().encode("secret"))
+                .roles("USER").build();
+        UserDetails admin = User.builder()
+                .username("admin")
+                .password(passwordEncoder().encode("secret"))
+                .roles("ADMIN").build();
+        return new InMemoryUserDetailsManager(user, admin);
+    }
 
 
-//    @Override
-//    public void configure(HttpSecurity httpSecurity) throws Exception {
-//        httpSecurity.csrf().disable()
-//                .authorizeRequests()
-//                    .antMatchers("/persona/all/all")
-//                    .authenticated().and()
-//                .addFilter(new AuthenticationJWT(authenticationManagerBean()));
-//    }
+    @Override
+    public void configure(HttpSecurity httpSecurity) throws Exception {
+        httpSecurity.csrf().disable()
+                .authorizeRequests()
+                    .antMatchers("/persona/all/all")
+                    .authenticated().and()
+                .addFilter(new AuthenticationJWT(authenticationManagerBean()));
+    }
 
 }
