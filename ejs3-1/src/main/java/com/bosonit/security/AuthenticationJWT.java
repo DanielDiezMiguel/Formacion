@@ -1,4 +1,4 @@
-package com.bosonit.configuration;
+package com.bosonit.security;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -19,18 +19,20 @@ import java.io.IOException;
 import java.util.Date;
 
 @Slf4j
-@AllArgsConstructor
 public class AuthenticationJWT extends UsernamePasswordAuthenticationFilter {
 
     private final AuthenticationManager authenticationManager;
+
+    public AuthenticationJWT(AuthenticationManager authenticationManager) {
+        this.authenticationManager = authenticationManager;
+    }
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         log.info("Username is: {}", username); log.info("Password is: {}", password);
-        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username, password);
-        return authenticationManager.authenticate(authenticationToken);
+        return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
     }
 
     @Override

@@ -2,18 +2,22 @@ package com.bosonit.persona.infrastructure.controller;
 
 import com.bosonit.persona.domain.PersonaEntity;
 import com.bosonit.persona.infrastructure.controller.dto.output.PersonaOutputDTO;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/login")
+@RequestMapping("/hola")
 public class LoginPersonaController {
-
-    @PostMapping
-    public PersonaOutputDTO login(@RequestParam("user") String user, @RequestParam("password") String password) {
-        return new PersonaOutputDTO(new PersonaEntity());
+    @GetMapping
+    String saludo() {
+        return "hola";
     }
-
 }
+//public class LoginPersonaController {
+//
+////    @GetMapping
+////    public String login() {
+////        return "Login required";
+////    }
+//
+//}

@@ -4,9 +4,10 @@ import com.bosonit.persona.application.port.UpdatePersonaPort;
 import com.bosonit.persona.infrastructure.controller.dto.input.PersonaInputDTO;
 import com.bosonit.persona.infrastructure.controller.dto.output.PersonaOutputDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@Controller
 @RequestMapping("persona")
 public class UpdatePersonaController {
 
