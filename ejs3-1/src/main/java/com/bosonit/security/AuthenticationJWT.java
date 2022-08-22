@@ -2,6 +2,7 @@ package com.bosonit.security;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -16,6 +17,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+
 
 @AllArgsConstructor
 public class AuthenticationJWT extends UsernamePasswordAuthenticationFilter {
@@ -35,16 +41,29 @@ public class AuthenticationJWT extends UsernamePasswordAuthenticationFilter {
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authentication) throws IOException, ServletException {
         User user = (User) authentication.getPrincipal();
-        Algorithm algorithm = Algorithm.HMAC256("secret".getBytes());
-        response.setHeader(
-                "access_token", JWT.create()
-                        .withSubject(
-                                user.getUsername())
-                        .withExpiresAt(
-                                new Date(System.currentTimeMillis() * 10 * 60 * 1000))
-                        .withIssuer(request
-                                .getRequestURL().toString())
-                        .sign(algorithm)
-        );
+        String access_token = JWT.create()
+                .withSubject(
+                        user.getUsername())
+                .withExpiresAt(
+                        new Date(System.currentTimeMillis() + AuthenticationConfigConstants.EXPIRATION_TIME))
+                .withIssuer(request
+                        .getRequestURL().toString())
+                .sign(Algorithm
+                        .HMAC256(AuthenticationConfigConstants
+                                .SECRET.getBytes()
+                        )
+                );
+        Map<String, String> token = new HashMap<>();
+        token.put("access_token", AuthenticationConfigConstants.TOKEN_PREFIX + access_token);
+        response.setContentType(APPLICATION_JSON_VALUE);
+        new ObjectMapper().writeValue(response.getOutputStream(), token);
+//        response.addHeader(AuthenticationConfigConstants.HEADER_STRING, AuthenticationConfigConstants.TOKEN_PREFIX
+//                + JWT.create()
+//                .withSubject(
+//                        user.getUsername())
+//                .withExpiresAt(
+//                        new Date(System.currentTimeMillis() + AuthenticationConfigConstants.EXPIRATION_TIME))
+//                .sign(Algorithm.HMAC256(AuthenticationConfigConstants.SECRET.getBytes()))
+//        );
     }
 }
