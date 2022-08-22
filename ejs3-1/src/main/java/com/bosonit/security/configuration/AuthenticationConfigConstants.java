@@ -1,4 +1,4 @@
-package com.bosonit.security;
+package com.bosonit.security.configuration;
 
 public class AuthenticationConfigConstants {
     public static final String SECRET = "secret";
