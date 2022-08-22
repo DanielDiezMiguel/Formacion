@@ -2,7 +2,7 @@ package com.bosonit.security.authentication;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
-import com.bosonit.security.configuration.AuthenticationConfigConstants;
+import com.bosonit.security.configuration.ConstantsConfiguration;
 import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -37,10 +37,10 @@ public class AuthenticationJWT extends UsernamePasswordAuthenticationFilter {
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authentication) throws IOException, ServletException {
         User user = (User) authentication.getPrincipal();
-        response.addHeader("access_token", AuthenticationConfigConstants.TOKEN_PREFIX + JWT.create()
+        response.addHeader("access_token", ConstantsConfiguration.TOKEN_PREFIX + JWT.create()
                 .withSubject(user.getUsername())
-                .withExpiresAt(new Date(System.currentTimeMillis() + AuthenticationConfigConstants.EXPIRATION_TIME))
+                .withExpiresAt(new Date(System.currentTimeMillis() + ConstantsConfiguration.EXPIRATION_TIME))
                 .withIssuer(request.getRequestURL().toString())
-                .sign(Algorithm.HMAC256(AuthenticationConfigConstants.SECRET.getBytes())));
+                .sign(Algorithm.HMAC256(ConstantsConfiguration.SECRET.getBytes())));
     }
 }
