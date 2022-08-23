@@ -2,6 +2,7 @@ package com.bosonit.security.authorization;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -31,19 +32,18 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
         String token = httpServletRequest.getHeader(HEADER_STRING);
         if (token == null) filterChain.doFilter(httpServletRequest, httpServletResponse);
         else {
-           String[] roles = JWT.require(Algorithm.HMAC256(SECRET.getBytes()))
+            DecodedJWT verifyToken = JWT.require(Algorithm.HMAC256(SECRET.getBytes()))
                     .build()
-                    .verify(token.replace(TOKEN_PREFIX, ""))
-                   .getClaim("roles").asArray(String.class);
+                    .verify(token.replace(TOKEN_PREFIX, ""));
+
+            String user = verifyToken.getSubject();
+            String[] roles = verifyToken.getClaim("roles").asArray(String.class);
+
             Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
             stream(roles).forEach(role -> authorities.add(new SimpleGrantedAuthority(role)));
             // User, password, authorities
             SecurityContextHolder.getContext().setAuthentication(
-                    new UsernamePasswordAuthenticationToken(
-                            JWT.require(Algorithm.HMAC256(SECRET.getBytes()))
-                                    .build()
-                                    .verify(token.replace(TOKEN_PREFIX, ""))
-                                    .getSubject(), null, authorities));
+                    new UsernamePasswordAuthenticationToken(user, null, authorities));
             filterChain.doFilter(httpServletRequest, httpServletResponse);
         }
     }

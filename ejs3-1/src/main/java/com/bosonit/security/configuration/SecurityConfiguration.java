@@ -48,12 +48,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         authenticationJWT.setFilterProcessesUrl("/api/login");
         httpSecurity.csrf().disable()
                 .sessionManagement().sessionCreationPolicy(STATELESS).and()
-                .authorizeRequests()
+//                .authorizeRequests()
 //                .antMatchers("/api/login/**").permitAll()
-                .antMatchers("/api/login/persona/create").hasRole("ADMIN")
-                .antMatchers("/api/login/persona/all/all").hasRole("USER").and()
+//                .antMatchers("/api/login/persona/create").hasRole("ADMIN")
+//                .antMatchers("/api/login/persona/all/all").hasRole("USER").and()
 //                .and()
-//                .authorizeRequests().anyRequest().authenticated().and()
+                .authorizeRequests()
+                .anyRequest().authenticated().and()
                 .addFilterBefore(new AuthorizationFilter(authenticationManager()), UsernamePasswordAuthenticationFilter.class)
                 .addFilter(authenticationJWT);
     }
