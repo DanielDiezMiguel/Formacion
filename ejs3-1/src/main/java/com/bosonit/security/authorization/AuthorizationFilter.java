@@ -3,6 +3,7 @@ package com.bosonit.security.authorization;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -20,7 +21,7 @@ import java.util.Collection;
 import static com.bosonit.security.configuration.ConstantsConfiguration.*;
 import static java.util.Arrays.stream;
 
-
+@Slf4j
 public class AuthorizationFilter extends BasicAuthenticationFilter {
 
     public AuthorizationFilter(AuthenticationManager authManager) {
@@ -44,6 +45,7 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
             // User, password, authorities
             SecurityContextHolder.getContext().setAuthentication(
                     new UsernamePasswordAuthenticationToken(user, null, authorities));
+            log.info("USER: {}", user); log.info("AUTHORITIES: {}", authorities);
             filterChain.doFilter(httpServletRequest, httpServletResponse);
         }
     }
