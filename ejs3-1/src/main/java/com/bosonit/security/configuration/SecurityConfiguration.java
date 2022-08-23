@@ -47,14 +47,30 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         AuthenticationJWT authenticationJWT = new AuthenticationJWT(authenticationManagerBean());
         authenticationJWT.setFilterProcessesUrl("/api/login");
         httpSecurity.csrf().disable()
-                .sessionManagement()
-                .sessionCreationPolicy(STATELESS).and()
+                .sessionManagement().sessionCreationPolicy(STATELESS).and()
                 .authorizeRequests()
-                .antMatchers("/api/login/**").permitAll().and()
-                .authorizeRequests()
-                .anyRequest()
-                .authenticated().and()
+//                .antMatchers("/api/login/**").permitAll()
+                .antMatchers("/api/login/persona/create").hasRole("ADMIN")
+                .antMatchers("/api/login/persona/all/all").hasRole("USER").and()
+//                .and()
+//                .authorizeRequests().anyRequest().authenticated().and()
                 .addFilterBefore(new AuthorizationFilter(authenticationManager()), UsernamePasswordAuthenticationFilter.class)
                 .addFilter(authenticationJWT);
     }
+
+//    @Override
+//    public void configure(HttpSecurity httpSecurity) throws Exception {
+//        AuthenticationJWT authenticationJWT = new AuthenticationJWT(authenticationManagerBean());
+//        authenticationJWT.setFilterProcessesUrl("/api/login");
+//        httpSecurity.csrf().disable()
+//                .sessionManagement()
+//                .sessionCreationPolicy(STATELESS).and()
+//                .authorizeRequests()
+//                .antMatchers("/api/login/**").permitAll().and()
+//                .authorizeRequests()
+//                .anyRequest()
+//                .authenticated().and()
+//                .addFilterBefore(new AuthorizationFilter(authenticationManager()), UsernamePasswordAuthenticationFilter.class)
+//                .addFilter(authenticationJWT);
+//    }
 }
