@@ -49,11 +49,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         authenticationJWT.setFilterProcessesUrl("/api/login");
         httpSecurity.csrf().disable()
                 .sessionManagement().sessionCreationPolicy(STATELESS).and()
-//                .authorizeRequests()
-//                .antMatchers("/api/login/**").permitAll()
-//                .antMatchers("/api/login/persona/create").hasRole("ADMIN")
-//                .antMatchers("/api/login/persona/all/all").hasRole("USER").and()
-//                .and()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/persona/**").hasAnyAuthority("ROLE_ADMIN")
                 .antMatchers(HttpMethod.GET, "/persona/read/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_USER")
@@ -61,20 +56,4 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .addFilterBefore(new AuthorizationFilter(authenticationManager()), UsernamePasswordAuthenticationFilter.class)
                 .addFilter(authenticationJWT);
     }
-
-//    @Override
-//    public void configure(HttpSecurity httpSecurity) throws Exception {
-//        AuthenticationJWT authenticationJWT = new AuthenticationJWT(authenticationManagerBean());
-//        authenticationJWT.setFilterProcessesUrl("/api/login");
-//        httpSecurity.csrf().disable()
-//                .sessionManagement()
-//                .sessionCreationPolicy(STATELESS).and()
-//                .authorizeRequests()
-//                .antMatchers("/api/login/**").permitAll().and()
-//                .authorizeRequests()
-//                .anyRequest()
-//                .authenticated().and()
-//                .addFilterBefore(new AuthorizationFilter(authenticationManager()), UsernamePasswordAuthenticationFilter.class)
-//                .addFilter(authenticationJWT);
-//    }
 }
