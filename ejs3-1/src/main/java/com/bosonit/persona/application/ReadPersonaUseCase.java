@@ -99,7 +99,7 @@ public class ReadPersonaUseCase implements ReadPersonaPort {
     }
 
     @Override
-    public List<PersonaOutputDTO> getAllPrueba() {
+    public List<PersonaOutputDTO> getAllPersonas() {
         List<PersonaOutputDTO> personaOutputDTOList = new ArrayList<>();
         personaRepository.findAll()
                 .forEach(personaEntity -> personaOutputDTOList.add(new PersonaOutputDTO(personaEntity)));

@@ -11,5 +11,5 @@ public interface ReadPersonaPort {
 
     List getPersonaByName(String name, String outputType);
 
-    List<PersonaOutputDTO> getAllPrueba();
+    List<PersonaOutputDTO> getAllPersonas();
 }

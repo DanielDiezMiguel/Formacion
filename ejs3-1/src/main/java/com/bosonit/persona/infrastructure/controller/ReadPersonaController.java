@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/persona/read")
+@RequestMapping("/persona")
 public class ReadPersonaController {
 
     @Autowired
     ReadPersonaPort readPersonaPort;
 
     @GetMapping("/all/all")
-    public ResponseEntity<List<PersonaOutputDTO>>getUsers() {
-        return ResponseEntity.ok().body(readPersonaPort.getAllPrueba());
+    public ResponseEntity<List<PersonaOutputDTO>>getAllPersonas() {
+        return ResponseEntity.ok().body(readPersonaPort.getAllPersonas());
     }
 
     @GetMapping("/id/{id}")
