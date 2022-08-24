@@ -1,4 +1,4 @@
-package com.bosonit.ejka1.configuration;
+package com.bosonit.kafka.configuration;
 
 import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.context.annotation.Bean;
@@ -8,7 +8,6 @@ import org.springframework.kafka.config.TopicBuilder;
 @Configuration
 public class KafkaTopicConfig {
 
-    @Bean
     public NewTopic newTopic() {
         return TopicBuilder.name("ejka1Topic").build();
     }
