@@ -2,8 +2,6 @@
 # Backend Formation 
 > A naive repository with the solutions of Daniel Díez Miguel
 
-[HERE](https://github.com/DanielDiezMiguel/Formacion) there are the exercises.
-
 ## Exercises
 
 - [BP1-ArquitecturaHexagonal](https://github.com/DanielDiezMiguel/Formacion/tree/main/BP1-ArquitecturaHexagonal)
