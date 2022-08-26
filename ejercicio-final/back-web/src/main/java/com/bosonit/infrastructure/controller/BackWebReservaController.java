@@ -2,6 +2,7 @@ package com.bosonit.infrastructure.controller;
 
 import com.bosonit.application.port.BackWebReservaPort;
 import com.bosonit.infrastructure.controller.dto.BackWebReservaInputDTO;
+import com.bosonit.infrastructure.controller.dto.BackWebReservaOutputDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,7 +17,7 @@ public class BackWebReservaController {
     BackWebReservaPort backWebReservaPort;
 
     @PostMapping("crearReserva")
-    public void crearReserva(@RequestBody BackWebReservaInputDTO backWebReservaInputDTO) {
-        backWebReservaPort.crearReserva(backWebReservaInputDTO);
+    public BackWebReservaOutputDTO crearReserva(@RequestBody BackWebReservaInputDTO backWebReservaInputDTO) {
+        return backWebReservaPort.crearReserva(backWebReservaInputDTO);
     }
 }

@@ -3,7 +3,7 @@ package com.bosonit.infrastructure.controller.dto;
 import com.bosonit.domain.BackWebReservaEntity;
 import lombok.Data;
 
-import java.sql.Date;
+import java.util.Date;
 
 @Data
 public class BackWebReservaOutputDTO {
