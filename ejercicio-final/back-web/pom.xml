@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.bosonit</groupId>
-	<artifactId>ejercicio-final</artifactId>
+	<artifactId>back-web</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ejercicio-final</name>
 	<description>Ejercicio final project for Spring Boot</description>
