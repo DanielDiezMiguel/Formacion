@@ -1,23 +1,23 @@
 package com.bosonit.infrastructure.controller;
 
-import com.bosonit.application.port.KafkaProducerPort;
+import com.bosonit.application.port.BackEmpresaReservaPort;
+import com.bosonit.infrastructure.controller.dto.BackEmpresaReservaInputDTO;
+import com.bosonit.infrastructure.controller.dto.BackEmpresaReservaOutputDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("api/v0/kafka/reserva")
+@RequestMapping("/reserva")
 public class BackEmpresaReservaController {
 
     @Autowired
-    KafkaProducerPort kafkaProducerPort;
+    BackEmpresaReservaPort backEmpresaReservaPort;
 
-    @GetMapping
-    public ResponseEntity<String> sendMessage(@RequestParam(value = "message") String message) {
-        kafkaProducerPort.sendMessage(message);
-        return ResponseEntity.ok("MESSAGE SENT TO THE TOPIC");
+    @PostMapping
+    public BackEmpresaReservaOutputDTO backEmpresaReservaOutputDTO(@RequestBody BackEmpresaReservaInputDTO backEmpresaReservaInputDTO) {
+        return backEmpresaReservaPort.crearReserva(backEmpresaReservaInputDTO);
     }
 }
