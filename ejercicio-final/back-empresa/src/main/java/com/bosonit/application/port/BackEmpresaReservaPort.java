@@ -2,7 +2,8 @@ package com.bosonit.application.port;
 
 import com.bosonit.infrastructure.controller.dto.BackEmpresaReservaInputDTO;
 import com.bosonit.infrastructure.controller.dto.BackEmpresaReservaOutputDTO;
-public interface BackEmpresaReservaPort {
+import org.springframework.http.ResponseEntity;
 
-    BackEmpresaReservaOutputDTO crearReserva(BackEmpresaReservaInputDTO backEmpresaReservaInputDTO);
+public interface BackEmpresaReservaPort {
+    ResponseEntity<BackEmpresaReservaOutputDTO> crearReserva(BackEmpresaReservaInputDTO backEmpresaReservaInputDTO);
 }
