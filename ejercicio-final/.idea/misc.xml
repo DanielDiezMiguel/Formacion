@@ -5,9 +5,10 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/back-web/pom.xml" />
-        <option value="$PROJECT_DIR$/back-empresa/pom.xml" />
         <option value="$PROJECT_DIR$/../eureka-server/pom.xml" />
         <option value="$PROJECT_DIR$/eureka-server/pom.xml" />
+        <option value="$PROJECT_DIR$/back-empresa-new/pom.xml" />
+        <option value="$PROJECT_DIR$/back-empresa/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
