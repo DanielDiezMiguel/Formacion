@@ -23,9 +23,8 @@ public class BackEmpresaReservaUseCase implements BackEmpresaReservaPort {
 
     @Override
     public ResponseEntity<BackEmpresaReservaOutputDTO> crearReserva(BackEmpresaReservaInputDTO backEmpresaReservaInputDTO) {
-        if (mongoTemplate.count(Query.query(Criteria.where("_id").exists(true)), "reservas") < 40) {
+        if (mongoTemplate.count(Query.query(Criteria.where("_id").exists(true)), "reservas") < 40)
             return ResponseEntity.ok().body(new BackEmpresaReservaOutputDTO(mongoDBRepository.save(new BackEmpresaReservaEntity(backEmpresaReservaInputDTO))));
-        } else return ResponseEntity.badRequest().build();
-
+         else return ResponseEntity.badRequest().build();
     }
 }

@@ -8,7 +8,7 @@ import java.util.Date;
 @Data
 public class BackWebReservaOutputDTO {
     String id_persona;
-    String ciudad_destino;
+    String ciudad;
     String nombre;
     String apellidos;
     int telefono;
@@ -17,7 +17,7 @@ public class BackWebReservaOutputDTO {
     public BackWebReservaOutputDTO(BackWebReservaEntity backWebReservaEntity) {
         if (backWebReservaEntity == null) return;
         id_persona = backWebReservaEntity.getId_persona();
-        ciudad_destino = backWebReservaEntity.getCiudad_destino();
+        ciudad = backWebReservaEntity.getCiudad();
         nombre = backWebReservaEntity.getNombre();
         apellidos = backWebReservaEntity.getApellidos();
         telefono = backWebReservaEntity.getTelefono();
