@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v0")
+@RequestMapping("/api/v0/reserva")
 public class BackWebReservaController {
 
     @Autowired
     BackWebReservaPort backWebReservaPort;
 
-    @PostMapping("crearReserva")
+    @PostMapping
     public BackWebReservaOutputDTO crearReserva(@RequestBody BackWebReservaInputDTO backWebReservaInputDTO) {
         return backWebReservaPort.crearReserva(backWebReservaInputDTO);
     }
