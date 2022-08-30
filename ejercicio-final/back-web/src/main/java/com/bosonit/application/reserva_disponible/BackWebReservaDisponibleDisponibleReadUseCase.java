@@ -1,9 +1,11 @@
-package com.bosonit.application.reserva;
+package com.bosonit.application.reserva_disponible;
 
-import com.bosonit.application.reserva.port.BackWebReservaReadPort;
+import com.bosonit.application.reserva_disponible.port.BackWebReservaDisponibleReadPort;
 import com.bosonit.domain.reserva.BackWebReservaCollection;
+import com.bosonit.domain.reserva_disponible.BackWebReservaDisponibleCollection;
 import com.bosonit.infrastructure.reserva.controller.dto.BackWebReservaOutputDTO;
 import com.bosonit.infrastructure.reserva.repository.mongodb.MongoDBRepository;
+import com.bosonit.infrastructure.reserva_disponible.controller.dto.BackWebReservaDisponibleOutputDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -16,17 +18,14 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class BackWebReservaReadUseCase implements BackWebReservaReadPort {
-
-    @Autowired
-    MongoDBRepository mongoDBRepository;
+public class BackWebReservaDisponibleDisponibleReadUseCase implements BackWebReservaDisponibleReadPort {
 
     @Autowired
     MongoTemplate mongoTemplate;
 
     @Override
-    public ResponseEntity<List<BackWebReservaOutputDTO>> getAllReservas(String ciudad, Date fecha, String condicion) {
-        List<BackWebReservaOutputDTO> backWebReservaOutputDTOList = new ArrayList<>();
+    public ResponseEntity<List<BackWebReservaDisponibleOutputDTO>> getAllReservas(String ciudad, Date fecha, String condicion) {
+        List<BackWebReservaDisponibleOutputDTO> backWebReservaOutputDTOList = new ArrayList<>();
 
         if (condicion != null) {
             switch (condicion) {
@@ -36,9 +35,9 @@ public class BackWebReservaReadUseCase implements BackWebReservaReadPort {
                                     Criteria.where("ciudad").is(ciudad),
                                     Criteria.where("fechaMs").lte(fecha.getTime())
                             ));
-                    mongoTemplate.find(inferior, BackWebReservaCollection.class, "reservas")
+                    mongoTemplate.find(inferior, BackWebReservaDisponibleCollection.class, "reservas-disponibles")
                             .forEach(backWebReservaCollection -> backWebReservaOutputDTOList
-                                    .add(new BackWebReservaOutputDTO(backWebReservaCollection)));
+                                    .add(new BackWebReservaDisponibleOutputDTO(backWebReservaCollection)));
                     break;
 
                 case "superior":
@@ -47,17 +46,17 @@ public class BackWebReservaReadUseCase implements BackWebReservaReadPort {
                                     Criteria.where("ciudad").is(ciudad),
                                     Criteria.where("fechaMs").gte(fecha.getTime())
                             ));
-                    mongoTemplate.find(superior, BackWebReservaCollection.class, "reservas")
+                    mongoTemplate.find(superior, BackWebReservaDisponibleCollection.class, "reservas-disponibles")
                             .forEach(backWebReservaCollection -> backWebReservaOutputDTOList
-                                    .add(new BackWebReservaOutputDTO(backWebReservaCollection)));
+                                    .add(new BackWebReservaDisponibleOutputDTO(backWebReservaCollection)));
                     break;
             }
 
         } else {
             Query query = new Query(Criteria.where("ciudad").is(ciudad));
-            mongoTemplate.find(query, BackWebReservaCollection.class, "reservas")
+            mongoTemplate.find(query, BackWebReservaDisponibleCollection.class, "reservas-disponibles")
                     .forEach(backWebReservaCollection -> backWebReservaOutputDTOList
-                            .add(new BackWebReservaOutputDTO(backWebReservaCollection)));
+                            .add(new BackWebReservaDisponibleOutputDTO(backWebReservaCollection)));
         }
         return ResponseEntity.ok(backWebReservaOutputDTOList);
     }

@@ -2,6 +2,7 @@ package com.bosonit.infrastructure.reserva_disponible.controller.dto;
 
 import com.bosonit.domain.reserva_disponible.BackWebReservaDisponibleCollection;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -14,7 +15,7 @@ public class BackWebReservaDisponibleOutputDTO {
     public BackWebReservaDisponibleOutputDTO(BackWebReservaDisponibleCollection backWebReservaDisponibleCollection) {
         if (backWebReservaDisponibleCollection == null) return;
         ciudad = backWebReservaDisponibleCollection.getCiudad();
-        fecha = backWebReservaDisponibleCollection.getFecha();
+        fecha =  backWebReservaDisponibleCollection.getFecha();
         numeroPlazas = backWebReservaDisponibleCollection.getNumeroPlazas();
     }
 }

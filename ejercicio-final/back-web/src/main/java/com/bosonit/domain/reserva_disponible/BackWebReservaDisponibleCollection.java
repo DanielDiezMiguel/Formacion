@@ -17,12 +17,14 @@ public class BackWebReservaDisponibleCollection {
     String id_reserva_disponible;
     String ciudad;
     Date fecha;
+    long fechaMs;
     Integer numeroPlazas;
 
     public BackWebReservaDisponibleCollection(BackWebReservaDisponibleInputDTO backWebReservaDisponibleInputDTO) {
         if (backWebReservaDisponibleInputDTO == null) return;
         ciudad = backWebReservaDisponibleInputDTO.getCiudad();
         fecha = backWebReservaDisponibleInputDTO.getFecha();
+        fechaMs = backWebReservaDisponibleInputDTO.getFecha().getTime();
         numeroPlazas = backWebReservaDisponibleInputDTO.getNumeroPlazas();
     }
 }

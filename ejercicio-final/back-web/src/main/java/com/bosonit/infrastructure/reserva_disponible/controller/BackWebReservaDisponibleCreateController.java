@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v0/disponible")
-public class BackWebReservaDisponibleController {
+public class BackWebReservaDisponibleCreateController {
 
     @Autowired
     BackWebReservaDisponiblePort backWebReservaDisponiblePort;
