@@ -1,6 +1,6 @@
 package com.bosonit.application.reserva.port;
 
-import com.bosonit.infrastructure.controller.dto.BackWebReservaOutputDTO;
+import com.bosonit.infrastructure.reserva.controller.dto.BackWebReservaOutputDTO;
 import org.springframework.http.ResponseEntity;
 
 import java.util.Date;

@@ -17,13 +17,9 @@ public class BackWebReservaCreateController {
     @Autowired
     BackWebReservaCreatePort backWebReservaCreatePort;
 
-//    @PostMapping
-//    public ResponseEntity<BackWebReservaOutputDTO> crearReserva(@RequestBody BackWebReservaInputDTO backWebReservaInputDTO) {
-//        return backWebReservaCreatePort.crearReserva(backWebReservaInputDTO);
-//    }
-
     @PostMapping
     public ResponseEntity<BackWebReservaOutputDTO> crearReserva(@RequestBody BackWebReservaInputDTO backWebReservaInputDTO) {
         return backWebReservaCreatePort.crearReserva(backWebReservaInputDTO);
     }
+
 }

@@ -1,6 +1,6 @@
 package com.bosonit.domain.reserva;
 
-import com.bosonit.infrastructure.controller.dto.BackWebReservaInputDTO;
+import com.bosonit.infrastructure.reserva.controller.dto.BackWebReservaInputDTO;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;

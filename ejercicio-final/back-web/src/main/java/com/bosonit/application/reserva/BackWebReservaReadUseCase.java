@@ -2,7 +2,7 @@ package com.bosonit.application.reserva;
 
 import com.bosonit.application.reserva.port.BackWebReservaReadPort;
 import com.bosonit.domain.reserva.BackWebReservaCollection;
-import com.bosonit.infrastructure.controller.dto.BackWebReservaOutputDTO;
+import com.bosonit.infrastructure.reserva.controller.dto.BackWebReservaOutputDTO;
 import com.bosonit.infrastructure.reserva.repository.mongodb.MongoDBRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
