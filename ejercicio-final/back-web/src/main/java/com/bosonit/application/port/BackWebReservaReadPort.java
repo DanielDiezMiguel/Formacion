@@ -7,6 +7,6 @@ import java.util.Date;
 import java.util.List;
 
 public interface BackWebReservaReadPort {
-    ResponseEntity<List<BackWebReservaOutputDTO>> getAllReservas(String ciudad, Date fechaHoraInferior, Date fechaHoraSuperior);
+    ResponseEntity<List<BackWebReservaOutputDTO>> getAllReservas(String ciudad, Date fecha, String condicion);
 
 }

@@ -22,6 +22,7 @@ public class BackWebReservaEntity {
     String apellidos;
     int telefono;
     Date fecha;
+    long fechaMs;
 
     public BackWebReservaEntity(BackWebReservaInputDTO backWebReservaInputDTO) {
         if (backWebReservaInputDTO == null) return;
@@ -30,5 +31,6 @@ public class BackWebReservaEntity {
         apellidos = backWebReservaInputDTO.getApellidos();
         telefono = backWebReservaInputDTO.getTelefono();
         fecha = backWebReservaInputDTO.getFecha();
+        fechaMs = backWebReservaInputDTO.getFecha().getTime();
     }
 }
