@@ -1,6 +1,6 @@
 package com.bosonit.infrastructure.controller;
 
-import com.bosonit.application.port.BackWebReservaReadPort;
+import com.bosonit.application.reserva.port.BackWebReservaReadPort;
 import com.bosonit.infrastructure.controller.dto.BackWebReservaOutputDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;

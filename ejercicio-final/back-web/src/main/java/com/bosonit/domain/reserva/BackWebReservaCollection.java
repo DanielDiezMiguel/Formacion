@@ -1,7 +1,6 @@
-package com.bosonit.domain;
+package com.bosonit.domain.reserva;
 
 import com.bosonit.infrastructure.controller.dto.BackWebReservaInputDTO;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
@@ -13,7 +12,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @Document(collection = "reservas")
-public class BackWebReservaEntity {
+public class BackWebReservaCollection {
 
     @Id
     String id_persona;
@@ -24,7 +23,7 @@ public class BackWebReservaEntity {
     Date fecha;
     long fechaMs;
 
-    public BackWebReservaEntity(BackWebReservaInputDTO backWebReservaInputDTO) {
+    public BackWebReservaCollection(BackWebReservaInputDTO backWebReservaInputDTO) {
         if (backWebReservaInputDTO == null) return;
         ciudad = backWebReservaInputDTO.getCiudad();
         nombre = backWebReservaInputDTO.getNombre();

@@ -1,4 +1,4 @@
-package com.bosonit.application.port;
+package com.bosonit.application.reserva.port;
 
 import com.bosonit.infrastructure.controller.dto.BackWebReservaInputDTO;
 import com.bosonit.infrastructure.controller.dto.BackWebReservaOutputDTO;

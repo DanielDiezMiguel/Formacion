@@ -1,6 +1,6 @@
 package com.bosonit.application;
 
-import com.bosonit.application.port.KafkaProducerPort;
+import com.bosonit.application.reserva.port.KafkaProducerPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;

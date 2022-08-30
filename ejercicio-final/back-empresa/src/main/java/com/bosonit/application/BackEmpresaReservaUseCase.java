@@ -1,6 +1,6 @@
 package com.bosonit.application;
 
-import com.bosonit.application.port.BackEmpresaReservaPort;
+import com.bosonit.application.reserva.port.BackEmpresaReservaPort;
 import com.bosonit.domain.BackEmpresaReservaEntity;
 import com.bosonit.infrastructure.controller.dto.BackEmpresaReservaInputDTO;
 import com.bosonit.infrastructure.controller.dto.BackEmpresaReservaOutputDTO;

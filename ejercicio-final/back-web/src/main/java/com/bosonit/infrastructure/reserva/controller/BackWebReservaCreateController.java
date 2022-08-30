@@ -1,6 +1,6 @@
 package com.bosonit.infrastructure.controller;
 
-import com.bosonit.application.port.BackWebReservaCreatePort;
+import com.bosonit.application.reserva.port.BackWebReservaCreatePort;
 import com.bosonit.infrastructure.controller.dto.BackWebReservaInputDTO;
 import com.bosonit.infrastructure.controller.dto.BackWebReservaOutputDTO;
 import org.springframework.beans.factory.annotation.Autowired;

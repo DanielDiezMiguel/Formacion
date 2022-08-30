@@ -1,6 +1,6 @@
 package com.bosonit.infrastructure.controller;
 
-import com.bosonit.application.port.KafkaProducerPort;
+import com.bosonit.application.reserva.port.KafkaProducerPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

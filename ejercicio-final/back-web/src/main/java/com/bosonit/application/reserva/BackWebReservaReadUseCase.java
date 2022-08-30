@@ -1,13 +1,10 @@
-package com.bosonit.application;
+package com.bosonit.application.reserva;
 
-import com.bosonit.application.port.BackWebReservaReadPort;
-import com.bosonit.domain.BackWebReservaEntity;
+import com.bosonit.application.reserva.port.BackWebReservaReadPort;
+import com.bosonit.domain.reserva.BackWebReservaCollection;
 import com.bosonit.infrastructure.controller.dto.BackWebReservaOutputDTO;
-import com.bosonit.infrastructure.repository.mongodb.MongoDBRepository;
-import lombok.extern.slf4j.Slf4j;
+import com.bosonit.infrastructure.reserva.repository.mongodb.MongoDBRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.annotation.PersistenceCreator;
-import org.springframework.data.annotation.Persistent;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -27,7 +24,6 @@ public class BackWebReservaReadUseCase implements BackWebReservaReadPort {
     @Autowired
     MongoTemplate mongoTemplate;
 
-
     @Override
     public ResponseEntity<List<BackWebReservaOutputDTO>> getAllReservas(String ciudad, Date fecha, String condicion) {
         List<BackWebReservaOutputDTO> backWebReservaOutputDTOList = new ArrayList<>();
@@ -38,30 +34,30 @@ public class BackWebReservaReadUseCase implements BackWebReservaReadPort {
                     Query inferior = new Query(new Criteria()
                             .orOperator(
                                     Criteria.where("ciudad").is(ciudad),
-                                    Criteria.where("fechaMs").lt(fecha.getTime())
+                                    Criteria.where("fechaMs").lte(fecha.getTime())
                             ));
-                    mongoTemplate.find(inferior, BackWebReservaEntity.class, "reservas")
-                            .forEach(backWebReservaEntity -> backWebReservaOutputDTOList
-                                    .add(new BackWebReservaOutputDTO(backWebReservaEntity)));
+                    mongoTemplate.find(inferior, BackWebReservaCollection.class, "reservas")
+                            .forEach(backWebReservaCollection -> backWebReservaOutputDTOList
+                                    .add(new BackWebReservaOutputDTO(backWebReservaCollection)));
                     break;
 
                 case "superior":
                     Query superior = new Query(new Criteria()
                             .orOperator(
                                     Criteria.where("ciudad").is(ciudad),
-                                    Criteria.where("fecha").gt(fecha)
+                                    Criteria.where("fechaMs").gte(fecha.getTime())
                             ));
-                    mongoTemplate.find(superior, BackWebReservaEntity.class, "reservas")
-                            .forEach(backWebReservaEntity -> backWebReservaOutputDTOList
-                                    .add(new BackWebReservaOutputDTO(backWebReservaEntity)));
+                    mongoTemplate.find(superior, BackWebReservaCollection.class, "reservas")
+                            .forEach(backWebReservaCollection -> backWebReservaOutputDTOList
+                                    .add(new BackWebReservaOutputDTO(backWebReservaCollection)));
                     break;
             }
 
         } else {
             Query query = new Query(Criteria.where("ciudad").is(ciudad));
-            mongoTemplate.find(query, BackWebReservaEntity.class, "reservas")
-                    .forEach(backWebReservaEntity -> backWebReservaOutputDTOList
-                            .add(new BackWebReservaOutputDTO(backWebReservaEntity)));
+            mongoTemplate.find(query, BackWebReservaCollection.class, "reservas")
+                    .forEach(backWebReservaCollection -> backWebReservaOutputDTOList
+                            .add(new BackWebReservaOutputDTO(backWebReservaCollection)));
         }
         return ResponseEntity.ok(backWebReservaOutputDTOList);
     }
