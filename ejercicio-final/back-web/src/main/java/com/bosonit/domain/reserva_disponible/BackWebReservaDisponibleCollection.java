@@ -3,6 +3,7 @@ package com.bosonit.domain.reserva_disponible;
 import com.bosonit.infrastructure.reserva_disponible.controller.dto.BackWebReservaDisponibleInputDTO;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
@@ -11,6 +12,9 @@ import java.util.Date;
 @NoArgsConstructor
 @Document(collection = "reservas-disponibles")
 public class BackWebReservaDisponibleCollection {
+
+    @Id
+    String id_reserva_disponible;
     String ciudad;
     Date fecha;
     Integer numeroPlazas;
