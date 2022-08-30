@@ -1,4 +1,4 @@
-package com.bosonit.infrastructure.controller;
+package com.bosonit.infrastructure.reserva.controller;
 
 import com.bosonit.application.reserva.port.KafkaProducerPort;
 import org.springframework.beans.factory.annotation.Autowired;
