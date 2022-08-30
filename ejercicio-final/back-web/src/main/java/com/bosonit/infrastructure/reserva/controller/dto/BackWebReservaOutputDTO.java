@@ -1,4 +1,4 @@
-package com.bosonit.infrastructure.controller.dto;
+package com.bosonit.infrastructure.reserva.controller.dto;
 
 import com.bosonit.domain.reserva.BackWebReservaCollection;
 import lombok.Data;

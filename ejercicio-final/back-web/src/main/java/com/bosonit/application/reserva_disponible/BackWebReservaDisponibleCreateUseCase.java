@@ -20,7 +20,7 @@ public class BackWebReservaDisponibleCreateUseCase implements BackWebReservaDisp
     @Override
     public ResponseEntity<BackWebReservaDisponibleOutputDTO> crearReservaDisponible(BackWebReservaDisponibleInputDTO backWebReservaDisponibleInputDTO) {
         try {
-            if (backWebReservaDisponibleInputDTO.getNumeroPlazas() < 40)
+            if (backWebReservaDisponibleInputDTO.getNumeroPlazas() <= 40)
                 return ResponseEntity.ok(new BackWebReservaDisponibleOutputDTO(mongoDBRepositoryDisponible.save(new BackWebReservaDisponibleCollection(backWebReservaDisponibleInputDTO))));
         } catch (Exception e) {
             throw new BadRequest("Reserva disponible inválida");
