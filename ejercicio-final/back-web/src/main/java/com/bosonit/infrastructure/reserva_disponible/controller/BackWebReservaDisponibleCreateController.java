@@ -5,10 +5,7 @@ import com.bosonit.infrastructure.reserva_disponible.controller.dto.BackWebReser
 import com.bosonit.infrastructure.reserva_disponible.controller.dto.BackWebReservaDisponibleOutputDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v0/disponible")
@@ -18,7 +15,9 @@ public class BackWebReservaDisponibleCreateController {
     BackWebReservaDisponiblePort backWebReservaDisponiblePort;
 
     @PostMapping
-    public ResponseEntity<BackWebReservaDisponibleOutputDTO> crearReservaDisponible(@RequestBody BackWebReservaDisponibleInputDTO backWebReservaDisponibleInputDTO) {
-        return backWebReservaDisponiblePort.crearReservaDisponible(backWebReservaDisponibleInputDTO);
+    public ResponseEntity<BackWebReservaDisponibleOutputDTO> crearReservaDisponible(
+            @RequestBody BackWebReservaDisponibleInputDTO backWebReservaDisponibleInputDTO,
+            @RequestParam(value = "ciudad") String ciudad) {
+        return backWebReservaDisponiblePort.crearReservaDisponible(backWebReservaDisponibleInputDTO, ciudad);
     }
 }

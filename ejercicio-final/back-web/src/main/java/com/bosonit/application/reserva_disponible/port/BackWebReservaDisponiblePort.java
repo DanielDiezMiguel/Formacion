@@ -5,5 +5,7 @@ import com.bosonit.infrastructure.reserva_disponible.controller.dto.BackWebReser
 import org.springframework.http.ResponseEntity;
 
 public interface BackWebReservaDisponiblePort {
-    ResponseEntity<BackWebReservaDisponibleOutputDTO> crearReservaDisponible(BackWebReservaDisponibleInputDTO backWebReservaDisponibleInputDTO);
+//    ResponseEntity<BackWebReservaDisponibleOutputDTO> crearReservaDisponible(BackWebReservaDisponibleInputDTO backWebReservaDisponibleInputDTO);
+
+    ResponseEntity<BackWebReservaDisponibleOutputDTO> crearReservaDisponible(BackWebReservaDisponibleInputDTO backWebReservaDisponibleInputDTO, String ciudad);
 }

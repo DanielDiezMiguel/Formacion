@@ -8,6 +8,9 @@ import com.bosonit.infrastructure.reserva_disponible.controller.dto.BackWebReser
 import com.bosonit.infrastructure.reserva_disponible.controller.dto.BackWebReservaDisponibleOutputDTO;
 import com.bosonit.infrastructure.reserva_disponible.repository.mongodb.MongoDBRepositoryDisponible;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -17,14 +20,19 @@ public class BackWebReservaDisponibleCreateUseCase implements BackWebReservaDisp
     @Autowired
     MongoDBRepositoryDisponible mongoDBRepositoryDisponible;
 
+    @Autowired
+    MongoTemplate mongoTemplate;
+
     @Override
-    public ResponseEntity<BackWebReservaDisponibleOutputDTO> crearReservaDisponible(BackWebReservaDisponibleInputDTO backWebReservaDisponibleInputDTO) {
-        try {
-            if (backWebReservaDisponibleInputDTO.getNumeroPlazas() <= 40)
-                return ResponseEntity.ok(new BackWebReservaDisponibleOutputDTO(mongoDBRepositoryDisponible.save(new BackWebReservaDisponibleCollection(backWebReservaDisponibleInputDTO))));
-        } catch (Exception e) {
-            throw new BadRequest("Reserva disponible inválida");
-        }
-        throw new UnprocesableException("Introduce un número inferior a 40 plazas");
+    public ResponseEntity<BackWebReservaDisponibleOutputDTO> crearReservaDisponible(
+            BackWebReservaDisponibleInputDTO backWebReservaDisponibleInputDTO, String ciudad) {
+        if ((mongoTemplate.count(Query.query(Criteria.where("ciudad").is(ciudad)),
+                BackWebReservaDisponibleCollection.class, "reservas-disponibles") == 0) &&
+                backWebReservaDisponibleInputDTO.getNumeroPlazas() <= 40)
+
+            return ResponseEntity.ok(new BackWebReservaDisponibleOutputDTO(mongoDBRepositoryDisponible.save(
+                    new BackWebReservaDisponibleCollection(backWebReservaDisponibleInputDTO))));
+
+        throw new BadRequest("Reserva disponible inválida");
     }
 }
