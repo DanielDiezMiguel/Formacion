@@ -28,11 +28,13 @@ public class BackWebReservaCreateUseCase implements BackWebReservaCreatePort {
     public ResponseEntity<BackWebReservaOutputDTO> crearReserva(BackWebReservaInputDTO backWebReservaInputDTO) {
         try {
             if (mongoTemplate.exists(Query.query(Criteria.where("ciudad").is(backWebReservaInputDTO.getCiudad())),
-                    BackWebReservaDisponibleCollection.class, "reservas-disponibles")
-                    && mongoTemplate.exists(Query.query(Criteria.where("numeroPlazas").lte(40)),
+                    BackWebReservaDisponibleCollection.class, "reservas-disponibles") &&
+                    mongoTemplate.exists(Query.query(Criteria.where("numeroPlazas").lte(40)),
                     BackWebReservaDisponibleCollection.class, "reservas-disponibles"))
 
-                return ResponseEntity.ok(new BackWebReservaOutputDTO(mongoDBRepository.save(new BackWebReservaCollection(backWebReservaInputDTO))));
+                return ResponseEntity.ok(
+                        new BackWebReservaOutputDTO(mongoDBRepository.save(
+                                new BackWebReservaCollection(backWebReservaInputDTO))));
 
         } catch (Exception e) {
             throw new BadRequest("Reserva inválida");

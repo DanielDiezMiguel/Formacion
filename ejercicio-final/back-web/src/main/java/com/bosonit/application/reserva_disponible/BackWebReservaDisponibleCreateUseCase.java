@@ -26,6 +26,7 @@ public class BackWebReservaDisponibleCreateUseCase implements BackWebReservaDisp
     @Override
     public ResponseEntity<BackWebReservaDisponibleOutputDTO> crearReservaDisponible(
             BackWebReservaDisponibleInputDTO backWebReservaDisponibleInputDTO, String ciudad) {
+
         if ((mongoTemplate.count(Query.query(Criteria.where("ciudad").is(ciudad)),
                 BackWebReservaDisponibleCollection.class, "reservas-disponibles") == 0) &&
                 backWebReservaDisponibleInputDTO.getNumeroPlazas() <= 40)
