@@ -22,18 +22,4 @@ public class BacWebKafkaController {
         return ResponseEntity.ok("Message sent to the topic");
     }
 
-//    @Autowired
-//    KafkaTemplate<String, BackWebReservaOutputDTO> kafkaTemplate;
-
-//    @GetMapping
-//    public ResponseEntity<String> sendMessage(@RequestBody BackWebReservaOutputDTO message) {
-//        kafkaProducerPort.sendMessage(message);
-//        return ResponseEntity.ok("MESSAGE SENT TO THE TOPIC");
-//    }
-
-//    @GetMapping
-//    public ResponseEntity<String> sendMessage(@RequestBody BackWebReservaOutputDTO backWebReservaOutputDTO) {
-//        kafkaTemplate.send(KafkaTopicConfig.TOPIC, backWebReservaOutputDTO);
-//        return ResponseEntity.ok("MESSAGE SENT TO THE TOPIC");
-//    }
 }
