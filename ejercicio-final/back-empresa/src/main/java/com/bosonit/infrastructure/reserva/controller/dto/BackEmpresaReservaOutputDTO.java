@@ -1,6 +1,6 @@
 package com.bosonit.infrastructure.controller.dto;
 
-import com.bosonit.domain.BackEmpresaReservaEntity;
+import com.bosonit.domain.reserva.BackEmpresaReservaCollection;
 import lombok.Data;
 
 import java.util.Date;
@@ -14,13 +14,13 @@ public class BackEmpresaReservaOutputDTO {
     int telefono;
     Date fecha;
 
-    public BackEmpresaReservaOutputDTO(BackEmpresaReservaEntity backEmpresaReservaEntity) {
-        if (backEmpresaReservaEntity == null) return;
-        id_persona = backEmpresaReservaEntity.getId_persona();
-        ciudad_destino = backEmpresaReservaEntity.getCiudad_destino();
-        nombre = backEmpresaReservaEntity.getNombre();
-        apellidos = backEmpresaReservaEntity.getApellidos();
-        telefono = backEmpresaReservaEntity.getTelefono();
-        fecha = backEmpresaReservaEntity.getFecha();
+    public BackEmpresaReservaOutputDTO(BackEmpresaReservaCollection backEmpresaReservaCollection) {
+        if (backEmpresaReservaCollection == null) return;
+        id_persona = backEmpresaReservaCollection.getId_persona();
+        ciudad_destino = backEmpresaReservaCollection.getCiudad_destino();
+        nombre = backEmpresaReservaCollection.getNombre();
+        apellidos = backEmpresaReservaCollection.getApellidos();
+        telefono = backEmpresaReservaCollection.getTelefono();
+        fecha = backEmpresaReservaCollection.getFecha();
     }
 }

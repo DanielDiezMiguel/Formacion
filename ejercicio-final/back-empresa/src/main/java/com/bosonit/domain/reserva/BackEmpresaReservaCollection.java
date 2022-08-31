@@ -1,4 +1,4 @@
-package com.bosonit.domain;
+package com.bosonit.domain.reserva;
 
 import com.bosonit.infrastructure.controller.dto.BackEmpresaReservaInputDTO;
 import lombok.Data;
@@ -9,7 +9,7 @@ import java.util.Date;
 
 @Data
 @Document(collection = "reservas")
-public class BackEmpresaReservaEntity {
+public class BackEmpresaReservaCollection {
     @Id
     String id_persona;
     String ciudad_destino;
@@ -18,7 +18,7 @@ public class BackEmpresaReservaEntity {
     int telefono;
     Date fecha;
 
-    public BackEmpresaReservaEntity(BackEmpresaReservaInputDTO backWebReservaInputDTO) {
+    public BackEmpresaReservaCollection(BackEmpresaReservaInputDTO backWebReservaInputDTO) {
         if (backWebReservaInputDTO == null) return;
         ciudad_destino = backWebReservaInputDTO.getCiudad_destino();
         nombre = backWebReservaInputDTO.getNombre();
