@@ -1,9 +1,9 @@
 package com.bosonit.application.reserva;
 
-import com.bosonit.application.reserva.port.BackEmpresaReservaPort;
+import com.bosonit.application.reserva.port.BackEmpresaCreateReservaPort;
 import com.bosonit.domain.reserva.BackEmpresaReservaCollection;
-import com.bosonit.infrastructure.controller.dto.BackEmpresaReservaInputDTO;
-import com.bosonit.infrastructure.controller.dto.BackEmpresaReservaOutputDTO;
+import com.bosonit.infrastructure.reserva.controller.dto.BackEmpresaReservaInputDTO;
+import com.bosonit.infrastructure.reserva.controller.dto.BackEmpresaReservaOutputDTO;
 import com.bosonit.infrastructure.reserva.mongodb.MongoDBRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -13,7 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
-public class BackEmpresaReservaUseCase implements BackEmpresaReservaPort {
+public class BackEmpresaCreateCreateReservaUseCase implements BackEmpresaCreateReservaPort {
 
     @Autowired
     MongoDBRepository mongoDBRepository;

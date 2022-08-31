@@ -1,4 +1,4 @@
-package com.bosonit.infrastructure.controller.dto;
+package com.bosonit.infrastructure.reserva.controller.dto;
 
 import com.bosonit.domain.reserva.BackEmpresaReservaCollection;
 import lombok.Data;
@@ -8,7 +8,7 @@ import java.util.Date;
 @Data
 public class BackEmpresaReservaOutputDTO {
     String id_persona;
-    String ciudad_destino;
+    String ciudad;
     String nombre;
     String apellidos;
     int telefono;
@@ -17,7 +17,7 @@ public class BackEmpresaReservaOutputDTO {
     public BackEmpresaReservaOutputDTO(BackEmpresaReservaCollection backEmpresaReservaCollection) {
         if (backEmpresaReservaCollection == null) return;
         id_persona = backEmpresaReservaCollection.getId_persona();
-        ciudad_destino = backEmpresaReservaCollection.getCiudad_destino();
+        ciudad = backEmpresaReservaCollection.getCiudad();
         nombre = backEmpresaReservaCollection.getNombre();
         apellidos = backEmpresaReservaCollection.getApellidos();
         telefono = backEmpresaReservaCollection.getTelefono();

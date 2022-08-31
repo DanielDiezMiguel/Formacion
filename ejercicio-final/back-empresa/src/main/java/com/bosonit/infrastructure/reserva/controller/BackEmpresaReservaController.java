@@ -1,8 +1,8 @@
 package com.bosonit.infrastructure.reserva.controller;
 
-import com.bosonit.application.reserva.port.BackEmpresaReservaPort;
-import com.bosonit.infrastructure.controller.dto.BackEmpresaReservaInputDTO;
-import com.bosonit.infrastructure.controller.dto.BackEmpresaReservaOutputDTO;
+import com.bosonit.application.reserva.port.BackEmpresaCreateReservaPort;
+import com.bosonit.infrastructure.reserva.controller.dto.BackEmpresaReservaInputDTO;
+import com.bosonit.infrastructure.reserva.controller.dto.BackEmpresaReservaOutputDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class BackEmpresaReservaController {
 
     @Autowired
-    BackEmpresaReservaPort backEmpresaReservaPort;
+    BackEmpresaCreateReservaPort backEmpresaCreateReservaPort;
 
     @PostMapping
     public ResponseEntity<BackEmpresaReservaOutputDTO> backEmpresaReservaOutputDTO(@RequestBody BackEmpresaReservaInputDTO backEmpresaReservaInputDTO) {
-        return backEmpresaReservaPort.crearReserva(backEmpresaReservaInputDTO);
+        return backEmpresaCreateReservaPort.crearReserva(backEmpresaReservaInputDTO);
     }
 }
