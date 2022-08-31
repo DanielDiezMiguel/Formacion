@@ -22,4 +22,10 @@ public class CustomizeResponseEntityExceptionHandler extends ResponseEntityExcep
         CustomError customError = new CustomError(new Date(), 422, unprocesableException.getMessage());
         return new ResponseEntity<>(customError, HttpStatus.UNPROCESSABLE_ENTITY);
     }
+
+    @ExceptionHandler(BadRequest.class)
+    public ResponseEntity<CustomError> badRequest(BadRequest badRequest) {
+        CustomError customError = new CustomError(new Date(), 400, badRequest.getMessage());
+        return new ResponseEntity<>(customError, HttpStatus.BAD_REQUEST);
+    }
 }
