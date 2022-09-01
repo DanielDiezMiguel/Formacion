@@ -1,12 +1,10 @@
 package com.bosonit.infrastructure.reserva_disponible.controller;
 
 import com.bosonit.application.reserva_disponible.port.KafkaBackEmpresaProducerPort;
+import com.bosonit.domain.no_collection.KafkaItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v0/disponible/kafka/producer")
@@ -16,8 +14,8 @@ public class BackEmpresaKafkaReservaDisponibleController {
     KafkaBackEmpresaProducerPort kafkaBackEmpresaProducerPort;
 
     @PostMapping
-    public ResponseEntity<String> sendMessage(@RequestParam(value = "message") String message) {
-        kafkaBackEmpresaProducerPort.sendMessage(message);
+    public ResponseEntity<String> sendMessage(@RequestBody KafkaItem kafkaItem) {
+        kafkaBackEmpresaProducerPort.sendMessage(kafkaItem);
         return ResponseEntity.ok("Message sent to the topic");
     }
 }

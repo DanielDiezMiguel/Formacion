@@ -1,6 +1,7 @@
 package com.bosonit.application.reserva_disponible;
 
 import com.bosonit.application.reserva_disponible.port.BackWebReservaDisponibleKafkaConsumerPort;
+import com.bosonit.domain.no_collection.KafkaItem;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
@@ -11,7 +12,7 @@ public class BackWebReservaDisponibleKafkaConsumerUseCase implements BackWebRese
 
     @Override
     @KafkaListener(topics = "reservas-disponibles", groupId = "myGroup")
-    public void consumeMessage(String message) {
-        log.info("MESSAGE RECIEVED: {}", message);
+    public void consumeMessage(KafkaItem kafkaItem) {
+        log.info("MESSAGE RECIEVED: {}", kafkaItem.toString());
     }
 }
