@@ -1,6 +1,6 @@
 package com.bosonit.domain.reserva;
 
-import com.bosonit.domain.no_collection.KafkaItem;
+import com.bosonit.domain.no_collection.KafkaItemReservas;
 import com.bosonit.infrastructure.reserva.controller.dto.BackEmpresaReservaInputDTO;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
@@ -28,13 +28,13 @@ public class BackEmpresaReservaCollection {
         fecha = backWebReservaInputDTO.getFecha();
     }
 
-    public BackEmpresaReservaCollection(KafkaItem kafkaItem) {
-        if (kafkaItem == null) return;
-        id_persona = kafkaItem.getId_persona();
-        ciudad = kafkaItem.getCiudad();
-        nombre = kafkaItem.getNombre();
-        apellidos = kafkaItem.getApellidos();
-        telefono = kafkaItem.getTelefono();
-        fecha = kafkaItem.getFecha();
+    public BackEmpresaReservaCollection(KafkaItemReservas kafkaItemReservas) {
+        if (kafkaItemReservas == null) return;
+        id_persona = kafkaItemReservas.getId_persona();
+        ciudad = kafkaItemReservas.getCiudad();
+        nombre = kafkaItemReservas.getNombre();
+        apellidos = kafkaItemReservas.getApellidos();
+        telefono = kafkaItemReservas.getTelefono();
+        fecha = kafkaItemReservas.getFecha();
     }
 }

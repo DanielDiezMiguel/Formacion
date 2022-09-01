@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class KafkaItem {
+public class KafkaItemReservas {
     String id_persona;
     String ciudad;
     String nombre;

@@ -1,7 +1,7 @@
 package com.bosonit.application.reserva;
 
 import com.bosonit.application.reserva.port.KafkaBackEmpresaConsumerPort;
-import com.bosonit.domain.no_collection.KafkaItem;
+import com.bosonit.domain.no_collection.KafkaItemReservas;
 import com.bosonit.domain.reserva.BackEmpresaReservaCollection;
 import com.bosonit.infrastructure.reserva.repository.mongodb.MongoDBRepositoryEmpresa;
 import lombok.extern.slf4j.Slf4j;
@@ -18,8 +18,8 @@ public class KafkaBackEmpresaBackEmpresaConsumerUseCase implements KafkaBackEmpr
 
     @Override
     @KafkaListener(topics = "reservas", groupId = "myGroup")
-    public void consumeMessage(KafkaItem kafkaItem) {
-        mongoDBRepositoryEmpresa.save(new BackEmpresaReservaCollection(kafkaItem));
-        log.info("MESSAGE RECIEVED: {}", kafkaItem.toString());
+    public void consumeMessage(KafkaItemReservas kafkaItemReservas) {
+        mongoDBRepositoryEmpresa.save(new BackEmpresaReservaCollection(kafkaItemReservas));
+        log.info("MESSAGE RECIEVED: {}", kafkaItemReservas.toString());
     }
 }
