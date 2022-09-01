@@ -36,10 +36,4 @@ public class BackEmpresaCreateReservaDisponibleUseCase implements BackEmpresaCre
         throw new BadRequest("Reserva disponible inválida");
     }
 
-//    @Override
-//    public ResponseEntity<BackEmpresaReservaOutputDTO> crearReserva(BackEmpresaReservaInputDTO backEmpresaReservaInputDTO) {
-//        if (mongoTemplate.count(Query.query(Criteria.where("_id").exists(true)), "reservas") < 40)
-//            return ResponseEntity.ok().body(new BackEmpresaReservaOutputDTO(mongoDBRepository.save(new BackEmpresaReservaCollection(backEmpresaReservaInputDTO))));
-//         else return ResponseEntity.badRequest().build();
-//    }
 }

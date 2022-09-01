@@ -1,13 +1,16 @@
 package com.bosonit.domain.reserva_disponible;
 
 import com.bosonit.infrastructure.reserva_disponible.controller.dto.BackEmpresaReservaDisponibleInputDTO;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 
 @Data
+@NoArgsConstructor
 @Document(collection = "reservas-disponibles")
 public class BackEmpresaReservaDisponibleCollection {
     @Id
