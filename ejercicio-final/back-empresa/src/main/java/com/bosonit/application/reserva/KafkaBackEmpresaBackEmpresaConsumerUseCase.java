@@ -1,6 +1,6 @@
 package com.bosonit.application.reserva;
 
-import com.bosonit.application.reserva.port.KafkaConsumerPort;
+import com.bosonit.application.reserva.port.KafkaBackEmpresaConsumerPort;
 import com.bosonit.domain.no_collection.KafkaItem;
 import com.bosonit.domain.reserva.BackEmpresaReservaCollection;
 import com.bosonit.infrastructure.reserva.repository.mongodb.MongoDBRepositoryEmpresa;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
-public class KafkaConsumerUseCase implements KafkaConsumerPort {
+public class KafkaBackEmpresaBackEmpresaConsumerUseCase implements KafkaBackEmpresaConsumerPort {
 
     @Autowired
     MongoDBRepositoryEmpresa mongoDBRepositoryEmpresa;

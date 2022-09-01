@@ -35,8 +35,8 @@ public class BackEmpresaReadReservaDisponibleUseCase implements BackEmpresaReadR
                         (Criteria.where("ciudad").is(ciudad))
                                 .orOperator(
                                         Criteria.where("numeroPlazas").lte(numeroPlazasInferior),
-                                        Criteria.where("numeroPlazas").gte(numeroPlazasSuperior)))
-        );
+                                        Criteria.where("numeroPlazas").gte(numeroPlazasSuperior))
+                ));
 
         mongoTemplate.find(query, BackEmpresaReservaDisponibleCollection.class, "reservas-disponibles")
                 .forEach(backEmpresaReservaDisponibleCollection -> backEmpresaReservaDisponibleOutputDTOList
