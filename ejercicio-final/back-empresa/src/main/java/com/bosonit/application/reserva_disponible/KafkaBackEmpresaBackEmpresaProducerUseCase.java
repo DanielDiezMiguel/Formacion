@@ -22,5 +22,7 @@ public class KafkaBackEmpresaBackEmpresaProducerUseCase implements KafkaBackEmpr
                 .setHeader(KafkaHeaders.TOPIC, "reservas-disponibles")
                 .build();
         kafkaTemplate.send(message);
+
+        //TODO: Crear clase en back-web y back-empresa para poder producir y consumir ciudades disponibles
     }
 }
