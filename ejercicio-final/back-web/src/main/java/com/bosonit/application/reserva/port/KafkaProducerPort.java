@@ -1,10 +1,9 @@
 package com.bosonit.application.reserva.port;
 
-import com.bosonit.domain.no_collection.KafkaItem;
-import com.bosonit.infrastructure.reserva.controller.dto.BackWebReservaOutputDTO;
+import com.bosonit.domain.no_collection.KafkaItemReservas;
 
 public interface KafkaProducerPort {
 //    void sendMessage(BackWebReservaOutputDTO message);
 
-    void sendMessage(KafkaItem kafkaItem);
+    void sendMessage(KafkaItemReservas kafkaItemReservas);
 }

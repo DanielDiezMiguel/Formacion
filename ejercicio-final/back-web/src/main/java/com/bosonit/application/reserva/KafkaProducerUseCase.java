@@ -1,7 +1,7 @@
 package com.bosonit.application.reserva;
 
 import com.bosonit.application.reserva.port.KafkaProducerPort;
-import com.bosonit.domain.no_collection.KafkaItem;
+import com.bosonit.domain.no_collection.KafkaItemReservas;
 import lombok.AllArgsConstructor;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.KafkaHeaders;
@@ -13,12 +13,12 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class KafkaProducerUseCase implements KafkaProducerPort {
 
-    private KafkaTemplate<String, KafkaItem> kafkaTemplate;
+    private KafkaTemplate<String, KafkaItemReservas> kafkaTemplate;
 
     @Override
-    public void sendMessage(KafkaItem kafkaItem) {
-        Message<KafkaItem> message = MessageBuilder
-                .withPayload(kafkaItem)
+    public void sendMessage(KafkaItemReservas kafkaItemReservas) {
+        Message<KafkaItemReservas> message = MessageBuilder
+                .withPayload(kafkaItemReservas)
                 .setHeader(KafkaHeaders.TOPIC, "reservas")
                 .build();
         kafkaTemplate.send(message);
