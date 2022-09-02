@@ -57,7 +57,7 @@ public class BackEmpresaCreateReservaDisponibleUseCase implements BackEmpresaCre
             } else throw new BadRequest("Reserva disponible inválida");
 
         } catch (Exception e) {
-            throw new BadRequest("Reserva invalida");
+            throw new BadRequest("Reserva disponible invalida");
         }
 
     }
