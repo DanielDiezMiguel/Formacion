@@ -17,6 +17,7 @@ public class BackEmpresaReservaDisponibleCollection {
     String id_reserva_disponible;
     String ciudad;
     Date fecha;
+    long fechaMs;
     Integer numeroPlazas;
 
     public BackEmpresaReservaDisponibleCollection(BackEmpresaReservaDisponibleInputDTO backEmpresaReservaDisponibleInputDTO) {
@@ -24,6 +25,7 @@ public class BackEmpresaReservaDisponibleCollection {
         id_reserva_disponible = backEmpresaReservaDisponibleInputDTO.getId_reserva_disponible();
         ciudad = backEmpresaReservaDisponibleInputDTO.getCiudad();
         fecha = backEmpresaReservaDisponibleInputDTO.getFecha();
+        fechaMs = backEmpresaReservaDisponibleInputDTO.getFecha().getTime();
         numeroPlazas = backEmpresaReservaDisponibleInputDTO.getNumeroPlazas();
     }
 }

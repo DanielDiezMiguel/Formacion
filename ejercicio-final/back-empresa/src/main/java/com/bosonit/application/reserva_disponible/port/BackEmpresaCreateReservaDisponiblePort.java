@@ -11,6 +11,6 @@ import java.util.List;
 
 public interface BackEmpresaCreateReservaDisponiblePort {
     ResponseEntity<BackEmpresaReservaDisponibleOutputDTO> crearReservaDisponible(
-            BackEmpresaReservaDisponibleInputDTO backEmpresaReservaDisponibleInputDTO, String ciudad);
+            BackEmpresaReservaDisponibleInputDTO backEmpresaReservaDisponibleInputDTO);
 
 }
