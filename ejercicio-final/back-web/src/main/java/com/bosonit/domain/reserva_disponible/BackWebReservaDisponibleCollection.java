@@ -1,5 +1,6 @@
 package com.bosonit.domain.reserva_disponible;
 
+import com.bosonit.domain.no_collection.KafkaItemReservasDisponibles;
 import com.bosonit.infrastructure.reserva_disponible.controller.dto.BackWebReservaDisponibleInputDTO;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,5 +27,18 @@ public class BackWebReservaDisponibleCollection {
         fecha = backWebReservaDisponibleInputDTO.getFecha();
         fechaMs = backWebReservaDisponibleInputDTO.getFecha().getTime();
         numeroPlazas = backWebReservaDisponibleInputDTO.getNumeroPlazas();
+    }
+
+    public BackWebReservaDisponibleCollection(KafkaItemReservasDisponibles kafkaItemReservasDisponibles) {
+        ciudad = kafkaItemReservasDisponibles.getCiudad();
+        fecha = kafkaItemReservasDisponibles.getFecha();
+        numeroPlazas = kafkaItemReservasDisponibles.getNumeroPlazas();
+    }
+
+    public void update(KafkaItemReservasDisponibles kafkaItemReservasDisponibles) {
+        if (kafkaItemReservasDisponibles == null) return;
+        ciudad = kafkaItemReservasDisponibles.getCiudad();
+        fecha = kafkaItemReservasDisponibles.getFecha();
+        numeroPlazas = kafkaItemReservasDisponibles.getNumeroPlazas();
     }
 }
