@@ -6,7 +6,6 @@ import com.bosonit.exception.BadRequest;
 import com.bosonit.infrastructure.reserva_disponible.controller.dto.BackEmpresaReservaDisponibleInputDTO;
 import com.bosonit.infrastructure.reserva_disponible.controller.dto.BackEmpresaReservaDisponibleOutputDTO;
 import com.bosonit.infrastructure.reserva_disponible.repository.mongoDB.MongoDBRespositoryDisponible;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -18,7 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@Slf4j
 public class BackEmpresaCreateReservaDisponibleUseCase implements BackEmpresaCreateReservaDisponiblePort {
 
     @Autowired
