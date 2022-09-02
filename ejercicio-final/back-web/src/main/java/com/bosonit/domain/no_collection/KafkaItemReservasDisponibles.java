@@ -6,6 +6,7 @@ import java.util.Date;
 
 @Data
 public class KafkaItemReservasDisponibles {
+    String id_reserva_disponible;
     String ciudad;
     Date fecha;
     Integer numeroPlazas;

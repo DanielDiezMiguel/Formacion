@@ -24,6 +24,5 @@ public class KafkaBackEmpresaBackEmpresaProducerUseCase implements KafkaBackEmpr
                 .build();
         kafkaTemplate.send(message);
 
-        //TODO: Comprobacion en BACK-WEB BBDD si coinciden las ciudades disponibles
     }
 }

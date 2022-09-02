@@ -30,15 +30,19 @@ public class BackWebReservaDisponibleCollection {
     }
 
     public BackWebReservaDisponibleCollection(KafkaItemReservasDisponibles kafkaItemReservasDisponibles) {
+        id_reserva_disponible = kafkaItemReservasDisponibles.getId_reserva_disponible();
         ciudad = kafkaItemReservasDisponibles.getCiudad();
         fecha = kafkaItemReservasDisponibles.getFecha();
+        fechaMs = kafkaItemReservasDisponibles.getFecha().getTime();
         numeroPlazas = kafkaItemReservasDisponibles.getNumeroPlazas();
     }
 
     public void update(KafkaItemReservasDisponibles kafkaItemReservasDisponibles) {
         if (kafkaItemReservasDisponibles == null) return;
+        id_reserva_disponible = kafkaItemReservasDisponibles.getId_reserva_disponible();
         ciudad = kafkaItemReservasDisponibles.getCiudad();
         fecha = kafkaItemReservasDisponibles.getFecha();
+        fechaMs = kafkaItemReservasDisponibles.getFecha().getTime();
         numeroPlazas = kafkaItemReservasDisponibles.getNumeroPlazas();
     }
 }
