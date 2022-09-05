@@ -24,8 +24,8 @@ public class BackWebReservaDisponibleReadController {
     @GetMapping
     public ResponseEntity<List<BackWebReservaDisponibleOutputDTO>> backWebReservaOutputDTOList(
             @RequestParam(value = "ciudad", required = false) String ciudad,
-            @RequestParam(value = "fecha", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date fecha,
-            @RequestParam(value = "condicion", required = false) String condicion) {
+            @RequestParam(value = "condicion", required = false) String condicion,
+            @RequestParam(value = "fecha", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date fecha) {
         return backWebReservaDisponibleReadPort.getAllReservas(ciudad, fecha, condicion);
     }
 }

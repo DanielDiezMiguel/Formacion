@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface BackEmpresaReadReservaDisponiblePort {
 
-    ResponseEntity<List<BackEmpresaReservaDisponibleOutputDTO>> readReservaDisponible(
-            String ciudad, Integer numeroPlazasInferior, Integer numeroPlazasSuperior);
+    ResponseEntity<List<BackEmpresaReservaDisponibleOutputDTO>>
+    readReservaDisponible(String ciudad, Integer numeroPlazas, String condicion);
 }

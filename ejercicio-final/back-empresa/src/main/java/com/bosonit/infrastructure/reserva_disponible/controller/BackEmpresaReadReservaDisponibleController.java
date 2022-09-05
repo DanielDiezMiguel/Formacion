@@ -17,9 +17,9 @@ public class BackEmpresaReadReservaDisponibleController {
 
     @GetMapping
     public ResponseEntity<List<BackEmpresaReservaDisponibleOutputDTO>> getReservaDisponible(
-            @RequestParam(value = "ciudad") String ciudad,
-            @RequestParam(value = "numeroPlazasInferior", required = false) Integer numeroPlazasInferior,
-            @RequestParam(value = "numeroPlazasSuperior", required = false) Integer numeroPlazasSuperior) {
-        return backEmpresaReadReservaDisponiblePort.readReservaDisponible(ciudad, numeroPlazasInferior, numeroPlazasSuperior);
+            @RequestParam(value = "ciudad", required = false) String ciudad,
+            @RequestParam(value = "condicion", required = false) String condicion,
+            @RequestParam(value = "numeroPlazas", required = false) Integer numeroPlazas) {
+        return backEmpresaReadReservaDisponiblePort.readReservaDisponible(ciudad, numeroPlazas, condicion);
     }
 }
