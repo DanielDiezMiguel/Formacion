@@ -23,11 +23,7 @@ public class BackWebReservaDisponibleKafkaConsumerUseCase implements BackWebRese
     @Autowired
     MongoTemplate mongoTemplate;
 
-    //    @Override
-//    @KafkaListener(topics = "reservas-disponibles", groupId = "myGroup")
-//    public void consumeMessage(KafkaItemReservasDisponibles kafkaItemReservasDisponibles) {
-//        log.info("MESSAGE RECIEVED: {}", kafkaItemReservasDisponibles.toString());
-//    }
+
     @Override
     @KafkaListener(topics = "reservas-disponibles", groupId = "myGroup")
     public BackWebReservaDisponibleOutputDTO consumeMessageUpdate(
