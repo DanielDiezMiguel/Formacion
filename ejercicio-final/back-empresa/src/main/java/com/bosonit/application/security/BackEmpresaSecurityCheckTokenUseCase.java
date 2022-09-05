@@ -10,9 +10,8 @@ import org.springframework.stereotype.Service;
 public class BackEmpresaSecurityCheckTokenUseCase implements BackEmpresaSecurityCheckTokenPort {
 
     @Override
-    public HttpStatus checkToken(BackEmpresaSecurityInputDTO backEmpresaSecurityInputDTO, String authorization) {
-        if (backEmpresaSecurityInputDTO.getToken().equals(authorization))
-            return HttpStatus.OK;
+    public HttpStatus checkToken(BackEmpresaSecurityInputDTO backEmpresaSecurityInputDTO, String token) {
+        if (backEmpresaSecurityInputDTO.getToken().equals(token)) return HttpStatus.OK;
         else return HttpStatus.FORBIDDEN;
     }
 }

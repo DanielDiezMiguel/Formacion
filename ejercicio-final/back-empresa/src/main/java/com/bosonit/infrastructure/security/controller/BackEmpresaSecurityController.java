@@ -17,7 +17,7 @@ public class BackEmpresaSecurityController {
     @GetMapping
     public HttpStatus checkToken(
             @RequestBody BackEmpresaSecurityInputDTO backEmpresaSecurityInputDTO,
-            @RequestParam(value = "Authorization") String authorization) {
-        return backEmpresaSecurityCheckTokenPort.checkToken(backEmpresaSecurityInputDTO, authorization);
+            @RequestParam(value = "token") String token) {
+        return backEmpresaSecurityCheckTokenPort.checkToken(backEmpresaSecurityInputDTO, token);
     }
 }
