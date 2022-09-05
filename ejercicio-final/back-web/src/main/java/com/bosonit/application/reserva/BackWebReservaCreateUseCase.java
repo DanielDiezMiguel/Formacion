@@ -39,6 +39,6 @@ public class BackWebReservaCreateUseCase implements BackWebReservaCreatePort {
         } catch (Exception e) {
             throw new BadRequest("Reserva inválida");
         }
-        throw new UnprocesableException("No quedan plazas disponibles");
+        throw new BadRequest("No quedan plazas disponibles");
     }
 }

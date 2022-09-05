@@ -9,6 +9,5 @@ public class KafkaItemReservasDisponibles {
     String id_reserva_disponible;
     String ciudad;
     Date fecha;
-//    long fechaMs = fecha.getTime();
     Integer numeroPlazas;
 }

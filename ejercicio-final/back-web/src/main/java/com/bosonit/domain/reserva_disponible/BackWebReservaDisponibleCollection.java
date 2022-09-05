@@ -13,7 +13,6 @@ import java.util.Date;
 @NoArgsConstructor
 @Document(collection = "reservas-disponibles")
 public class BackWebReservaDisponibleCollection {
-
     @Id
     String id_reserva_disponible;
     String ciudad;

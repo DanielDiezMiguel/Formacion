@@ -6,9 +6,6 @@ import org.springframework.kafka.annotation.KafkaListener;
 
 public interface BackWebReservaDisponibleKafkaConsumerPort {
 
-//    @KafkaListener(topics = "reservas-disponibles", groupId = "myGroup")
-//    void consumeMessage(KafkaItemReservasDisponibles kafkaItemReservasDisponibles);
-
     @KafkaListener(topics = "reservas-disponibles", groupId = "myGroup")
     BackWebReservaDisponibleOutputDTO consumeMessageUpdate(KafkaItemReservasDisponibles kafkaItemReservasDisponibles);
 }
