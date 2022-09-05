@@ -9,7 +9,6 @@ public class ConstantsConfiguration {
     public static final String SECRET = "secret";
     public static final String ROLES = "roles";
     public static final String ACCESS_TOKEN = "access_token";
-
     public static final String USERNAME = "username";
     public static final String PASSWORD = "password";
     public static final long EXPIRATION_TIME = 600000; // 10 min
