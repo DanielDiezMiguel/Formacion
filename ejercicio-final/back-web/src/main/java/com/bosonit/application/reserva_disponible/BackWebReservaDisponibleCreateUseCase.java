@@ -3,7 +3,6 @@ package com.bosonit.application.reserva_disponible;
 import com.bosonit.application.reserva_disponible.port.BackWebReservaDisponiblePort;
 import com.bosonit.domain.reserva_disponible.BackWebReservaDisponibleCollection;
 import com.bosonit.exception.BadRequest;
-import com.bosonit.exception.UnprocesableException;
 import com.bosonit.infrastructure.reserva_disponible.controller.dto.BackWebReservaDisponibleInputDTO;
 import com.bosonit.infrastructure.reserva_disponible.controller.dto.BackWebReservaDisponibleOutputDTO;
 import com.bosonit.infrastructure.reserva_disponible.repository.mongodb.MongoDBRepositoryDisponible;
@@ -13,6 +12,9 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class BackWebReservaDisponibleCreateUseCase implements BackWebReservaDisponiblePort {
@@ -24,16 +26,33 @@ public class BackWebReservaDisponibleCreateUseCase implements BackWebReservaDisp
     MongoTemplate mongoTemplate;
 
     @Override
-    public ResponseEntity<BackWebReservaDisponibleOutputDTO> crearReservaDisponible(
-            BackWebReservaDisponibleInputDTO backWebReservaDisponibleInputDTO, String ciudad) {
+    public ResponseEntity<BackWebReservaDisponibleOutputDTO>
+    crearReservaDisponible(BackWebReservaDisponibleInputDTO backWebReservaDisponibleInputDTO) {
 
-        if ((mongoTemplate.count(Query.query(Criteria.where("ciudad").is(ciudad)),
-                BackWebReservaDisponibleCollection.class, "reservas-disponibles") == 0) &&
-                backWebReservaDisponibleInputDTO.getNumeroPlazas() <= 40)
+        List<BackWebReservaDisponibleOutputDTO> backWebReservaDisponibleOutputDTOList = new ArrayList<>();
 
-            return ResponseEntity.ok(new BackWebReservaDisponibleOutputDTO(mongoDBRepositoryDisponible.save(
-                    new BackWebReservaDisponibleCollection(backWebReservaDisponibleInputDTO))));
+        Query query = Query.query(Criteria.where("ciudad")
+                .is(backWebReservaDisponibleInputDTO.getCiudad())
+                .and("fechaMs").is(backWebReservaDisponibleInputDTO.getFecha().getTime()));
 
-        throw new BadRequest("Reserva disponible inválida");
+        mongoTemplate.find(query, BackWebReservaDisponibleCollection.class, "reservas-disponibles")
+                .forEach(backEmpresaReservaDisponibleCollection -> backWebReservaDisponibleOutputDTOList.add(
+                        new BackWebReservaDisponibleOutputDTO(backEmpresaReservaDisponibleCollection)
+                ));
+        try {
+            if ((backWebReservaDisponibleOutputDTOList.size() == 0 &&
+                    backWebReservaDisponibleInputDTO.getNumeroPlazas() <= 40) ||
+                    (backWebReservaDisponibleOutputDTOList.get(0).getFecha().getTime() !=
+                            backWebReservaDisponibleInputDTO.getFecha().getTime() &&
+                            backWebReservaDisponibleInputDTO.getNumeroPlazas() <= 40))
+
+                return ResponseEntity.ok(new BackWebReservaDisponibleOutputDTO(mongoDBRepositoryDisponible.save(
+                        new BackWebReservaDisponibleCollection(backWebReservaDisponibleInputDTO))));
+
+            else throw new BadRequest("Reserva disponible inválida");
+
+        } catch (Exception e) {
+            throw new BadRequest("Reserva disponible invalida");
+        }
     }
 }

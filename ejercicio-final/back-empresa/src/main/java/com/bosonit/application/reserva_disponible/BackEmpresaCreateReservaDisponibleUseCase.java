@@ -26,8 +26,8 @@ public class BackEmpresaCreateReservaDisponibleUseCase implements BackEmpresaCre
     MongoTemplate mongoTemplate;
 
     @Override
-    public ResponseEntity<BackEmpresaReservaDisponibleOutputDTO> crearReservaDisponible(
-            BackEmpresaReservaDisponibleInputDTO backEmpresaReservaDisponibleInputDTO) {
+    public ResponseEntity<BackEmpresaReservaDisponibleOutputDTO>
+    crearReservaDisponible(BackEmpresaReservaDisponibleInputDTO backEmpresaReservaDisponibleInputDTO) {
 
         List<BackEmpresaReservaDisponibleOutputDTO> backEmpresaReservaDisponibleOutputDTOList = new ArrayList<>();
 
@@ -41,20 +41,16 @@ public class BackEmpresaCreateReservaDisponibleUseCase implements BackEmpresaCre
                 ));
 
         try {
-            if (backEmpresaReservaDisponibleOutputDTOList.size() == 0 &&
-                    backEmpresaReservaDisponibleInputDTO.getNumeroPlazas() <= 40)
+            if ((backEmpresaReservaDisponibleOutputDTOList.size() == 0 &&
+                    backEmpresaReservaDisponibleInputDTO.getNumeroPlazas() <= 40) ||
+                    (backEmpresaReservaDisponibleOutputDTOList.get(0).getFecha().getTime() !=
+                            backEmpresaReservaDisponibleInputDTO.getFecha().getTime() &&
+                            backEmpresaReservaDisponibleInputDTO.getNumeroPlazas() <= 40))
 
                 return ResponseEntity.ok(new BackEmpresaReservaDisponibleOutputDTO(mongoDBRespositoryDisponible.save(
                         new BackEmpresaReservaDisponibleCollection(backEmpresaReservaDisponibleInputDTO))));
 
-            else if (backEmpresaReservaDisponibleOutputDTOList.get(0).getFecha().getTime() !=
-                    backEmpresaReservaDisponibleInputDTO.getFecha().getTime() &&
-                    backEmpresaReservaDisponibleInputDTO.getNumeroPlazas() <= 40) {
-
-                return ResponseEntity.ok(new BackEmpresaReservaDisponibleOutputDTO(mongoDBRespositoryDisponible.save(
-                        new BackEmpresaReservaDisponibleCollection(backEmpresaReservaDisponibleInputDTO))));
-
-            } else throw new BadRequest("Reserva disponible inválida");
+            else throw new BadRequest("Reserva disponible inválida");
 
         } catch (Exception e) {
             throw new BadRequest("Reserva disponible invalida");
