@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 @FeignClient(name = "back-web-feign", url = "http://localhost:8090")
 public interface BackWebReservaReadEmpresaPort {
 
-    @GetMapping("/api/v0/security/token/")
-    ResponseEntity getToken(String token);
+    @GetMapping("/api/v0/security/token/{token}")
+    ResponseEntity getToken(@PathVariable(name = "token") String token);
 
 }
