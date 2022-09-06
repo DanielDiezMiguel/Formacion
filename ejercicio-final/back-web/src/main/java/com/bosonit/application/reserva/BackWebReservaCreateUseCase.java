@@ -8,12 +8,16 @@ import com.bosonit.exception.UnprocesableException;
 import com.bosonit.infrastructure.reserva.controller.dto.BackWebReservaInputDTO;
 import com.bosonit.infrastructure.reserva.controller.dto.BackWebReservaOutputDTO;
 import com.bosonit.infrastructure.reserva.repository.mongodb.MongoDBRepository;
+import com.bosonit.infrastructure.reserva_disponible.controller.dto.BackWebReservaDisponibleOutputDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class BackWebReservaCreateUseCase implements BackWebReservaCreatePort {
@@ -26,19 +30,25 @@ public class BackWebReservaCreateUseCase implements BackWebReservaCreatePort {
 
     @Override
     public ResponseEntity<BackWebReservaOutputDTO> crearReserva(BackWebReservaInputDTO backWebReservaInputDTO) {
-        try {
-            if (mongoTemplate.exists(Query.query(Criteria.where("ciudad").is(backWebReservaInputDTO.getCiudad())),
-                    BackWebReservaDisponibleCollection.class, "reservas-disponibles") &&
-                    mongoTemplate.exists(Query.query(Criteria.where("numeroPlazas").lte(40)),
-                    BackWebReservaDisponibleCollection.class, "reservas-disponibles"))
+        List<BackWebReservaDisponibleOutputDTO> backWebReservaDisponibleOutputDTOList = new ArrayList<>();
+        Query query = new Query();
 
-                return ResponseEntity.ok(
-                        new BackWebReservaOutputDTO(mongoDBRepository.save(
-                                new BackWebReservaCollection(backWebReservaInputDTO))));
+        query = new Query(new Criteria()
+                .andOperator(
+                        Criteria.where("ciudad").is(backWebReservaInputDTO.getCiudad()),
+                        Criteria.where("numeroPlazas").lt(41),
+                        Criteria.where("numeroPlazas").gt(0)
+                ));
 
-        } catch (Exception e) {
-            throw new BadRequest("Reserva inválida");
-        }
-        throw new BadRequest("No quedan plazas disponibles");
+        mongoTemplate.find(query, BackWebReservaDisponibleCollection.class, "reservas-disponibles")
+                .forEach(backWebReservaDisponibleCollection -> backWebReservaDisponibleOutputDTOList
+                        .add(new BackWebReservaDisponibleOutputDTO(backWebReservaDisponibleCollection)));
+
+        if (backWebReservaDisponibleOutputDTOList.size() > 0)
+            return ResponseEntity.ok(
+                    new BackWebReservaOutputDTO(mongoDBRepository
+                            .save(new BackWebReservaCollection(backWebReservaInputDTO))));
+
+        else throw new BadRequest("Reserva inválida");
     }
 }
