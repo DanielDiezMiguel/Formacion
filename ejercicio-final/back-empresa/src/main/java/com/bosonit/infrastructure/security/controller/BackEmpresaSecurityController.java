@@ -1,7 +1,7 @@
 package com.bosonit.infrastructure.security.controller;
 
 import com.bosonit.application.security.port.BackEmpresaSecurityCheckTokenPort;
-import com.bosonit.infrastructure.security.controller.dto.BackEmpresaSecurityInputDTO;
+import com.bosonit.domain.no_collection.BackEmpresaSecurityToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,9 +15,9 @@ public class BackEmpresaSecurityController {
     BackEmpresaSecurityCheckTokenPort backEmpresaSecurityCheckTokenPort;
 
     @GetMapping
-    public HttpStatus checkToken(
-            @RequestBody BackEmpresaSecurityInputDTO backEmpresaSecurityInputDTO,
+    public ResponseEntity checkToken(
+            @RequestBody BackEmpresaSecurityToken backEmpresaSecurityToken,
             @RequestParam(value = "token") String token) {
-        return backEmpresaSecurityCheckTokenPort.checkToken(backEmpresaSecurityInputDTO, token);
+        return backEmpresaSecurityCheckTokenPort.checkToken(backEmpresaSecurityToken, token);
     }
 }

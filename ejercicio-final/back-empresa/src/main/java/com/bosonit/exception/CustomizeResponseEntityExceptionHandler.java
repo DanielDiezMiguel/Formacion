@@ -28,4 +28,10 @@ public class CustomizeResponseEntityExceptionHandler extends ResponseEntityExcep
         CustomError customError = new CustomError(new Date(), 400, badRequest.getMessage());
         return new ResponseEntity<>(customError, HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(Forbidden.class)
+    public final ResponseEntity<CustomError> forbidden(Forbidden forbidden){
+        CustomError customError = new CustomError(new Date(), 403, forbidden.getMessage());
+        return new ResponseEntity<>(customError, HttpStatus.FORBIDDEN);
+    }
 }
