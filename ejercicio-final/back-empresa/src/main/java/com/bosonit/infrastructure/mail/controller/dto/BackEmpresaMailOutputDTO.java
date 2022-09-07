@@ -12,6 +12,7 @@ public class BackEmpresaMailOutputDTO {
 
     public BackEmpresaMailOutputDTO(BackEmpresaMailCollection backEmpresaMailCollection) {
         if (backEmpresaMailCollection == null) return;
+        id_mail = backEmpresaMailCollection.getId_mail();
         destinatario = backEmpresaMailCollection.getDestinatario();
         asunto = backEmpresaMailCollection.getAsunto();
         contenido = backEmpresaMailCollection.getContenido();
