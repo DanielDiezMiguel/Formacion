@@ -20,11 +20,8 @@ public class BackWebReservaReadController {
     @Autowired
     BackWebReservaReadPort backWebReservaReadPort;
 
-    @GetMapping
-    public ResponseEntity<List<BackWebReservaOutputDTO>> getAllReservas(
-            @RequestParam(value = "ciudad", required = false) String ciudad,
-            @RequestParam(value = "condicion", required = false) String condicion,
-            @RequestParam(value = "fecha", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date fecha) {
-        return backWebReservaReadPort.getAllReservas(ciudad, fecha, condicion);
+    @GetMapping("/all")
+    public ResponseEntity<List<BackWebReservaOutputDTO>> getAllReservas() {
+        return backWebReservaReadPort.getAllReservas();
     }
 }

@@ -65,4 +65,15 @@ public class BackWebReservaReadUseCase implements BackWebReservaReadPort {
             throw new BadRequest("Introduce una condicion: superior, inferior o ciudad");
         }
     }
+
+    @Override
+    public ResponseEntity<List<BackWebReservaOutputDTO>> getAllReservas() {
+        List<BackWebReservaOutputDTO> backWebReservaOutputDTOList = new ArrayList<>();
+
+        mongoDBRepository.findAll()
+                .forEach(backWebReservaCollection -> backWebReservaOutputDTOList
+                        .add(new BackWebReservaOutputDTO(backWebReservaCollection)));
+
+        return ResponseEntity.ok(backWebReservaOutputDTOList);
+    }
 }

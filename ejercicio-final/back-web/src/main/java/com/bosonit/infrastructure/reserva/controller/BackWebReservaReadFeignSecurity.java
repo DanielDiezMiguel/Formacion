@@ -1,28 +1,23 @@
 package com.bosonit.infrastructure.reserva.controller;
 
-import com.bosonit.application.reserva.port.BackWebReservaReadEmpresaPort;
 import com.bosonit.application.reserva.port.BackWebReservaReadPort;
-import com.bosonit.domain.no_collection.BackWebSecurityToken;
 import com.bosonit.exception.Forbidden;
-import com.bosonit.infrastructure.reserva.controller.dto.BackWebReservaOutputDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/v0/reserva/token")
-public class BackWebReservaReadEmpresaController {
+public class BackWebReservaReadFeignSecurity {
 
     @Autowired
     BackWebReservaReadPort backWebReservaReadPort;
 
     @Autowired
-    BackWebReservaReadEmpresaPort backWebReservaReadEmpresaPort;
+    com.bosonit.application.reserva.port.BackWebReservaReadFeignSecurity backWebReservaReadFeignSecurity;
 
     @GetMapping("{token}")
     public ResponseEntity getToken(
@@ -33,7 +28,7 @@ public class BackWebReservaReadEmpresaController {
             @DateTimeFormat(pattern = "yyyy-MM-dd") Date fecha) throws Exception {
 
         try {
-            backWebReservaReadEmpresaPort.getToken(token);
+            backWebReservaReadFeignSecurity.getToken(token);
             return backWebReservaReadPort.getAllReservas(ciudad, fecha, condicion);
 
         } catch (Exception e) {
