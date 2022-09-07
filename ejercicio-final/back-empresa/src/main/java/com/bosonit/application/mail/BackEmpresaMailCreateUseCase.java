@@ -1,19 +1,16 @@
 package com.bosonit.application.mail;
 
-import com.bosonit.application.mail.port.BackEmpresaMailPort;
+import com.bosonit.application.mail.port.BackEmpresaMailCreatePort;
 import com.bosonit.domain.mail.BackEmpresaMailCollection;
-import com.bosonit.infrastructure.mail.controller.dto.BackEmpresaMailOutputDTO;
 import com.bosonit.infrastructure.mail.repository.mongodb.MongoDBRespositoryMail;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Service
-public class BackEmpresaMailUseCase implements BackEmpresaMailPort {
+public class BackEmpresaMailCreateUseCase implements BackEmpresaMailCreatePort {
 
     @Autowired
     MongoDBRespositoryMail mongoDBRespositoryMail;
@@ -22,7 +19,7 @@ public class BackEmpresaMailUseCase implements BackEmpresaMailPort {
     JavaMailSender javaMailSender;
 
     @Override
-    public void sendEmail(String destinatario, String asunto, String contenido) {
+    public ResponseEntity sendEmail(String destinatario, String asunto, String contenido) {
         BackEmpresaMailCollection backEmpresaMailCollection = new BackEmpresaMailCollection();
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
 
@@ -36,6 +33,8 @@ public class BackEmpresaMailUseCase implements BackEmpresaMailPort {
 
         mongoDBRespositoryMail.save(backEmpresaMailCollection);
         javaMailSender.send(simpleMailMessage);
+
+        return ResponseEntity.ok("Correo enviado");
     }
 
 }
