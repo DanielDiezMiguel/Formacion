@@ -1,4 +1,4 @@
-package com.bosonit.application.reserva_disponible.port;
+package com.bosonit.application.mail.port;
 
 public interface BackEmpresaMailPort {
     void sendEmail(String destinatario, String asunto, String contenido);

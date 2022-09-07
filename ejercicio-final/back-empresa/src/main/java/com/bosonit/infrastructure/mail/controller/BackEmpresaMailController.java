@@ -1,6 +1,6 @@
-package com.bosonit.infrastructure.reserva_disponible.controller;
+package com.bosonit.infrastructure.mail.controller;
 
-import com.bosonit.application.reserva_disponible.port.BackEmpresaMailPort;
+import com.bosonit.application.mail.port.BackEmpresaMailPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
