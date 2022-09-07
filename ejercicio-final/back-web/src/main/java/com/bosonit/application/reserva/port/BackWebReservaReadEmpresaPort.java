@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-@FeignClient(name = "back-web-feign", url = "http://localhost:8090")
+@FeignClient(name = "BACK-EMPRESA")
 public interface BackWebReservaReadEmpresaPort {
 
     @GetMapping("/api/v0/security/token/{token}")
