@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/v0/reserva/kafka")
-public class BacWebKafkaController {
+public class BackWebKafkaController {
 
     @Autowired
     KafkaProducerPort kafkaProducerPort;

@@ -23,4 +23,12 @@ public class BackEmpresaMailCollection {
         contenido = backEmpresaMailInputDTO.getContenido();
     }
 
+    public void update(BackEmpresaMailInputDTO backEmpresaMailInputDTO) {
+        if (backEmpresaMailInputDTO == null) return;
+        id_mail = backEmpresaMailInputDTO.getId_mail();
+        destinatario = backEmpresaMailInputDTO.getDestinatario();
+        asunto = backEmpresaMailInputDTO.getAsunto();
+        contenido = backEmpresaMailInputDTO.getContenido();
+    }
+
 }

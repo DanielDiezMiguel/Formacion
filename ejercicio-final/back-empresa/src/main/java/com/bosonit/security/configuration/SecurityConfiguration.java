@@ -59,6 +59,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .hasAuthority("ROLE_ADMIN")
                 .antMatchers(HttpMethod.GET, "/api/v0/correo/**")
                 .hasAnyAuthority("ROLE_ADMIN", "ROLE_USER")
+                .antMatchers(HttpMethod.PUT, "/api/v0/**")
+                .hasAuthority("ROLE_ADMIN")
                 .antMatchers("/api/v0/security/**").permitAll()
                 .anyRequest()
                 .authenticated().and()
