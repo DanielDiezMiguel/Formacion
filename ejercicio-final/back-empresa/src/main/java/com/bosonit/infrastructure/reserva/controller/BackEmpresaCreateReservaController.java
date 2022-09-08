@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v0/reserva")
-public class BackEmpresaReservaController {
+public class BackEmpresaCreateReservaController {
 
     @Autowired
     BackEmpresaReservaCreatePort backEmpresaReservaCreatePort;

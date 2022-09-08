@@ -3,12 +3,14 @@ package com.bosonit.domain.reserva;
 import com.bosonit.domain.no_collection.KafkaItemReservas;
 import com.bosonit.infrastructure.reserva.controller.dto.BackEmpresaReservaInputDTO;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 
 @Data
+@NoArgsConstructor
 @Document(collection = "reservas")
 public class BackEmpresaReservaCollection {
     @Id

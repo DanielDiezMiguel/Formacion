@@ -1,5 +1,6 @@
 package com.bosonit.infrastructure.reserva.controller;
 
+import com.bosonit.application.reserva.port.BackWebReservaReadFeignSecurityPort;
 import com.bosonit.application.reserva.port.BackWebReservaReadPort;
 import com.bosonit.exception.Forbidden;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class BackWebReservaReadFeignSecurity {
     BackWebReservaReadPort backWebReservaReadPort;
 
     @Autowired
-    com.bosonit.application.reserva.port.BackWebReservaReadFeignSecurity backWebReservaReadFeignSecurity;
+    BackWebReservaReadFeignSecurityPort backWebReservaReadFeignSecurityPort;
 
     @GetMapping("{token}")
     public ResponseEntity getToken(
@@ -28,7 +29,7 @@ public class BackWebReservaReadFeignSecurity {
             @DateTimeFormat(pattern = "yyyy-MM-dd") Date fecha) throws Exception {
 
         try {
-            backWebReservaReadFeignSecurity.getToken(token);
+            backWebReservaReadFeignSecurityPort.getToken(token);
             return backWebReservaReadPort.getAllReservas(ciudad, fecha, condicion);
 
         } catch (Exception e) {
