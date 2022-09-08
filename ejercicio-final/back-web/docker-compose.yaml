@@ -1,0 +1,16 @@
+version: "1.0"
+services:
+  back-web:
+    build: .
+    ports:
+      - "8000":"8000"
+      - "8001":"8001"
+    links:
+      - back-web-container
+  mongo_container:
+    image: mongo
+    ports:
+      - "27017":"27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=daniel
+      - MONGO_INITDB_ROOT_PASSWORD=Dds9cP4zlMMIEgGQ
