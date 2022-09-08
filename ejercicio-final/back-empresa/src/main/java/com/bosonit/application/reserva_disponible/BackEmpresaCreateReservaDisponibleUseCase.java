@@ -43,8 +43,8 @@ public class BackEmpresaCreateReservaDisponibleUseCase implements BackEmpresaCre
         try {
             if ((backEmpresaReservaDisponibleOutputDTOList.size() == 0 &&
                     backEmpresaReservaDisponibleInputDTO.getNumeroPlazas() <= 40) ||
-                    (backEmpresaReservaDisponibleOutputDTOList.get(0).getFecha().getTime() !=
-                            backEmpresaReservaDisponibleInputDTO.getFecha().getTime() &&
+                    (backEmpresaReservaDisponibleOutputDTOList.get(0)
+                            .getFecha().getTime() != backEmpresaReservaDisponibleInputDTO.getFecha().getTime() &&
                             backEmpresaReservaDisponibleInputDTO.getNumeroPlazas() <= 40))
 
                 return ResponseEntity.ok(new BackEmpresaReservaDisponibleOutputDTO(mongoDBRespositoryDisponible.save(
