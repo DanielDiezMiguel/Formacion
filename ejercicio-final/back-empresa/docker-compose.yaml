@@ -1,15 +1,15 @@
 version: "3.3"
 services:
-  back-empresa:
+  empresa:
     build: .
     ports:
       - '8090:8090'
     links:
-      - back-empresa-container
+      - mongo_container
   mongo_container:
     image: mongo
     ports:
-      - '27017:27017'
+      - '9001:27017'
     environment:
       - MONGO_INITDB_ROOT_USERNAME=daniel
       - MONGO_INITDB_ROOT_PASSWORD=Dds9cP4zlMMIEgGQ
