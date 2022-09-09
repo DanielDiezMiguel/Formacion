@@ -1,11 +1,14 @@
 version: "3.3"
 services:
   back-empresa:
+    container_name: back-empresa
     build: .
     ports:
       - 8090:8090
     networks:
       - mynetwork
+    environment:
+      EUREKA_HOST: http://eureka:8761/eureka
 
   mongo:
     image: mongo
@@ -20,5 +23,6 @@ services:
       - mongo-data:/data/db
 networks:
   mynetwork:
+    external: true
 volumes:
   mongo-data:
