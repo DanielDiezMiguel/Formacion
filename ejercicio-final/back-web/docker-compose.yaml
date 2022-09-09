@@ -10,12 +10,14 @@ services:
       - 22181:2181
     networks:
       - mynetwork
+
   kafka:
     container_name: kafka
     image: confluentinc/cp-kafka:latest
     depends_on:
       - zookeeper
     ports:
+#      - 9092:9092
       - 29092:29092
     networks:
       - mynetwork
@@ -37,6 +39,9 @@ services:
       - mynetwork
     environment:
       EUREKA_HOST: http://eureka:8761/eureka
+      KAFKA_CONSUMER_HOST: http://kafka:9092
+      KAFKA_PRODUCER_HOST: http://kafka:9092
+
   mongo:
     container_name: mongodb
     image: mongo
@@ -49,6 +54,7 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=Dds9cP4zlMMIEgGQ
     volumes:
       - mongo-data:/data/db
+
 volumes:
   mongo-data:
 networks:
