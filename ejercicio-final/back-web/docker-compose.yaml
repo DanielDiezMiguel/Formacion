@@ -37,7 +37,6 @@ services:
       - mynetwork
     environment:
       EUREKA_HOST: http://eureka:8761/eureka
-      PEPE: hola
   mongo:
     container_name: mongodb
     image: mongo
