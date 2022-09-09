@@ -1,6 +1,35 @@
+#server:
+#  eureka:
+#    build: .
+#    port: 8761
+#    client:
+#      register-with-eureka: false
+#      fetch-registry: false
+#      region: region1
+#      serviceUrl:
+#        zone1: http://discovery-server:8761/eureka/
+#      availability-zones:
+#        region1: zone1
+#    instance:
+#      hostname: discovery-server
+#      metadata-map:
+#        zone: zone1
+
+#version: "3.3"
+#services:
+#  eureka:
+#    build: .
+#    ports:
+#      - 8761:8761
+
 version: "3.3"
 services:
-  eureka:
+  eureka-server:
+    container_name: eureka
     build: .
     ports:
-      - '8761:8761'
+      - 8761:8761
+    networks:
+      - mynetwork
+networks:
+  mynetwork:
