@@ -11,6 +11,7 @@ services:
       EUREKA_HOST: http://eureka:8761/eureka
 
   mongo:
+    container_name: mongodb-empresa
     image: mongo
     ports:
       - 9001:27017
