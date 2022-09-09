@@ -12,6 +12,8 @@ public class BackWebApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(BackWebApplication.class, args);
+		System.out.println("APLICACION");
 	}
+
 
 }

@@ -26,19 +26,7 @@ services:
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-#  eureka:
-#    instance:
-#      prefer-ip-address: true
-#      metadata-map:
-#        zone: zone1
-#    client:
-#      prefer-same-zone-eureka: true
-#      register-with-eureka: true
-#      region: region1
-#      service-url:
-#        zone1: http://discovery-server:8761/eureka/
-#      availability-zones:
-#        region1: zone1
+
   back-web:
     container_name: back-web
     build: .
@@ -47,11 +35,9 @@ services:
       - 8001:8001
     networks:
       - mynetwork
-#    links:
-#      - mongo
-#      - zookeeper
-#      - kafka
-#      - eureka
+    environment:
+      EUREKA_HOST: http://eureka:8761/eureka
+      PEPE: hola
   mongo:
     container_name: mongodb
     image: mongo
@@ -68,51 +54,7 @@ volumes:
   mongo-data:
 networks:
   mynetwork:
-#  zookeeper:
-#    image: confluentinc/cp-zookeeper:latest
-#    environment:
-#      ZOOKEEPER_CLIENT_PORT: 2181
-#      ZOOKEEPER_TICK_TIME: 2000
-#    ports:
-#      - 22181:2181
-#  kafka:
-#    image: confluentinc/cp-kafka:latest
-#    links:
-#      - zookeeper
-#    ports:
-#      - '29092:29092'
-#    environment:
-#      KAFKA_BROKER_ID: 1
-#      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-#      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
-#      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
-#      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
-#      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-#  zookeeper:
-#    image: confluentinc/cp-zookeeper:5.3.0
-#    container_name: zookeeper
-#    environment:
-#      ZOOKEEPER_CLIENT_PORT: 2181
-#      ZOOKEEPER_TICK_TIME: 2000
-#      ZOOKEEPER_SYNC_LIMIT: 2
-#    ports:
-#      - 2181:2181
-#    volumes:
-#      - zk-data:/var/lib/zookeeper/data
-#      - zk-txn-logs:/var/lib/zookeeper/log
-#  kafka:
-#    image: confluentinc/cp-kafka:5.3.0
-#    container_name: kafka
-#    environment:
-#      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
-#      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT
-#      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-#      KAFKA_BROKER_ID: 2
-#      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-#    ports:
-#      - 9092:9092
-#    volumes:
-#      - kafka-data:/var/lib/kafka/data
+    external: true
 #volumes:
 #  zk-data:
 #  zk-txn-logs:
