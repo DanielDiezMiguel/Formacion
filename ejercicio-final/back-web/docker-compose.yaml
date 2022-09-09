@@ -27,11 +27,11 @@ services:
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
 
-  back-web:
-    container_name: back-web
+  back-web-8001:
+    container_name: back-web-8001
     build: .
     ports:
-      - 8000:8000
+#      - 8000:8000
       - 8001:8001
     networks:
       - mynetwork
