@@ -17,7 +17,12 @@ public class ReadPersonaController {
 
     @GetMapping("/getAll")
     public List<PersonaOutputDTO> getAll() {
-        return readPersonaPort.selectPersonas();
+        return readPersonaPort.selectAll();
+    }
+
+    @GetMapping("/id")
+    public List<PersonaOutputDTO> getByID(@RequestParam(value = "id") Integer id) {
+        return readPersonaPort.selectByID(id);
     }
 
 }

@@ -16,11 +16,19 @@ public class ReadPersonaUseCase implements ReadPersonaPort {
     JdbcOperations jdbcOperations;
 
     @Override
-    public List<PersonaOutputDTO> selectPersonas() {
-        String sql = """
+    public List<PersonaOutputDTO> selectAll() {
+        return jdbcOperations.query("""
                 SELECT id_persona, usuario, password, name, surname
                 FROM Persona
-                """;
-        return jdbcOperations.query(sql, new PersonaRowMapper());
+                """, new PersonaRowMapper());
+    }
+
+    @Override
+    public List<PersonaOutputDTO> selectByID(Integer id) {
+        return jdbcOperations.query("""
+                SELECT *
+                FROM PERSONA
+                WHERE id_persona = ?
+                """, new PersonaRowMapper(), id);
     }
 }
