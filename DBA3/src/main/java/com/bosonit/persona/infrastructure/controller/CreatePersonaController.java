@@ -15,7 +15,7 @@ public class CreatePersonaController {
     CreatePersonaPort createPersonaPort;
 
     @PostMapping
-    public ResponseEntity<Integer> crearUsuario(@RequestBody PersonaInputDTO personaInputDTO) {
+    public ResponseEntity crearUsuario(@RequestBody PersonaInputDTO personaInputDTO) {
         return createPersonaPort.createUser(personaInputDTO);
     }
 }

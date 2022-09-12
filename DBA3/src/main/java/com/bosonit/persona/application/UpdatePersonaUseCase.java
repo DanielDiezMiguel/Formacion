@@ -21,7 +21,7 @@ public class UpdatePersonaUseCase implements UpdatePersonaPort {
     JdbcOperations jdbcOperations;
 
     @Override
-    public ResponseEntity<PersonaOutputDTO> updateByID(Integer id, PersonaInputDTO personaInputDTO) {
+    public ResponseEntity updateByID(Integer id, PersonaInputDTO personaInputDTO) {
 
         PersonaEntity personaEntity = personaRepository
                 .findById(id)
@@ -37,20 +37,4 @@ public class UpdatePersonaUseCase implements UpdatePersonaPort {
 
         return ResponseEntity.ok().build();
     }
-
-//    @Override
-//    public PersonaOutputDTO updateUsuarioByID(String id, PersonaInputDTO personaInputDTO) {
-//        try {
-//            PersonaEntity personaEntity = personaRepository.findById(Integer.valueOf(id)).orElseThrow();
-//            personaEntity.update(personaInputDTO);
-//            personaRepository.save(personaEntity);
-//            return new PersonaOutputDTO(personaEntity);
-//
-//        } catch (Exception e) {
-//            if (!personaRepository.findById(Integer.valueOf(id)).isPresent()) {
-//                throw new NotFoundException("No se ha encontrado el ID");
-//            }
-//            throw new UnprocesableException("No cumple los requisitos establecidos");
-//        }
-//    }
 }

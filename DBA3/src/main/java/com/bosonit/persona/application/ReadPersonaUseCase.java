@@ -25,10 +25,6 @@ public class ReadPersonaUseCase implements ReadPersonaPort {
 
     @Override
     public List<PersonaOutputDTO> selectByID(Integer id) {
-        return jdbcOperations.query("""
-                SELECT *
-                FROM PERSONA
-                WHERE id_persona = ?
-                """, new PersonaRowMapper(), id);
+        return jdbcOperations.query("SELECT * FROM Persona WHERE id_persona = ?", new PersonaRowMapper(), id);
     }
 }

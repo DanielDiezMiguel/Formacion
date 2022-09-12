@@ -16,25 +16,13 @@ public class DeletePersonaUseCase implements DeletePersonaPort {
     @Autowired
     JdbcOperations jdbcOperations;
 
-//    public void deleteByID(String id) {
-//        PersonaEntity personaEntity = personaRepository
-//                .findById(Integer.valueOf(id))
-//                .orElseThrow(() -> new NotFoundException("No se ha encontrado el ID"));
-//        personaRepository.delete(personaEntity);
-//    }
-
     @Override
     public ResponseEntity deleteByID(Integer id) {
         personaRepository
                 .findById(id)
                 .orElseThrow(() -> new NotFoundException("No se ha encontrado a la Persona con ID: " + id));
 
-        jdbcOperations.update("""
-                DELETE 
-                FROM Persona
-                WHERE id_persona = ?
-                """, id);
-
+        jdbcOperations.update("DELETE FROM Persona WHERE id_persona = ?", id);
         return ResponseEntity.ok().build();
     }
 }

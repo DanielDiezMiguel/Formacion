@@ -6,5 +6,5 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 
 public interface UpdatePersonaPort {
-    ResponseEntity<PersonaOutputDTO> updateByID(Integer id, PersonaInputDTO personaInputDTO);
+    ResponseEntity updateByID(Integer id, PersonaInputDTO personaInputDTO);
 }

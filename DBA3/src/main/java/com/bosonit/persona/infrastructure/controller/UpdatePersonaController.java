@@ -15,7 +15,7 @@ public class UpdatePersonaController {
     UpdatePersonaPort updatePersonaPort;
 
     @PutMapping("/id")
-    public ResponseEntity<PersonaOutputDTO> updateByID(
+    public ResponseEntity updateByID(
             @RequestParam(value = "id") Integer id,
             @RequestBody PersonaInputDTO personaInputDTO) {
         return updatePersonaPort.updateByID(id, personaInputDTO);
