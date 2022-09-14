@@ -10,12 +10,12 @@ import java.time.Duration;
 public class FluxUseCase implements FluxPort {
 
     @Override
-    public Flux<Integer> returnFlux() {
+    public Flux<Integer> integerFlux() {
         return Flux.just(1, 2, 3, 4, 5).log();
     }
 
     @Override
-    public Flux<Integer> returnStreamFlux() {
+    public Flux<Integer> integerStreamFlux() {
         return Flux.just(1, 2, 3, 4, 5)
                 .delayElements(Duration.ofSeconds(1))
                 .log();

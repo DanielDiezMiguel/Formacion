@@ -17,12 +17,12 @@ public class FluxController {
 
     @GetMapping
     public Flux<Integer> integerFlux() {
-        return fluxPort.returnFlux();
+        return fluxPort.integerFlux();
     }
 
     @GetMapping(value = "/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<Integer> integerStreamFlux() {
-        return fluxPort.returnStreamFlux();
+        return fluxPort.integerStreamFlux();
     }
 
 
