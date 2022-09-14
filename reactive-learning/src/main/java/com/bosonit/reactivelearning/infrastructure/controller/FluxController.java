@@ -25,5 +25,4 @@ public class FluxController {
         return fluxPort.integerStreamFlux();
     }
 
-
 }
