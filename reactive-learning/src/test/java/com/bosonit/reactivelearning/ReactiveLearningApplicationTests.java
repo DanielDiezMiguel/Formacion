@@ -88,9 +88,8 @@ class ReactiveLearningApplicationTests {
 
     @Test
     void monoTestError() {
-        StepVerifier.create(
-                        Mono.error(new RuntimeException("ERROR OCURRED"))
-                                .log())
+        Mono mono = Mono.error(new RuntimeException("ERROR OCURRED")).log();
+        StepVerifier.create(mono)
                 .expectError(RuntimeException.class)
                 .verify();
     }
