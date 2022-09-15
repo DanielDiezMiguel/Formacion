@@ -1,5 +1,6 @@
 package com.bosonit.reactivelearning;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
@@ -88,8 +89,8 @@ class ReactiveLearningApplicationTests {
     @Test
     void monoTestError() {
         StepVerifier.create(
-                Mono.error(new RuntimeException("ERROR OCURRED"))
-                        .log())
+                        Mono.error(new RuntimeException("ERROR OCURRED"))
+                                .log())
                 .expectError(RuntimeException.class)
                 .verify();
     }
@@ -127,5 +128,15 @@ class ReactiveLearningApplicationTests {
                 .expectSubscription()
                 .expectNext(1, 2, 3, 4, 5)
                 .verifyComplete();
+    }
+
+    @Test
+    void integerMono() {
+        webTestClient.get().uri("/mono")
+                .exchange()
+                .expectStatus().isOk()
+                .expectBody(Integer.class)
+                .consumeWith(integerEntityExchangeResult -> Assertions
+                        .assertEquals(1, integerEntityExchangeResult.getResponseBody()));
     }
 }
