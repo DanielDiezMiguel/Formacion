@@ -12,17 +12,15 @@ import reactor.core.publisher.Flux;
 @RequestMapping("/flux")
 public class FluxController {
 
-    @Autowired
-    FluxPort fluxPort;
+  @Autowired FluxPort fluxPort;
 
-    @GetMapping
-    public Flux<Integer> integerFlux() {
-        return fluxPort.integerFlux();
-    }
+  @GetMapping
+  public Flux<Integer> integerFlux() {
+    return fluxPort.integerFlux();
+  }
 
-    @GetMapping(value = "/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-    public Flux<Integer> integerStreamFlux() {
-        return fluxPort.integerStreamFlux();
-    }
-
+  @GetMapping(value = "/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+  public Flux<Integer> integerStreamFlux() {
+    return fluxPort.integerStreamFlux();
+  }
 }
