@@ -15,7 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PersonaReadUseCase implements PersonaReadPort {
 
-  private final PersonaMapper personaMapper;
+  //  private final PersonaMapper personaMapper;
   @Autowired PersonaRepository personaRepository;
 
   @Override
@@ -23,7 +23,8 @@ public class PersonaReadUseCase implements PersonaReadPort {
     List<PersonaOutputDTO> personaOutputDTOList = new ArrayList<>();
     personaRepository
         .findAll()
-        .forEach(persona -> personaOutputDTOList.add(personaMapper.personaOutputDto(persona)));
+        .forEach(
+            persona -> personaOutputDTOList.add(PersonaMapper.INSTANCE.personaOutputDto(persona)));
     return personaOutputDTOList;
   }
 }
