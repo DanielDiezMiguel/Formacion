@@ -8,7 +8,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 /**
- * Se realiza la conversion de DTO
+ * Se realiza la conversión de DTO
  * @author Daniel Díez Miguel
  */
 @Mapper
