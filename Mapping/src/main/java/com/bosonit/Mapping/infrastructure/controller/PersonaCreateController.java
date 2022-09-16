@@ -1,8 +1,8 @@
 package com.bosonit.Mapping.infrastructure.controller;
 
 import com.bosonit.Mapping.application.port.PersonaCreatePort;
-import com.bosonit.Mapping.infrastructure.controller.dto.PersonaInputDTO;
-import com.bosonit.Mapping.infrastructure.controller.dto.PersonaOutputDTO;
+import com.bosonit.Mapping.infrastructure.controller.dto.input.PersonaInputDTO;
+import com.bosonit.Mapping.infrastructure.controller.dto.output.PersonaOutputDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

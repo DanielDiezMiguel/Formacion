@@ -1,17 +1,16 @@
 package com.bosonit.Mapping.application.port;
 
-import com.bosonit.Mapping.domain.Persona;
-import com.bosonit.Mapping.infrastructure.controller.dto.PersonaInputDTO;
-import com.bosonit.Mapping.infrastructure.controller.dto.PersonaOutputDTO;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import com.bosonit.Mapping.domain.PersonaEntity;
+import com.bosonit.Mapping.infrastructure.controller.dto.input.PersonaInputDTO;
+import com.bosonit.Mapping.infrastructure.controller.dto.output.PersonaOutputDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
 import org.mapstruct.factory.Mappers;
 
-import java.util.List;
-
+/**
+ * Se realiza la conversion de DTO
+ * @author Daniel Díez Miguel
+ */
 @Mapper
 public interface PersonaMapper {
 
@@ -21,12 +20,11 @@ public interface PersonaMapper {
   @Mapping(target = "nombre", source = "nombre")
   @Mapping(target = "apellidos", source = "apellidos")
   @Mapping(target = "edad", source = "edad")
-  Persona persona(PersonaInputDTO personaInputDTO);
+  PersonaEntity persona(PersonaInputDTO personaInputDTO);
 
   @Mapping(target = "id", source = "id")
   @Mapping(target = "nombre", source = "nombre")
   @Mapping(target = "apellidos", source = "apellidos")
   @Mapping(target = "edad", source = "edad")
-  PersonaOutputDTO personaOutputDto(Persona persona);
-  //    List<PersonaOutputDTO> personaOutputDtoList(List<Persona> personaList);
+  PersonaOutputDTO personaOutputDto(PersonaEntity personaEntity);
 }

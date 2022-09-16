@@ -1,15 +1,13 @@
 package com.bosonit.Mapping.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
 @Data
-public class Persona {
+public class PersonaEntity {
     @Id private Integer id;
     private String nombre;
     private String apellidos;

@@ -1,9 +1,9 @@
-package com.bosonit.Mapping.infrastructure.controller.dto;
+package com.bosonit.Mapping.infrastructure.controller.dto.output;
 
 import lombok.Data;
 
 @Data
-public class PersonaInputDTO {
+public class PersonaOutputDTO {
   private Integer id;
   private String nombre;
   private String apellidos;
