@@ -1,0 +1,15 @@
+package com.bosonit.Mapping.domain;
+
+import lombok.Data;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+@Data
+public class Persona {
+    @Id private Integer id;
+    private String nombre;
+    private String apellidos;
+    private long edad;
+}
